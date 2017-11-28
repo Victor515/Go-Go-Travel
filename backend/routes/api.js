@@ -8,7 +8,8 @@ module.exports = function(router, passport) {
     });
 
     router.post('/login',
-        passport.authenticate('local-login'),
+        passport.authenticate('local-login'
+        ),
         function(req, res) {
             console.log(req.isAuthenticated());
             res.status(200).json({ user: req.user.email
@@ -22,6 +23,7 @@ module.exports = function(router, passport) {
             res.status(200).json({ user: req.user, message: "Welcome!"
         });
     });
+
 
     router.get('/logout', function(req, res) {
         req.logOut();

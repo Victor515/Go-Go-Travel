@@ -28,6 +28,12 @@ app.route('/login').get(function(req, res) {
 app.route('/register').get(function(req, res) {
   return res.sendFile(path.join(__dirname, './backend/static/index.html'));
 });
+app.route('/profile').get(function(req,res) {
+  return res.sendFile(path.join(__dirname, './backend/static/index.html'));
+})
+app.route('/profile/:id').get(function(req,res) {
+  return res.sendFile(path.join(__dirname, './backend/static/index.html'));
+})
 app.route('/dashboard').get(function(req,res) {
   return res.sendFile(path.join(__dirname, './backend/static/index.html'));
 })

@@ -18,8 +18,9 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/profile').then( (res) => {
+        axios.get('/api/profile/:id').then( (req, res) => {
             console.log(res);
+            console.log(req.params.id);
             this.setState({
                 isLoggedIn: true
             })

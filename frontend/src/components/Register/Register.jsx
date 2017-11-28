@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
-import { Button, Input, Card } from 'semantic-ui-react'
+import { Button, Input, Card, Form, Grid, Header, Image, Message, Segment, Divider, Icon} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Navbar from '../Navbar/Navbar.jsx'
 
 import styles from './styles.scss'
 
 
 class Register extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             user: {
                 password: '',
                 email: ''
             },
-
+            isLoggedIn: false,
             message: ''
         }
 
@@ -33,7 +34,7 @@ class Register extends Component {
         const password = encodeURIComponent(this.state.user.password);
         const formData = `name=${name}&email=${email}&password=${password}`;
 
-        // create an AJAX POST request (This should probably done with Axios instead) 
+        // create an AJAX POST request (This should probably done with Axios instead)
         const xhr = new XMLHttpRequest();
         xhr.open('post', '/api/register');
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -71,22 +72,46 @@ class Register extends Component {
 
     render() {
         return(
-            <form className="Register" action="/" onSubmit={this.onSubmit}>
-                <Card className="Register__content">
-                    <div>
-                        <h1>Register</h1>
-                        <Input label="Email" onChange={this.onChangeEmail} />
-                        <br/><br/>
-                        <Input label="Password" onChange={this.onChangePassword} />
-                        <br/><br/>
-                        <p>{this.state.message}</p>
-                        <Input type="submit" />
-                        <h4>Already registered? Click <Link to="/login">here</Link> to Log-in!</h4>
+            <div>
+              <Navbar isLoggedIn = {false}/>
 
-                        <Link to="/dashboard"><p>Go to Dashboard</p></Link>
-                    </div>
-                </Card>
-            </form>
+                <div className='Register'>
+              <Grid className = 'Register__container' textAlign = 'center'  verticalAlign = 'middle'>
+                <Grid.Column className = 'Register__content'>
+                  <Header as='h2' textAlign='center' color = 'black'>
+                    <Icon name = 'registered'/>
+                    Register to get started!
+                  </Header>
+                  <Form size='large' onSubmit={this.onSubmit}>
+                    <Segment stacked>
+                      <Form.Input
+                        fluid
+                        icon='user'
+                        iconPosition='left'
+                        placeholder='E-mail address'
+                        onChange={this.onChangeEmail}
+                        />
+                      <Form.Input
+                        fluid
+                        icon='lock'
+                        iconPosition='left'
+                        placeholder='Password(6 or more characters)'
+                        type='password'
+                        onChange={this.onChangePassword}
+                        />
+                      <Button color = 'black' fluid size='large'>Sign Up</Button>
+                      <br/>
+                      <p className = 'Register__message'>{this.state.message}</p>
+                    </Segment>
+                  </Form>
+                  <Message>
+                    Already a member? <Link to="/login">Login in here</Link>
+                </Message>
+
+              </Grid.Column>
+            </Grid>
+          </div>
+            </div>
     )
 }
 }

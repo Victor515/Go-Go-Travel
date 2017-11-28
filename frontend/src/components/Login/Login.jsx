@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
-import { Button, Input, Card, Menu, activeItem } from 'semantic-ui-react'
+import { Button, Input, Card, Form, Grid, Header, Image, Message, Segment, Icon, Divider, activeItem  } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router'
+import { withRouter, Redirect } from 'react-router'
+import Navbar from '../Navbar/Navbar.jsx';
 
 import styles from './styles.scss'
 
 class Login extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             user: {
                 password: '',
                 email: ''
             },
-
+            redirect: false,
             message: ''
         }
 
@@ -29,6 +30,8 @@ class Login extends Component {
 
         const email = encodeURIComponent(this.state.user.email);
         const password = encodeURIComponent(this.state.user.password);
+        // const redirect = encodeURIComponent(this.state.user.redirect);
+        // const formData = `email=${email}&password=${password}&redirect=${redirect}`;
         const formData = `email=${email}&password=${password}`;
 
         // create an AJAX request (This should probably done with Axios instead)
@@ -39,7 +42,8 @@ class Login extends Component {
         xhr.addEventListener('load', () => {
             if (xhr.status === 200) {
                 this.setState({
-                    message: 'Successfully logged in!'
+                    message: 'Successfully logged in!',
+                    redirect: true
                 })
             } else {
                 this.setState({
@@ -67,25 +71,55 @@ class Login extends Component {
     }
 
     render() {
+      if(this.state.redirect){
+        return (
+          <Redirect to={'/profile'}/>
+        )
+      }
+      else{
         return(
-            <form className="Login" action="/" onSubmit={this.onSubmit}>
-            <Card className="Login__content">
-                <div>
-                    <h1>Login</h1>
-                    <Input label="Email" onChange={this.onChangeEmail} />
-                    <br/><br/>
-                    <Input label="Password" onChange={this.onChangePassword} />
-                    <br/><br/>
-
-                    <p>{this.state.message}</p>
-                    <Input type="submit" />
-                    <h4>No account yet? Click <Link to="/register">here</Link> to Register!</h4>
-
-                    <Link to="/dashboard"><p>Go to Dashboard</p></Link>
-                </div>
-            </Card>
-        </form>
+          <div>
+            <Navbar isLoggedIn = {false} />
+                <div className='Login'>
+                  <Grid className = 'Login__container' textAlign = 'center'  verticalAlign = 'middle'>
+                    <Grid.Column className = 'Login__content'>
+                      <Header as='h2' textAlign='center' className = 'header' color = 'black'>
+                        <Icon name = 'sign in'/>
+                        Login in to your account
+                      </Header>
+                      <Form size='large'>
+                        <Segment stacked>
+                          <Form.Input
+                            fluid
+                            icon='user'
+                            iconPosition='left'
+                            placeholder='E-mail address'
+                            onChange={this.onChangeEmail}
+                            />
+                          <Form.Input
+                            fluid
+                            icon='lock'
+                            iconPosition='left'
+                            placeholder='Password(6 or more characters)'
+                            type='password'
+                            onChange={this.onChangePassword}
+                            />
+                          <Button color = 'black' fluid size='large' onClick = {this.onSubmit}>Sign In</Button>
+                          <Divider horizontal>or</Divider>
+                          <Button color = 'facebook' fluid size='large'>Continue With Facebook</Button>
+                          <br/>
+                          <p className = 'Login__message'>{this.state.message}</p>
+                          </Segment>
+                      </Form>
+                      <Message>
+                        Not a member? <Link to="/register">Join now</Link>
+                    </Message>
+                  </Grid.Column>
+                </Grid>
+              </div>
+            </div>
     )
+  }
 }
 }
 
