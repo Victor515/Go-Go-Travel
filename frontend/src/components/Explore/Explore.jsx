@@ -49,7 +49,7 @@ class Explore extends Component {
         console.log("render");
         return(
           <div>
-
+            <Navbar isLoggedIn = {this.state.isLoggedIn} />
 
             <div className="Explore">
                 <h1>Explore the world</h1>
