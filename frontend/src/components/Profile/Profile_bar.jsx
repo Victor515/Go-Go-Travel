@@ -22,7 +22,7 @@ class Profilebar extends Component {
             return(
                 <div>
 
-                    <div className="col-lg-12 col-sm-12">
+                    <div className="col-lg-14 col-sm-14">
 
                       <div className="card hovercard">
                         <div className="card-background">

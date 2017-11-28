@@ -9,6 +9,8 @@ import Login from './components/Login/Login.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Profile_Following from './components/Profile/Following.jsx';
+import Explore from './components/Explore/Explore.jsx';
+import DetailList from './components/DetailList/DetailList.jsx';
 
 
 import styles from './styles/main.scss';
@@ -24,6 +26,8 @@ import styles from './styles/main.scss';
                 <Route exact path="/profile" component={Profile}/>
                 <Route exact path="/profile/following" component={Profile_Following}/>
                 <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/explore" component={Explore}/>
+                <Route exact path="/detail" component={DetailList}/>
             </Switch>
             </div>
         </Router>,

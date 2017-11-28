@@ -25,6 +25,12 @@ app.route('/').get(function(req, res) {
 app.route('/login').get(function(req, res) {
   return res.sendFile(path.join(__dirname, './backend/static/index.html'));
 });
+app.route('/explore').get(function(req, res) {
+  return res.sendFile(path.join(__dirname, './backend/static/index.html'));
+});
+app.route('/detail').get(function(req, res) {
+  return res.sendFile(path.join(__dirname, './backend/static/index.html'));
+});
 app.route('/register').get(function(req, res) {
   return res.sendFile(path.join(__dirname, './backend/static/index.html'));
 });
