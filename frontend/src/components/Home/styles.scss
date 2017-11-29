@@ -6,3 +6,29 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.backgroundImg{
+  width: 100%;
+  // background-image: url("http://www.mpstravelandtours.com.au/wp-content/uploads/2016/02/MPS-header-4.jpg");
+  // background-size:100％;
+  // margin-left: 0;
+  // margin-right: 0;
+  text-align: center;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.backgroundImg img{
+  height: 40vw;
+  width: 100%;
+}
+.blank{
+  height:10vw;
+}
+
+.font{
+  margin-top: 120px;
+   font-family: "Helvetica", Sans-serif;
+   letter-spacing: 0.5em;
+
+}

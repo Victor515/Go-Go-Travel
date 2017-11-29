@@ -25,9 +25,7 @@ class Profilebar extends Component {
                     <div className="col-lg-14 col-sm-14">
 
                       <div className="card hovercard">
-                        <div className="card-background">
-                          <img className="card-bkimg" alt="" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg" />
-                        </div>
+                        
                         <div className="useravatar">
                           <img alt="" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg" />
                         </div>
