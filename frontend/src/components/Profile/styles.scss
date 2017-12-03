@@ -25,6 +25,8 @@
     box-sizing: border-box;
 }
 .card.hovercard {
+    margin-top: 50px;
+    height: 200px;
     position: relative;
     padding-top: 0;
     overflow: hidden;
@@ -52,10 +54,10 @@
     right: 0;
 }
 .card.hovercard .useravatar img {
-    width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -69,6 +71,7 @@
 }
 .card.hovercard .card-info .card-title {
     padding:0 5px;
+    margin-top: 250px;
     font-size: 20px;
     line-height: 1;
     color: #262626;
@@ -109,4 +112,16 @@
 .Gallery-Grid{
   text-align: center;
   border-style: dashed;
+}
+
+.post-button{
+  // position: static;
+}
+
+.follower-grid{
+    text-align: center;
+}
+
+.modal-img{
+  width: 1800px;
 }

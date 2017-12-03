@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Grid, Image, Icon, Header } from 'semantic-ui-react'
+import { Button, Card, Grid, Image, Icon, Header, Popup, Modal} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar.jsx'
@@ -45,13 +45,16 @@ class Profile extends Component {
         })
     }
 
+
+
     render() {
 
         if (this.state.isLoggedIn) {
             return(
                 <div>
                   <Navbar isLoggedIn = {true}/>
-                  <Profilebar username = {this.state.username} />
+                  <Profilebar
+                    username = {this.state.username}/>
 
                     <Grid container columns={4}>
                       <Grid.Column>
@@ -83,6 +86,50 @@ class Profile extends Component {
                         />
                       </Grid.Column>
                     </Grid>
+
+
+                      <Modal trigger={<Button className = 'post-button' floated = 'right' circular icon='plus' color = 'teal' size = 'huge'/>} >
+
+
+
+                          <Modal.Content>
+                            <Card>
+                              <Image src= 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg' className = "modal-img" />
+                              <Card.Content>
+                                <Card.Header>
+                                  {this.state.city}
+                                </Card.Header>
+                                <Card.Meta>
+                                  <span className='date'>
+                                    Country
+                                  </span>
+                                </Card.Meta>
+                                <Card.Description>
+                                  The Description of the city and the country
+                                </Card.Description>
+                              </Card.Content>
+                              <Card.Content extra>
+                                <a>
+                                  <Icon name='user' />
+                                  Expense: 2000 Dollars
+                                </a>
+                              </Card.Content>
+                              <Card.Content extra>
+                                <a>
+                                  <Icon name='user' />
+                                  Days: 5 Days
+                                </a>
+                              </Card.Content>
+                              <Card.Content extra>
+                                <div className='ui two buttons'>
+                                  <Button basic color='white'>Update</Button>
+                                  <Button basic color='blue'>Delete</Button>
+                                </div>
+                              </Card.Content>
+                            </Card>
+                          </Modal.Content>
+
+                      </Modal>
                 </div>
             )
         } else {

@@ -9,6 +9,8 @@ import Login from './components/Login/Login.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Profile_Following from './components/Profile/Following.jsx';
+import Profile_Follower from './components/Profile/Follower.jsx';
+import Profilestats from './components/Profile/Profile_Stats.jsx';
 import Explore from './components/Explore/Explore.jsx';
 import DetailList from './components/DetailList/DetailList.jsx';
 
@@ -25,9 +27,12 @@ import styles from './styles/main.scss';
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/profile" component={Profile}/>
                 <Route exact path="/profile/following" component={Profile_Following}/>
+                <Route exact path="/profile/follower" component={Profile_Follower}/>
+                <Route exact path="/profile/statistics" component={Profilestats}/>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/explore" component={Explore}/>
                 <Route exact path="/detail" component={DetailList}/>
+
             </Switch>
             </div>
         </Router>,

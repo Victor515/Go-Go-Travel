@@ -22,7 +22,7 @@ class Home extends Component {
             </Container>
 
             <div className="backgroundImg">
-              <Image src='https://farm5.staticflickr.com/4572/24819368568_c2e7a6f012_o_d.jpg' />
+              <Image src='https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg' />
             </div>
             <Segment raised style={{ padding: '0em' }} vertical>
               <Grid celled='internally' columns='equal' stackable>

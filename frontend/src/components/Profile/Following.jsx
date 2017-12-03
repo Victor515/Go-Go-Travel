@@ -14,7 +14,7 @@ class Following extends Component {
         console.log(this.props);
         this.state = {
             username: "",
-            isLoggedIn: false
+            isLoggedIn: (this.props.location.state == undefined) ? false : true
         }
 
         // const UserItems = props.videos.map((video) => {
@@ -60,31 +60,63 @@ class Following extends Component {
             return(
                 <div>
                   <Navbar isLoggedIn = {true}/>
-                  <Profilebar username = {this.state.username} />
+                  <Profilebar username = {this.state.username} isLoggedIn = {true}/>
 
 
-                      <Card>
-    <Image src='/assets/images/avatar/large/matthew.png' />
-    <Card.Content>
-      <Card.Header>
-        Matthew
-      </Card.Header>
-      <Card.Meta>
-        <span className='date'>
-          Joined in 2015
-        </span>
-      </Card.Meta>
-      <Card.Description>
-        Matthew is a musician living in Nashville.
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-        22 Friends
-      </a>
-    </Card.Content>
-  </Card>
+                    <Grid columns={4} className = "follower-grid">
+                        <Grid.Row>
+                          <Grid.Column>
+                                  <Card>
+                                <Image src='/assets/images/avatar/large/matthew.png' />
+                                <Card.Content>
+                                <Card.Header>
+                                Thommas
+                                </Card.Header>
+                                <Card.Meta>
+                                <span className='date'>
+                                Joined in 2017
+                                </span>
+                                </Card.Meta>
+                                <Card.Description>
+                                Thomas is a student living in Chicago.
+                                </Card.Description>
+                                </Card.Content>
+                                <Card.Content extra>
+                                <a>
+                                <Icon name='user' />
+                                15 Friends
+                                </a>
+                                </Card.Content>
+                                </Card>
+                          </Grid.Column>
+                          <Grid.Column>
+                                  <Card>
+                                <Image src='/assets/images/avatar/large/matthew.png' />
+                                <Card.Content>
+                                <Card.Header>
+                                Thommas
+                                </Card.Header>
+                                <Card.Meta>
+                                <span className='date'>
+                                Joined in 2017
+                                </span>
+                                </Card.Meta>
+                                <Card.Description>
+                                Thomas is a student living in Chicago.
+                                </Card.Description>
+                                </Card.Content>
+                                <Card.Content extra>
+                                <a>
+                                <Icon name='user' />
+                                15 Friends
+                                </a>
+                                </Card.Content>
+                                </Card>
+                          </Grid.Column>
+                          
+                        </Grid.Row>
+
+                      </Grid>
 
 
                   </div>

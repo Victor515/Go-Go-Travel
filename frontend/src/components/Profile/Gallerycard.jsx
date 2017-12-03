@@ -30,18 +30,30 @@ class Gallerycard extends Component {
                   </Card.Header>
                   <Card.Meta>
                     <span className='date'>
-                      Joined in 2015
+                      Country
                     </span>
                   </Card.Meta>
                   <Card.Description>
-                    {this.state.username} is a musician living in Nashville.
+                    The Description of the city and the country
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <a>
                     <Icon name='user' />
-                    22 Friends
+                    Expense: 2000 Dollars
                   </a>
+                </Card.Content>
+                <Card.Content extra>
+                  <a>
+                    <Icon name='user' />
+                    Days: 5 Days
+                  </a>
+                </Card.Content>
+                <Card.Content extra>
+                  <div className='ui two buttons'>
+                    <Button basic color='white'>Update</Button>
+                    <Button basic color='blue'>Delete</Button>
+                  </div>
                 </Card.Content>
               </Card>
             )

@@ -30,6 +30,7 @@ class Login extends Component {
 
         const email = encodeURIComponent(this.state.user.email);
         const password = encodeURIComponent(this.state.user.password);
+        console.log(password);
         // const redirect = encodeURIComponent(this.state.user.redirect);
         // const formData = `email=${email}&password=${password}&redirect=${redirect}`;
         const formData = `email=${email}&password=${password}`;
@@ -73,7 +74,12 @@ class Login extends Component {
     render() {
       if(this.state.redirect){
         return (
-          <Redirect to={'/profile'}/>
+          <Redirect to={
+              {
+                pathname: '/profile',
+                state: {isLoggedIn: true}
+              }
+            }/>
         )
       }
       else{
