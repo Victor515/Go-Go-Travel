@@ -6,7 +6,7 @@ const path = require('path');
 
 const config = {
   // the entry file for the bundle
-  entry: path.join(__dirname, '/frontend/src/app.jsx'),
+  entry: path.join(__dirname, '/frontend/src/index.jsx'),
 
   // the bundle file we will get in the result
   output: {

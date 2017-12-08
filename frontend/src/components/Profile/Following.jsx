@@ -59,7 +59,7 @@ class Following extends Component {
         if (this.state.isLoggedIn) {
             return(
                 <div>
-                  <Navbar isLoggedIn = {true}/>
+                
                   <Profilebar username = {this.state.username} isLoggedIn = {true}/>
 
 
@@ -113,7 +113,7 @@ class Following extends Component {
                                 </Card.Content>
                                 </Card>
                           </Grid.Column>
-                          
+
                         </Grid.Row>
 
                       </Grid>

@@ -6,7 +6,7 @@ import Navbar from '../Navbar/Navbar.jsx'
 
 import styles from './styles.scss'
 
-class Profilebar extends Component {
+class ProfileBar extends Component {
 
     constructor(props) {
         super(props);
@@ -68,4 +68,4 @@ class Profilebar extends Component {
     }
 
 
-export default Profilebar
+export default ProfileBar

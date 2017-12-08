@@ -59,7 +59,7 @@ class Follower extends Component {
         if (this.state.isLoggedIn) {
             return(
                 <div>
-                  <Navbar isLoggedIn = {true}/>
+
                   <Profilebar username = {this.state.username} isLoggedIn = {true}/>
 
 
@@ -171,7 +171,7 @@ class Follower extends Component {
         } else {
             return(
                 <div className="Dashboard">
-                  <Navbar isLoggedIn = {false}/>
+                  
                   <Card>
                       <h1>You must log in before you can see this page.</h1>
                       <Link to="/">

@@ -14,7 +14,7 @@ import {XYPlot, LineSeries, XAxis, YAxis, VerticalGridLines,HorizontalGridLines 
 
 import styles from './styles.scss'
 
-class Profilestats extends Component {
+class ProfileStats extends Component {
   render() {
     const data = [
   {x: 0, y: 8},
@@ -30,7 +30,7 @@ class Profilestats extends Component {
 ];
     return (
       <div>
-        <Navbar isLoggedIn = {true}/>
+        <Navbar/>
       <Profilebar
         />
       <div className="App">
@@ -49,4 +49,4 @@ class Profilestats extends Component {
 
 
 
-export default Profilestats
+export default ProfileStats

@@ -13,7 +13,6 @@ class Home extends Component {
 
 
             <div>
-              <Navbar isLoggedIn = {false}/>
 
             <Container text textAlign='center' style={{ marginTop: '4em', marginBottom: '4em'}}>
               <div className="font">
