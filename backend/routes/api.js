@@ -36,12 +36,15 @@ module.exports = function(router, passport) {
         res.status(200).json({ message: "logged out "});
     });
 
-    router.get('/cards', isLoggedIn, async (req, res) => {
-        const cards = await Card.find({ _user: req.user.id });
-        res.send(cards);
+    router.get('/cards', isLoggedIn, (req, res) => {
+        Card.find({ _user: req.user.id })
+          .then ( (cards) =>{
+            res.send(cards);
+          }
+          )
     });
 
-    router.post('/cards', isLoggedIn, async (req, res) => {
+    router.post('/cards', isLoggedIn, (req, res) => {
 
       console.log(req.body);
       const {city, expense, days, description } = req.body;
@@ -54,11 +57,15 @@ module.exports = function(router, passport) {
         _user: req.user.id
       });
 
-      await card.save();
-      const user = await req.user.save();
-      res.send(user);
-
-
+      card.save()
+        .then ( () =>{
+          req.user.save()
+            .then( (user) => {
+              res.send(user);
+            }
+            )
+        }
+        )
   });
 
     return router;
