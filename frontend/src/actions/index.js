@@ -23,6 +23,8 @@ export const submitCard = (values, history) => async dispatch => {
 
 export const fetchCards = () => async dispatch => {
   const res = await axios.get('/api/cards');
+  console.log("xxxxxxxxx");
+  console.log(res);
 
   dispatch({ type: FETCH_CARDS, payload: res.data });
 };

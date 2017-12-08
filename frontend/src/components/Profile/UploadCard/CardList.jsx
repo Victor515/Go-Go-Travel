@@ -25,34 +25,32 @@ class CardList extends Component {
   }
 
   renderCards(){
-
-    return
-      this.props.cards.map(card => {
-        return (
-          <Card>
-            <Card.Content>
-              <Card.Header>
-                {card.city}
-              </Card.Header>
-              <Card.Meta>
-                <span className='date'>
-                  Joined in 2015
-                </span>
-              </Card.Meta>
-              <Card.Description>
-                Expense: {card.expense}
-                Days: {card.days}
-                Description: {card.description}
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <a>
-                <Icon name='user' />
-                22 Friends
-              </a>
-            </Card.Content>
-          </Card>
-        );
+    console.log("yyyyy");
+    console.log(this.props);
+    return this.props.cards.map(card => {
+        return <Card>
+          <Card.Content>
+            <Card.Header>
+              {card.city}
+            </Card.Header>
+            <Card.Meta>
+              <span className='date'>
+                Joined in 2015
+              </span>
+            </Card.Meta>
+            <Card.Description>
+              Expense: {card.expense}
+              Days: {card.days}
+              Description: {card.description}
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name='user' />
+              22 Friends
+            </a>
+          </Card.Content>
+        </Card>;
       });
   }
 
@@ -66,8 +64,9 @@ class CardList extends Component {
   }
 
 
-  function mapStateToProps({ cards }) {
-    return { cards };
+  function mapStateToProps(state) {
+    console.log(state);
+    return {cards: state.profile};
   }
 
   export default connect(mapStateToProps, { fetchCards })(CardList);

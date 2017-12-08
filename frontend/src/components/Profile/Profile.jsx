@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Card, Grid, Image, Icon, Header, Popup, Modal} from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {fetchUser} from '../../actions';
+import {fetchUser, fetchCards} from '../../actions';
 
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar.jsx'
@@ -42,8 +42,8 @@ class Profile extends Component {
             return(
                 <div>
                   <Profilebar/>
-
                   <CardList />
+
                     <Link to = '/profile/uploadcard'>
                     <Button className = 'post-button' floated = 'right' circular icon='plus' color = 'teal' size = 'huge' />
                     </Link>
@@ -68,4 +68,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, {fetchUser})(Profile);
+export default connect(mapStateToProps, {fetchUser, fetchCards})(Profile);

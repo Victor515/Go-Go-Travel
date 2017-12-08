@@ -30,7 +30,7 @@ const CardReview= ({ onCancel, formValues, submitCard, history }) => {
         <div>
 
           {reviewFields}
-          
+
           <Button onClick={onCancel}>
             Back
           </Button>
@@ -51,6 +51,7 @@ const CardReview= ({ onCancel, formValues, submitCard, history }) => {
 
   function mapStateToProps(state) {
     console.log(state);
+    //here the formValue collect all the value user put in
     return { formValues: state.form.cardForm.values };
   }
 
