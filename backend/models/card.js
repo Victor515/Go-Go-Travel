@@ -6,8 +6,10 @@ var cardSchema = new Schema({
     city: String,
     expense: String,
     days: String,
-    description: String
+    description: String,
+    img_url : String,
+    latitude: Number,
+    longitude: Number
 });
-
 
 mongoose.model('card', cardSchema);
