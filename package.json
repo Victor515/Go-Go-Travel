@@ -22,8 +22,9 @@
     "mongoose": "^4.13.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "react": "^16.1.0",
+    "react": "^16.2.0",
     "react-dom": "^16.1.0",
+    "react-dropzone": "^4.2.3",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -33,6 +34,7 @@
     "redux-form": "^7.2.0",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.76.0",
+    "superagent": "^3.8.1",
     "validator": "^9.1.1"
   },
   "devDependencies": {
