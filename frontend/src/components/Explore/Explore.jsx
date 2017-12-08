@@ -15,8 +15,7 @@ class Explore extends Component {
           showingInfoWindow: false,
           activeMarker: {},
           pos_array: [{lat: 48.8566, lng: 2.3522}],
-          content: "hhh",
-          isLoggedIn: this.props.location.state.isLoggedIn
+          content: "hhh"
         }
         this.onMarkerClick = this.onMarkerClick.bind(this);
         this.onMapClicked = this.onMapClicked.bind(this);
@@ -76,7 +75,7 @@ class Explore extends Component {
 
         return(
           <div>
-            <Navbar isLoggedIn = {this.state.isLoggedIn} />
+            <Navbar />
 
             <h1 style = {title}>Explore the world</h1>
             <h1 style = {search}>Choose your place</h1>

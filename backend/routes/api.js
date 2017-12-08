@@ -57,6 +57,8 @@ module.exports = function(router, passport) {
       await card.save();
       const user = await req.user.save();
       res.send(user);
+
+
   });
 
     return router;

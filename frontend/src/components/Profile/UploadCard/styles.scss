@@ -125,3 +125,13 @@
 .modal-img{
   width: 1800px;
 }
+
+.cardlist{
+  display: flex;
+  flex-wrap: wrap;
+  // border-style: dashed;
+  list-style: none;
+  justify-content: space-evenly;
+  align-items: center;
+  -webkit-justify-content: space-between;
+}
