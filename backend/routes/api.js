@@ -37,24 +37,37 @@ module.exports = function(router, passport) {
     });
 
     router.get('/cards', isLoggedIn, (req, res) => {
-        Card.find({ _user: req.user.id })
+        Card.find({ userId: req.user.id })
           .then ( (cards) =>{
             res.send(cards);
           }
           )
     });
 
+    router.get('/collections',function(req, res){
+    Card.find(function(err, collections){
+                    if(err){
+                        return res.status(500).json({message:"Server error", data:[]});
+                    }
+                    // if (collections == null || collections.length == 0) {
+                    //     res.status(404).json({message:'Empty', data:{}});
+                    // }
+                    res.status(200).json({message:'OK!', data:collections});
+                });
+  });
+
     router.post('/cards', isLoggedIn, (req, res) => {
 
       console.log(req.body);
-      const {city, expense, days, description } = req.body;
+      const {city_name, money, day, post_txt, picture } = req.body;
 
       const card = new Card({
-        city,
-        expense,
-        days,
-        description,
-        _user: req.user.id
+        city_name,
+        money,
+        day,
+        post_txt,
+        picture,
+        userId: req.user.id
       });
 
       card.save()

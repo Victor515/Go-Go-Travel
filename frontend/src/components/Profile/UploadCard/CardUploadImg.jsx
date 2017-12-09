@@ -57,9 +57,9 @@ class CardUploadImg extends Component {
             </Dropzone>
             :
             <div>
-              <div id = "invisible">
-                <input {...this.input} />
-              </div>
+
+                <input {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl}/>
+
               <p>{this.uploadedFile.name}</p>
               <Image src={this.state.uploadedFileCloudinaryUrl} />
             </div>}

@@ -16,6 +16,7 @@ import styles from './styles.scss'
 
 const CardReview= ({ onCancel, formValues, submitCard, history }) => {
   const reviewFields = _.map(formFields, ({ name, label }) => {
+      console.log(formValues);
       return (
         <div key={name}>
           <label>{label}</label>

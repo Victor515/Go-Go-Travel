@@ -42,22 +42,24 @@ class CardForm extends Component {
     render() {
       return(
         <div>
+
           <form onSubmit = {this.props.handleSubmit(this.props.onCardSubmit)}>
             <Field
               key = "city"
               label = "City Name"
               component = {NameGeoEncode}
               type = 'text'
-              name = "city"
+              name = "city_name"
             />
+
             {this.renderField()}
 
             <Field
               key = "img_url"
               label = "Photo"
               component = {CardUploadImg}
-              type = 'text'
-              name = "img_url"
+              type = 'url'
+              name = "picture"
             />
 
             <Link to = '/profile'>

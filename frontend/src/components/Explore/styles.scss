@@ -8,7 +8,44 @@ html, body {
   padding: 0;
 }
 
+
 .info {
-  height: 3vm;
-  width: 3vm;
+  position: relative;
+  width: 30vw;
+  height: 15vw;
+}
+
+.cityname {
+  position: absolute;
+}
+
+.username {
+  position: absolute;
+  top: 2.5vw;
+}
+
+.spend {
+  position: absolute;
+  left: 21vw;
+  top: 4vw;
+}
+
+.day {
+  position: absolute;
+  left: 21vw;
+  top: 6vw;
+}
+
+.comment {
+  position: absolute;
+  left: 21vw;
+  top: 8vw;
+  height: 5.5vw;
+  overflow: auto;
+}
+
+.im {
+  position: absolute;
+  top: 4vw;
+  width: 20vw;
 }

@@ -29,9 +29,10 @@ class CardList extends Component {
     console.log(this.props);
     return this.props.cards.map(card => {
         return <Card>
+        <Image src = {card.picture} />
           <Card.Content>
             <Card.Header>
-              {card.city}
+              {card.city_name}
             </Card.Header>
             <Card.Meta>
               <span className='date'>
@@ -39,9 +40,9 @@ class CardList extends Component {
               </span>
             </Card.Meta>
             <Card.Description>
-              Expense: {card.expense}
-              Days: {card.days}
-              Description: {card.description}
+              Expense: {card.money} <br />
+              Days: {card.day}  <br />
+              Description: {card.post_txt} <br />
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
