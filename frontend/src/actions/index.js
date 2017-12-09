@@ -15,8 +15,7 @@ export const fetchUser = () => async dispatch => {
 
 export const submitCard = (values, history) => async dispatch => {
   const res = await axios.post('/api/cards', values);
-
-  history.push('/cards');
+  history.push('/profile');
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 

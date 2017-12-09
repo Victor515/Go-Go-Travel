@@ -49,3 +49,13 @@ html, body {
   top: 4vw;
   width: 20vw;
 }
+
+.cardlist{
+  display: flex;
+  flex-wrap: wrap;
+  // border-style: dashed;
+  list-style: none;
+  justify-content: space-evenly;
+  align-items: center;
+  -webkit-justify-content: space-between;
+}

@@ -57,7 +57,7 @@ class CardList extends Component {
 
     render() {
       return(
-        <div>
+        <div className = 'cardlist'>
           {this.renderCards()}
         </div>
       );

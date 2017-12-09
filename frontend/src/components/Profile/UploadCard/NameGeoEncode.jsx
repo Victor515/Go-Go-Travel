@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-
+import {Input } from 'semantic-ui-react'
 import { reduxForm, Field } from 'redux-form'
 
 class NameGeoEncode extends Component {
@@ -63,7 +63,7 @@ class NameGeoEncode extends Component {
           :
           <div>
 
-              <input {...this.state.lat} value = {this.state.lat}/>
+              <Input {...this.props.input} value = {this.res}/>
           </div>}
         </div>
       )
