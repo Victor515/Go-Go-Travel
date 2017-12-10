@@ -3,6 +3,9 @@ import { Button, Divider, Card, Grid, Image, Icon, Header } from 'semantic-ui-re
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar.jsx'
+import * as actions from '../../actions'
+
+import { connect } from 'react-redux'
 
 import styles from './styles.scss'
 
@@ -11,10 +14,6 @@ class ProfileBar extends Component {
     constructor(props) {
         super(props);
         console.log(this.props);
-        this.state = {
-            username: this.props.username,
-            isLoggedIn: this.props.isLoggedIn
-        }
     }
 
 
@@ -31,20 +30,18 @@ class ProfileBar extends Component {
                       <div className="card hovercard">
 
                         <div className="useravatar">
-                          <img alt="" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg" />
+                          <img alt="" src= {this.props.user.headpicture || "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"} />
                         </div>
-                        <div className="card-info"> <span className="card-title">{this.state.username}</span></div>
+                        <div className="card-info"> <span className="card-title">{this.props.user.email}</span></div>
 
                       </div>
 
                       <Button.Group widths='5' basic>
-
-        <Button as={Link} to='/profile'>Gallery</Button>
-        <Button as={Link} to='/profile/statistics'>Statistics</Button>
-        <Button as={Link} to='/profile/follower'>Followers</Button>
-        <Button as={Link} to='/profile/following'>Following</Button>
-
-      </Button.Group>
+                        <Button as={Link} to='/profile'>Gallery</Button>
+                        <Button as={Link} to='/profile/settings'>Settings</Button>
+                        <Button as={Link} to='/profile/follower'>Followers</Button>
+                        <Button as={Link} to='/profile/following'>Following</Button>
+                      </Button.Group>
 
 
 
@@ -67,5 +64,8 @@ class ProfileBar extends Component {
         }
     }
 
+function mapStateToProps(state){
+  return { user : state.auth };
+}
 
-export default ProfileBar
+export default connect(mapStateToProps, actions)(ProfileBar)

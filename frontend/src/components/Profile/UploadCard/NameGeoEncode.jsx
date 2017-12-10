@@ -6,6 +6,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 import { reduxForm, Field } from 'redux-form'
 import Script from 'react-load-script'
 
+
 class NameGeoEncode extends Component {
     constructor(props){
       super(props);
@@ -70,17 +71,6 @@ class NameGeoEncode extends Component {
     //   this.instance.appendChild(s);
     // }
 
-          handleScriptCreate() {
-        this.setState({ scriptLoaded: false })
-      }
-
-      handleScriptError() {
-        this.setState({ scriptError: true })
-      }
-
-      handleScriptLoad() {
-        this.setState({ scriptLoaded: true })
-      }
 
     render(){
       const inputProps = {
@@ -92,12 +82,7 @@ class NameGeoEncode extends Component {
       }
       return (
         <div>
-          <Script
-            url= "https://maps.googleapis.com/maps/api/js?key=AIzaSyD8O31ZZoX38C8EkyvJYYdGoG5H5lDadCI&libraries=places"
-            onCreate={this.handleScriptCreate.bind(this)}
-            onError={this.handleScriptError.bind(this)}
-            onLoad={this.handleScriptLoad.bind(this)}
-          />
+
 
         {this.state.lat === '' ?
           <PlacesAutocomplete inputProps = {inputProps} onSelect={this.handleSelect.bind(this)}/>
@@ -119,6 +104,9 @@ class NameGeoEncode extends Component {
 // export default reduxForm ({
 //   form: 'NameGeoEncode'
 // })(WrappedContainer );
+
+
+
 
 
 export default reduxForm ({

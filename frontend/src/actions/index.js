@@ -16,7 +16,7 @@ export const fetchUser = () => async dispatch => {
 export const submitCard = (values, history) => async dispatch => {
   const { card_name, address, day, money, picture, post_txt } = values;
   const addressList = address.split(",");
-  console.log(addressList);
+
   const city_name = addressList[0];
   let Latitude = 0;
   let Longitude = 0;
@@ -48,8 +48,6 @@ export const submitCard = (values, history) => async dispatch => {
 
 export const fetchCards = () => async dispatch => {
   const res = await axios.get('/api/cards');
-  console.log("xxxxxxxxx");
-  console.log(res);
 
   dispatch({ type: FETCH_CARDS, payload: res.data });
 };
@@ -63,12 +61,37 @@ export const fetchFollowings= () => async dispatch => {
 };
 
 
+export const fetchFollowers= () => async dispatch => {
+  const res = await axios.get('/api/followers');
+  console.log("ccccccc");
+  console.log(res);
+
+  dispatch({ type: FETCH_FOLLOWERS, payload: res.data });
+};
+
+
 export const deleteCards = (cardId, history) => async dispatch => {
     console.log("delete card");
     const cardIdObj = {"cardId": cardId};
     const res = await axios.post('/api/deletecards', cardIdObj);
     history.push('/profile');
-    console.log(res);
 
   dispatch({ type: FETCH_CARDS, payload: res.data });
+};
+
+
+export const updateProfile = (value, history) => async dispatch => {
+    console.log("updating user");
+    const res = await axios.post('/api/updateuser', value);
+    history.push('/profile');
+
+    dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+
+export const followUser = (value, history) => async dispatch => {
+    console.log("follow a user");
+    const res = await axios.post('/api/followuser', value);
+    
+    dispatch({ type: FOLLOW_USER, payload: res.data });
 };

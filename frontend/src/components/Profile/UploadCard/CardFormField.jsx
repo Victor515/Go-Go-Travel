@@ -4,7 +4,7 @@ export default ({input, label}) => {
     return(
       <div>
         <label>{label}</label>
-        <Input {...input}/>
+        <Input {...input} fluid/>
       </div>
     );
 };

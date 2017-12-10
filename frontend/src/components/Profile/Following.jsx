@@ -29,9 +29,9 @@ class Following extends Component {
     renderFollowings(){
       return this.props.followings.map(following => {
         return (
-          <Card>
-            <Image src='/assets/images/avatar/large/matthew.png' />
+          <Card key = {following._id}>
             <Card.Content>
+              <Image floated = "right" size = "tiny"  src= {following.headpicture || "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"}/>
             <Card.Header>
               {following.email}
             </Card.Header>

@@ -12,8 +12,8 @@ import CardList from './UploadCard/CardList.jsx'
 import CardNew from './UploadCard/CardNew.jsx'
 import ProfileFollowing from './Following.jsx'
 import ProfileFollower from './Follower.jsx'
-import Profilestats from './Profile_Stats.jsx'
-
+import ProfileSettings from './Profile_Settings.jsx'
+import scriptLoader from 'react-async-script-loader'
 
 import styles from './styles.scss'
 
@@ -52,7 +52,7 @@ class Profile extends Component {
                       <Route exact path="/profile" component={CardList}/>
                       <Route exact path="/profile/following" component={ProfileFollowing}/>
                       <Route exact path="/profile/follower" component={ProfileFollower}/>
-                      <Route exact path="/profile/statistics" component={Profilestats}/>
+                      <Route exact path="/profile/settings" component={ProfileSettings}/>
                       <Route exact path="/profile/uploadcard" component={CardNew}/>
                     </div>
                   </BrowserRouter>
@@ -77,4 +77,12 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, {fetchUser, fetchCards})(Profile);
+
+const wrapper = scriptLoader(
+    [
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyAJNbOFFGV2FE-yLYI8L-XWK5GG3Gpb-2U&libraries=places"
+    ]
+)(Profile)
+
+
+export default connect(mapStateToProps, {fetchUser, fetchCards})(wrapper);

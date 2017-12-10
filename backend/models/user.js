@@ -1,15 +1,26 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
-var userSchema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+
+var userSchema = new Schema({
     email		: String,
     password	: String,
     username: {
       type: String,
       default: ''
     },
-    followings : [String],
-    followers : [String]
+    followings : [ObjectId],
+    followers : [ObjectId],
+    description: {
+      type: String,
+      default: ''
+    },
+    headpicture: {
+      type: String,
+      default: ''
+    }
 });
 
 userSchema.methods.generateHash = function(password) {

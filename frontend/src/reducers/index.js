@@ -7,11 +7,13 @@ import { reducer as reduxForm } from 'redux-form';
 import authReducer from './authReducer';
 import profileReducer from './profileReducer';
 import followingReducer from './followingReducer';
+import followerReducer from './followerReducer';
 
 
 export default combineReducers ({
   auth: authReducer,
   form: reduxForm,
   profile: profileReducer,
-  followings: followingReducer
+  followings: followingReducer,
+  followers: followerReducer
 });

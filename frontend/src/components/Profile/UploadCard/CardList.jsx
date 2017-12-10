@@ -41,7 +41,7 @@ class CardList extends Component {
     console.log("yyyyy");
     console.log(this.props);
     return this.props.cards.map(card => {
-        return <Card>
+        return <Card key = {card._id}>
         <Image src = {card.picture} />
           <Card.Content>
             <Card.Header>

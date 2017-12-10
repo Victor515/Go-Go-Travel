@@ -32,13 +32,9 @@ class NavBar extends Component {
               <Menu.Item name="GoGoTravel" active={activeItem === "GoGoTravel"}/>
             </Link>
               <Menu.Menu position='right'>
-                <Link to = {
-                    {
-                      pathname : '/explore'
-                    }
-                  }>
-                  <Menu.Item name = 'Explore' active={activeItem === 'Explore'} />
-                </Link>
+
+                  <Menu.Item href="/explore" name = 'Explore' active={activeItem === 'Explore'} />
+
                   <Link to = {'/login'}>
                     <Menu.Item name = 'Login' active={activeItem === 'Login'} />
                   </Link>
@@ -59,13 +55,8 @@ class NavBar extends Component {
               <Menu.Item name="GoGoTravel" active={activeItem === "GoGoTravel"}/>
             </Link>
               <Menu.Menu position='right'>
-                <Link to = {
-                    {
-                      pathname : '/explore'
-                    }
-                  }>
-                  <Menu.Item name = 'Explore' active={activeItem === 'Explore'} />
-                </Link>
+
+                    <Menu.Item href="/explore" name = 'Explore' active={activeItem === 'Explore'} />
 
                     <Menu.Item href="/profile" name = 'Profile' active={activeItem === 'Profile'} />
 

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Card = mongoose.model('card');
+const User = mongoose.model('User');
 
 module.exports = function(router, passport) {
 
@@ -86,9 +87,22 @@ module.exports = function(router, passport) {
 
 
     router.get('/followings', isLoggedIn, (req, res) => {
-        Card.find({ userId: req.user.id })
-          .then ( (cards) =>{
-            res.send(cards);
+        const followingsId = req.user.followings;
+
+        User.find({ _id : { "$in": followingsId }})
+          .then ( (users) =>{
+            res.send(users);
+          }
+        )
+    });
+
+
+    router.get('/followers', isLoggedIn, (req, res) => {
+        const followersId = req.user.followers;
+
+        User.find({ _id : { "$in": followersId }})
+          .then ( (users) =>{
+            res.send(users);
           }
         )
     });
@@ -105,6 +119,56 @@ module.exports = function(router, passport) {
         )
       )
   });
+
+  router.post('/updateuser', (req, res) => {
+    const { description, email, headpicture } = req.body;
+
+    User.findByIdAndUpdate(req.user.id, {$set:req.body})
+    .then((user) =>{
+      res.send(user);
+    });
+  });
+
+
+  router.post('followuser', (req, res) => {
+    const { followeeId } = req.body;
+
+    //two way binding, the first direction
+    User.findOne({"_id": followeeId })
+    .then((user) => {
+      user.followers.push(req.user.id);
+      user.save().then(() => {
+
+        //two way binding, another direction
+        User.findOne({"_id": req.user.id}).then((user) => {
+          user.followings.push(followeeId);
+          user.save().then((user) => {
+            res.send(user);
+          });
+        });
+
+
+      })
+    });
+  });
+
+
+  router.post('unfollowuser', (req, res) => {
+    const { unfolloweeId } = req.body;
+
+    User.findByIdAndUpdate(unfolloweeId, { $pullAll: { followers: req.user.id } } )
+    .then((user) => {
+      //do nothing with that returned user
+      //the another direction
+      User.findByIdAndUpdate(req.user.id, { $pullAll: { followings: unfolloweeId  } } )
+      .then((user) => {
+        res.send(user);
+      });
+
+    });
+
+  });
+
 
     return router;
 }
