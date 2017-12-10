@@ -15,6 +15,9 @@ class CardUploadImg extends Component {
         uploadedFileCloudinaryUrl:"",
       }
       this.input = this.props.input;
+      // this.input.meta.dirty = true;
+      // this.input.meta.pristine = false;
+      // this.input.meta.ini
     }
 
     onImageDrop(files) {
@@ -58,7 +61,7 @@ class CardUploadImg extends Component {
             :
             <div>
 
-                <input {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl}/>
+                <input {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl} autoFocus/>
 
               <p>{this.uploadedFile.name}</p>
               <Image src={this.state.uploadedFileCloudinaryUrl} />

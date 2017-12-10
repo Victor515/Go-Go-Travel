@@ -13,8 +13,7 @@ class Follower extends Component {
         super(props);
         console.log(this.props);
         this.state = {
-            username: "",
-            isLoggedIn: (this.props.location.state == undefined) ? false : true
+            username: ""
         }
 
         // const UserItems = props.videos.map((video) => {
@@ -30,37 +29,14 @@ class Follower extends Component {
         //   this.setState({isLoggedIn: this.props.location.state.isLoggedIn});
         // }
 
-        this.logOut = this.logOut.bind(this);
-    }
-
-    componentDidMount() {
-        axios.get('/api/profile').then( (res) => {
-            console.log(res);
-
-            this.setState({
-                isLoggedIn: true,
-                username: res.data.user.email
-            })
-        }).catch( (err) => {
-            this.setState({
-                isLoggedIn: false
-            })
-        })
-    }
-
-    logOut() {
-        axios.get('/api/logout').then( (res) => {
-            console.log("Logged out");
-        })
     }
 
     render() {
 
-        if (this.state.isLoggedIn) {
+        if (true) {
             return(
                 <div>
 
-                  <Profilebar username = {this.state.username} isLoggedIn = {true}/>
 
 
 <Grid columns={4} className = "follower-grid">
@@ -171,7 +147,7 @@ class Follower extends Component {
         } else {
             return(
                 <div className="Dashboard">
-                  
+
                   <Card>
                       <h1>You must log in before you can see this page.</h1>
                       <Link to="/">

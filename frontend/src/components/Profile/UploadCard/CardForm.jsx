@@ -18,10 +18,13 @@ class CardForm extends Component {
   constructor(){
     super();
     this.renderField = this.renderField.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       cityName: "",
       latitude: Infinity,
-      longitude: Infinity
+      longitude: Infinity,
+      value: " "
     }
   }
 
@@ -39,17 +42,26 @@ class CardForm extends Component {
       });
   }
 
+  handleSubmit(e){
+    console.log("2222");
+    console.log(e);
+  }
+
+  handleChange(e){
+    console.log(e.target.name);
+    this.setState({value : e.target.value});
+  }
     render() {
       return(
         <div>
 
           <form onSubmit = {this.props.handleSubmit(this.props.onCardSubmit)}>
             <Field
-              key = "city"
-              label = "City Name"
+              key = "address"
+              label = "address"
               component = {NameGeoEncode}
               type = 'text'
-              name = "city_name"
+              name = "address"
             />
 
             {this.renderField()}
@@ -69,6 +81,8 @@ class CardForm extends Component {
             <button type = "submit">Next</button>
 
           </form>
+
+
         </div>
       )
     }

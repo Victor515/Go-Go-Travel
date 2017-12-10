@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import {Input } from 'semantic-ui-react'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react'
 import { reduxForm, Field } from 'redux-form'
+import Script from 'react-load-script'
 
 class NameGeoEncode extends Component {
     constructor(props){
@@ -14,6 +16,7 @@ class NameGeoEncode extends Component {
       }
       this.onChange = (address) => this.setState({ address })
       this.res = ""
+      this.res2 = ""
     }
 
     handleSelect(address, placeId) {
@@ -30,6 +33,8 @@ class NameGeoEncode extends Component {
           this.res += this.state.lat.toString();
           this.res += ", longitude:";
           this.res += this.state.lat.toString();
+
+          this.res2 = `${address},${this.state.lat},${this.state.lng}`;
           console.log(this.state.lat);
           console.log(this.state.lng);
           console.log(this.res);
@@ -48,6 +53,35 @@ class NameGeoEncode extends Component {
         .catch(error => console.error('Error', error))
     }
 
+    // componentWillMount () {
+    //     const script = document.createElement("script");
+    //
+    //     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD8O31ZZoX38C8EkyvJYYdGoG5H5lDadCI&libraries=places";
+    //     script.async = true;
+    //
+    //     document.body.appendChild(script);
+    // }
+
+    // componentDidMount() {
+    //   const s = document.createElement('script');
+    //   s.type = 'text/javascript';
+    //   s.async = true;
+    //   s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyD8O31ZZoX38C8EkyvJYYdGoG5H5lDadCI&libraries=places";
+    //   this.instance.appendChild(s);
+    // }
+
+          handleScriptCreate() {
+        this.setState({ scriptLoaded: false })
+      }
+
+      handleScriptError() {
+        this.setState({ scriptError: true })
+      }
+
+      handleScriptLoad() {
+        this.setState({ scriptLoaded: true })
+      }
+
     render(){
       const inputProps = {
       value: this.state.address,
@@ -58,17 +92,34 @@ class NameGeoEncode extends Component {
       }
       return (
         <div>
+          <Script
+            url= "https://maps.googleapis.com/maps/api/js?key=AIzaSyD8O31ZZoX38C8EkyvJYYdGoG5H5lDadCI&libraries=places"
+            onCreate={this.handleScriptCreate.bind(this)}
+            onError={this.handleScriptError.bind(this)}
+            onLoad={this.handleScriptLoad.bind(this)}
+          />
+
         {this.state.lat === '' ?
           <PlacesAutocomplete inputProps = {inputProps} onSelect={this.handleSelect.bind(this)}/>
           :
           <div>
-
-              <Input {...this.props.input} value = {this.res}/>
+              <Input {...this.props.input} value = {this.res2}/>
           </div>}
         </div>
       )
     }
 };
+
+
+// const WrappedContainer = GoogleApiWrapper({
+//    apiKey: "AIzaSyAJNbOFFGV2FE-yLYI8L-XWK5GG3Gpb-2U"
+// })(NameGeoEncode);
+//
+//
+// export default reduxForm ({
+//   form: 'NameGeoEncode'
+// })(WrappedContainer );
+
 
 export default reduxForm ({
   form: 'NameGeoEncode'

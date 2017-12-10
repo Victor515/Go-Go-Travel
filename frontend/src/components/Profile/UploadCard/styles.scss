@@ -135,3 +135,8 @@
   align-items: center;
   -webkit-justify-content: space-between;
 }
+
+.modal{
+  top: 10px;
+  z-index: 10000;
+}

@@ -1,10 +1,10 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Button, Divider, Card, Grid, Image, Icon, Header } from 'semantic-ui-react'
+import { Button, Divider, Card, Grid, Image, Icon, Header, Modal} from 'semantic-ui-react'
 import { reduxForm, Field } from 'redux-form'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { fetchCards } from '../../../actions';
+import { fetchCards, deleteCards } from '../../../actions';
 
 import axios from 'axios'
 import NavBar from '../../Navbar/Navbar.jsx'
@@ -17,11 +17,24 @@ import styles from './styles.scss'
 class CardList extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      modalOpen: false
+    }
     this.renderCards = this.renderCards.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchCards();
+  }
+
+  handleOpen(){
+    this.setState({ modalOpen: true });
+  }
+
+  handleClose(){
+     this.setState({ modalOpen: false });
   }
 
   renderCards(){
@@ -51,6 +64,31 @@ class CardList extends Component {
               22 Friends
             </a>
           </Card.Content>
+          <Card.Content extra>
+
+            <Modal
+              className = "modal"
+              trigger={<Button onClick={this.handleOpen}>Show Modal</Button>}
+              open={this.state.modalOpen}
+              onClose={this.handleClose}
+              basic
+              size='small'
+            >
+              <Header icon='browser' content='Cookies policy' />
+              <Modal.Content>
+                <h3>This website uses cookies to ensure the best user experience.</h3>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button color='green' onClick={this.handleClose} >
+                   Got it
+                </Button>
+              </Modal.Actions>
+            </Modal>
+
+
+
+            <Button onClick = {() => this.props.deleteCards(card._id, this.props.history)} content='Delete' />
+          </Card.Content>
         </Card>;
       });
   }
@@ -59,6 +97,10 @@ class CardList extends Component {
       return(
         <div className = 'cardlist'>
           {this.renderCards()}
+
+          <Link to = '/profile/uploadcard'>
+          <Button className = 'post-button' floated = 'right' circular icon='plus' color = 'teal' size = 'huge' />
+          </Link>
         </div>
       );
     }
@@ -70,4 +112,4 @@ class CardList extends Component {
     return {cards: state.profile};
   }
 
-  export default connect(mapStateToProps, { fetchCards })(CardList);
+  export default connect(mapStateToProps, { fetchCards, deleteCards })(CardList);

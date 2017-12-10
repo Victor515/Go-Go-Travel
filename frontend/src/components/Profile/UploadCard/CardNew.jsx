@@ -27,8 +27,6 @@ class CardNew extends Component {
       if(this.state.showCardReview){
         return(
           <div>
-            <NavBar />
-            <ProfileBar />
             <CardReview
               onCancel = {() => this.setState({showCardReview: false})}
               />
@@ -37,8 +35,6 @@ class CardNew extends Component {
       } else {
         return(
             <div>
-              <NavBar />
-              <ProfileBar />
               <CardForm
                 onCardSubmit = {() => this.setState({showCardReview: true})}
                 />

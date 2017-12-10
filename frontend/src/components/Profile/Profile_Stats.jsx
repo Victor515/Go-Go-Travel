@@ -30,9 +30,6 @@ class ProfileStats extends Component {
 ];
     return (
       <div>
-        <Navbar/>
-      <Profilebar
-        />
       <div className="App">
         <XYPlot height={300} width= {300}>
   <VerticalGridLines />

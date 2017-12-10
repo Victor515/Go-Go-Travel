@@ -7,8 +7,9 @@ var userSchema = mongoose.Schema({
     username: {
       type: String,
       default: ''
-    }
-
+    },
+    followings : [String],
+    followers : [String]
 });
 
 userSchema.methods.generateHash = function(password) {

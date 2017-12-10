@@ -11,10 +11,7 @@ import NavBar from './Navbar/Navbar.jsx'
 import Register from './Register/Register.jsx';
 import Login from './Login/Login.jsx';
 import Dashboard from './Dashboard/Dashboard.jsx';
-import Profile from './Profile/Profile.jsx';
-import Profile_Following from './Profile/Following.jsx';
-import Profile_Follower from './Profile/Follower.jsx';
-import Profilestats from './Profile/Profile_Stats.jsx';
+import Profile from './Profile/Profile_Home.jsx';
 import Explore from './Explore/Explore.jsx';
 import DetailList from './DetailList/DetailList.jsx';
 import CardNew from './Profile/UploadCard/CardNew.jsx';
@@ -37,10 +34,6 @@ class App extends Component {
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/profile" component={Profile}/>
-                <Route exact path="/profile/following" component={Profile_Following}/>
-                <Route exact path="/profile/follower" component={Profile_Follower}/>
-                <Route exact path="/profile/statistics" component={Profilestats}/>
-                <Route exact path="/profile/uploadcard" component={CardNew}/>
                 <Route exact path="/dashboard" component={Dashboard}/>
                 <Route exact path="/explore" component={Explore}/>
                 <Route exact path="/detail" component={DetailList}/>

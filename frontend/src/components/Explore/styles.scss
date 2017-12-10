@@ -9,53 +9,66 @@ html, body {
 }
 
 
-.info {
-  position: relative;
-  width: 30vw;
-  height: 15vw;
-}
-
-.cityname {
+.mar {
   position: absolute;
-}
-
-.username {
-  position: absolute;
-  top: 2.5vw;
-}
-
-.spend {
-  position: absolute;
-  left: 21vw;
-  top: 4vw;
-}
-
-.day {
-  position: absolute;
-  left: 21vw;
-  top: 6vw;
-}
-
-.comment {
-  position: absolute;
-  left: 21vw;
-  top: 8vw;
-  height: 5.5vw;
+  bottom: 5%;
+  left: 73%;
   overflow: auto;
 }
 
-.im {
-  position: absolute;
-  top: 4vw;
-  width: 20vw;
+.des {
+  position: relative;
+  height: 30%;
+  overflow: auto;
 }
 
-.cardlist{
-  display: flex;
-  flex-wrap: wrap;
-  // border-style: dashed;
-  list-style: none;
-  justify-content: space-evenly;
-  align-items: center;
-  -webkit-justify-content: space-between;
+.more {
+  position: absolute;
+  font-style: italic;
+  right: 2%;
 }
+
+.model {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  padding-left: 4%;
+  top: 5%;
+  z-index: 100;
+  overflow: scroll;
+}
+
+.bac {
+  position: absolute;
+  top: 15%;
+  left: 3%;
+  height: 80%;
+  width: 67%;
+  background: rgba(255,255,255,0.7);
+  z-index: 90;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+// <Item className = "info">
+//     <Item.Image size='medium' src={this.state.marker_con.picture} />
+//     <Item.Content>
+//       <Item.Header>{this.state.marker_con.card_name}</Item.Header>
+//       <Item.Header>{this.state.marker_con.username}</Item.Header>
+//     <Item.Meta>
+//       <span>Spend:&nbsp;${this.state.marker_con.money}&nbsp;</span>
+//       <span>Time:&nbsp;{this.state.marker_con.day}&nbsp;Days</span>
+//       <a className = "more" onClick = {this.getmore}>Get More</a>
+//     </Item.Meta>
+//     <Item.Description>
+//       {this.state.marker_con.post_txt}
+//     </Item.Description>
+//     </Item.Content>
+// </Item>

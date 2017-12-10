@@ -59,14 +59,17 @@ module.exports = function(router, passport) {
     router.post('/cards', isLoggedIn, (req, res) => {
 
       console.log(req.body);
-      const {city_name, money, day, post_txt, picture } = req.body;
+      const {card_name, city_name, Latitude, Longitude, day, money, picture, post_txt } = req.body;
 
       const card = new Card({
+        card_name,
         city_name,
-        money,
+        Latitude,
+        Longitude,
         day,
-        post_txt,
+        money,
         picture,
+        post_txt,
         userId: req.user.id
       });
 
@@ -78,7 +81,29 @@ module.exports = function(router, passport) {
             }
             )
         }
+      )
+  });
+
+
+    router.get('/followings', isLoggedIn, (req, res) => {
+        Card.find({ userId: req.user.id })
+          .then ( (cards) =>{
+            res.send(cards);
+          }
         )
+    });
+
+
+    router.post('/deletecards', (req, res) => {
+      const { cardId } = req.body;
+
+      Card.remove({_id: cardId}).then(
+        Card.find({ userId: req.user.id })
+          .then ( (cards) =>{
+            res.send(cards);
+          }
+        )
+      )
   });
 
     return router;

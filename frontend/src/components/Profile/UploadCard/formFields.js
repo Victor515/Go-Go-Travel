@@ -1,4 +1,5 @@
 export default [
+  { label: 'Place of Interest', name: 'card_name' },
   { label: 'Total Expense(Dollars)', name: 'money' },
   { label: 'Days', name: 'day' },
   { label: 'Description', name: 'post_txt' }
