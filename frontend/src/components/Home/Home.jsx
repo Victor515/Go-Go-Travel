@@ -14,6 +14,7 @@ const images = [
   'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg'
 ];
 
+
 class Home extends Component {
     render() {
 
@@ -30,14 +31,13 @@ class Home extends Component {
             </Container>
 
 
-            <div className = "slide">
 
-            <Slide
-                images={images}
-                duration="2000"
-                transitionDuration="1000"
-              />
-              </div>
+            <div className = "trick">Trick</div>
+              <Slide
+                  images={images}
+                  duration="2000"
+                  transitionDuration="1000"
+                />
 
             <Segment raised style={{ padding: '0em' }} vertical>
               <Grid celled='internally' columns='equal' stackable>
