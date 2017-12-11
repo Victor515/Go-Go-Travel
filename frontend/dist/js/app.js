@@ -88138,13 +88138,14 @@ var Home = function (_Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'slide' },
-          _react2.default.createElement(_reactSlideshowImage.Slide, {
-            images: images,
-            duration: '2000',
-            transitionDuration: '1000'
-          })
+          { className: 'trick' },
+          'Trick'
         ),
+        _react2.default.createElement(_reactSlideshowImage.Slide, {
+          images: images,
+          duration: '2000',
+          transitionDuration: '1000'
+        }),
         _react2.default.createElement(
           _semanticUiReact.Segment,
           { raised: true, style: { padding: '0em' }, vertical: true },
@@ -88205,71 +88206,6 @@ var Home = function (_Component) {
                     'here'
                   ),
                   ' is the right place to start sharing your own stories.'
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          _semanticUiReact.Container,
-          null,
-          _react2.default.createElement(
-            _semanticUiReact.Grid,
-            { columns: 3, relaxed: true, style: { paddingBottom: '5em', paddingTop: '5em', marginLeft: '5em', marginRight: '5em' } },
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Column,
-              null,
-              _react2.default.createElement(
-                _semanticUiReact.Segment,
-                { textAlign: 'center', basic: true },
-                _react2.default.createElement(_semanticUiReact.Icon, { color: 'grey', size: 'big', name: 'browser' }),
-                _react2.default.createElement(
-                  _semanticUiReact.Header,
-                  { as: 'h3', style: { fontSize: '1.8em' } },
-                  'TITLE'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { style: { fontSize: '1.2em' } },
-                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Column,
-              null,
-              _react2.default.createElement(
-                _semanticUiReact.Segment,
-                { textAlign: 'center', basic: true },
-                _react2.default.createElement(_semanticUiReact.Icon, { color: 'grey', size: 'big', name: 'tags' }),
-                _react2.default.createElement(
-                  _semanticUiReact.Header,
-                  { as: 'h3', style: { fontSize: '1.8em' } },
-                  'TITLE'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { style: { fontSize: '1.2em' } },
-                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _semanticUiReact.Grid.Column,
-              null,
-              _react2.default.createElement(
-                _semanticUiReact.Segment,
-                { textAlign: 'center', basic: true },
-                _react2.default.createElement(_semanticUiReact.Icon, { color: 'grey', size: 'big', name: 'tasks' }),
-                _react2.default.createElement(
-                  _semanticUiReact.Header,
-                  { as: 'h3', style: { fontSize: '1.8em' } },
-                  'TITLE'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { style: { fontSize: '1.2em' } },
-                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '
                 )
               )
             )
@@ -89293,7 +89229,7 @@ exports = module.exports = __webpack_require__(28)(undefined);
 
 
 // module
-exports.push([module.i, ".Home {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.backgroundImg {\n  width: 100%;\n  text-align: center;\n  background-position: center;\n  background-repeat: no-repeat; }\n\n.backgroundImg img {\n  height: 40vw;\n  width: 100%; }\n\n.blank {\n  height: 10vw; }\n\n.font {\n  margin-top: 12vw;\n  font-family: \"Helvetica\", Sans-serif;\n  letter-spacing: 0.5em; }\n\n.slide {\n  height: 40vw; }\n", ""]);
+exports.push([module.i, ".Home {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.backgroundImg {\n  width: 100%;\n  text-align: center;\n  background-position: center;\n  background-repeat: no-repeat; }\n\n.backgroundImg img {\n  height: 40vw;\n  width: 100%; }\n\n.blank {\n  height: 10vw; }\n\n.font {\n  margin-top: 12vw;\n  font-family: \"Helvetica\", Sans-serif;\n  letter-spacing: 0.5em; }\n\n.trick {\n  padding: 0;\n  margin: 0;\n  position: relative;\n  width: 100vw;\n  height: 42.3vw; }\n\n.slide {\n  position: absolute;\n  top: 18vw;\n  left: 0vw;\n  width: 100vw; }\n\n.nav {\n  display: none; }\n", ""]);
 
 // exports
 

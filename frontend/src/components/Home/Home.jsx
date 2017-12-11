@@ -64,33 +64,7 @@ class Home extends Component {
                 </Grid.Row>
               </Grid>
             </Segment>
-            <Container>
 
-            <Grid columns={3} relaxed style={{ paddingBottom: '5em', paddingTop: '5em', marginLeft:'5em', marginRight:'5em' }}>
-              <Grid.Column>
-                <Segment textAlign='center' basic>
-                <Icon color='grey' size='big' name='browser' />
-                  <Header as='h3' style={{ fontSize: '1.8em'}}>TITLE</Header>
-                  <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column>
-                <Segment textAlign='center' basic>
-                <Icon color='grey' size='big' name='tags' />
-                  <Header as='h3' style={{ fontSize: '1.8em'}}>TITLE</Header>
-                  <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column>
-                <Segment textAlign='center' basic>
-                <Icon color='grey' size='big' name='tasks' />
-                  <Header as='h3' style={{ fontSize: '1.8em'}}>TITLE</Header>
-                  <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                </Segment>
-              </Grid.Column>
-
-            </Grid>
-            </Container>
 
             <Segment
                   inverted
