@@ -279,28 +279,28 @@ class Explore extends Component {
         position: 'absolute',
         top: '11%',
         left: '3%',
-        width: '10%',
+        width: '8%',
         zIndex: '100'
       };
       const money2 = {
         position: 'absolute',
         top: '11%',
-        left: '23%',
-        width: '10%',
+        left: '26%',
+        width: '8%',
         zIndex: '100'
       };
       const day1 = {
         position: 'absolute',
         top: '11%',
-        left: '40%',
-        width: '10%',
+        left: '39%',
+        width: '8%',
         zIndex: '100'
       };
       const day2 = {
         position: 'absolute',
         top: '11%',
-        left: '60%',
-        width: '10%',
+        left: '62%',
+        width: '8%',
         zIndex: '100'
       };
 
