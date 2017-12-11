@@ -1,6 +1,6 @@
-# passport_demo
+# GO GO Travel
 
-This basic implementation of adding Passport to an existing project was used as a demonstration for CS498 RK1. This code is provided as-is for learning purposes, and is NOT meant to be a 'starter code' for students' final projects. You are free to use it as such if you would like, but you are responsible for installing whatever packages you may want, making sure there are no bugs, and modifying the code as necessary to fit into your projects. 
+This is the group project of a course named The Art of Web Programming at UIUC. This app aims to provide a platform which can record user travel stories for wherever they go, and it can also help with travel destination recommendation based on user profile and flight price.
 
 ## Getting started
 
