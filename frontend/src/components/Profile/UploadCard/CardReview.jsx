@@ -15,48 +15,42 @@ import styles from './styles.scss'
 
 
 const CardReview= ({ onCancel, formValues, submitCard, history }) => {
-    const addressList = address.split(",");
+    const addressList = formValues.address.split(",");
     const city_name = addressList[0];
 
       console.log(formValues);
       return(
-        <div>
-
-        <Card>
-        <Image width = '300em' height = '200em' src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511813715112&di=4b05fec199301a34de4109cadc3d4c8a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F55e736d12f2eb938ba5c17e1df628535e5dd6feb.jpg" />
-          <Card.Content>
-            <Card.Header>
-              {formValues.card_name}
-            </Card.Header>
-            <Card.Meta>
-              <span className='date'>
+        <div className = "reviewContainer">
+          <Card centered fluid>
+            <Image size='medium' centered src = {formValues.picture}/>
+            <Card.Content>
+              <Card.Header>
+                {formValues.card_name}
+              </Card.Header>
+              <Card.Meta>
+                <span><Icon name='dollar' color='yellow' circular/>{formValues.money}  <Icon name='travel' color='blue' circular/> {formValues.day} days</span>
+              </Card.Meta>
+              <Card.Description>
+                {formValues.post_txt} <br />
+              </Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              <a>
+                <Icon name='point' />
                 {city_name}
-              </span>
-            </Card.Meta>
-            <Card.Description>
-              Expense: {formValues.money} <br />
-              Days: {formValues.day}  <br />
-              Description: {formValues.post_txt} <br />
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name='user' />
-              22 Friends
-            </a>
-          </Card.Content>
-        </Card>
+              </a>
+            </Card.Content>
+          </Card>
 
-        <Button onClick={onCancel}>
-          Back
-        </Button>
+          <Button basic color='red' icon labelPosition='left' onClick={onCancel}>
+            <Icon name='remove'/>
+            Back
+          </Button>
 
-
-        <Button
-          onClick={() => submitCard(formValues, history)}
-        >
-          Post
-        </Button>
+          <Button basic color='blue' type = "submit" icon labelPosition='right' floated = 'right' onClick={() => submitCard(formValues, history)}>
+            Post
+            <Icon name='right arrow' />
+          </Button>
         </div>
 
       )

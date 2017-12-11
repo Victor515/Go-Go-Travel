@@ -60,9 +60,9 @@ class CardUploadImg extends Component {
               <div className = "dropzone-text"><p>Drop an image or click to select a file to upload.</p></div>
             </Dropzone>
             :
-            <div>
+            <div className = "upper">
 
-                <input className = "invisible" {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl} autoFocus/>
+                <input className = "invisibleInput" {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl} autoFocus/>
                 <Image centered src={this.state.uploadedFileCloudinaryUrl} size='medium'/>
             </div>}
             </div>

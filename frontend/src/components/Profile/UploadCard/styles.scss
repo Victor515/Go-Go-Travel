@@ -161,17 +161,24 @@
   width: 50vw;
   color: #444;
   position: absolute;
-  left: 75%;
+  left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
   }
 .enter-city{
   z-index: 100000;
 }
-
-.invisible {
-  display:none;
+.upper{
+  z-index: 5;
+}
+.invisibleInput {
+  display: hidden;
 }
 .Field{
   z-index: -100;
+}
+
+.reviewContainer{
+  width:50%;
+  margin: 0 auto;
 }
