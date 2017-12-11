@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Grid, Image, Icon, Header } from 'semantic-ui-react'
+import { Button, Divider, Card, Grid, Image, Icon, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import axios from 'axios'
@@ -20,8 +20,7 @@ class ProfileSettingsForm extends Component {
     // <form onSubmit =  {this.props.handleSubmit}>
     <div className = "profile-form">
     <form onSubmit =  {this.props.handleSubmit}>
-
-      Email:
+    <Divider horizontal>Email</Divider>
         <Field
           key = "email"
           label = "email"
@@ -29,8 +28,8 @@ class ProfileSettingsForm extends Component {
           type = 'text'
           name = "email"
         />
+        <Divider horizontal>Add your personal description</Divider>
 
-      Add your personal description:
         <Field
           key = "description"
           label = "description"
@@ -38,9 +37,8 @@ class ProfileSettingsForm extends Component {
           type = 'text'
           name = "description"
         />
+        <Divider horizontal>Upload your profile picture</Divider>
 
-
-      Upload your profile picture:
         <Field
           key = "img_url"
           label = "headpicture"
@@ -48,7 +46,8 @@ class ProfileSettingsForm extends Component {
           type = 'url'
           name = "headpicture"
         />
-        <Button primary icon type = "submit">Update <Icon name='right chevron' /></Button>
+
+        <Button basic color='blue' type = "submit" icon labelPosition='right' floated = 'right'>U p d a t e<Icon name='right arrow' /></Button>
     </form>
     </div>
   );

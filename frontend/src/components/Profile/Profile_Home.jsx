@@ -15,7 +15,6 @@ import ProfileFollower from './Follower.jsx'
 import ProfileSettings from './Profile_Settings.jsx'
 import scriptLoader from 'react-async-script-loader'
 
-import DetailList from '../DetailList/DetailList.jsx';
 
 import styles from './styles.scss'
 
@@ -58,7 +57,6 @@ class Profile extends Component {
                       <Route exact path="/profile/uploadcard" component={CardNew}/>
                     </div>
                   </BrowserRouter>
-                  <DetailList />
                 </div>
             );
         } else {

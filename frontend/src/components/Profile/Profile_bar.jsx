@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar.jsx'
 import * as actions from '../../actions'
+import CardList from './UploadCard/CardList.jsx'
+
 
 import { connect } from 'react-redux'
 
@@ -30,6 +32,7 @@ class ProfileBar extends Component {
                       <div class="abs-center post-image"></div>
                     </div>
                     <div class="floated overlay-desc">
+                    <CardList />
                       <div class="rela-block desc-title"></div>
                       <div class="rela-block desc-author"></div>
                       <div class="rela-block desc-desc"></div>
