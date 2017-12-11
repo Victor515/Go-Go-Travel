@@ -32,6 +32,21 @@
    letter-spacing: 0.5em;
 }
 
-.slide{
+.trick {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100vw;
   height: 40vw;
+}
+
+.slide {
+  position: absolute;
+  top: 18vw;
+  left: 0vw;
+  width: 100vw;
+}
+
+.nav {
+  display: none;
 }
