@@ -127,34 +127,51 @@
 }
 
 .cardlist{
-  display: flex;
-  flex-wrap: wrap;
-  // border-style: dashed;
-  list-style: none;
-  justify-content: space-evenly;
-  align-items: center;
-  -webkit-justify-content: space-between;
+  width: 60%;
+  margin: 0 auto;
+  top: -900vw;
 }
 
 .modal{
   top: 10px;
   z-index: 10000;
 }
+
+.add-button {
+  margin-top: 5vw;
+}
+
+/* upload card */
 .card-form{
   margin: 10vw;
 }
+
+.bottonZone{
+  width: 100%;
+  margin: 0 auto;
+}
+
 .dropzone{
   position: relative;
-
+  width: 100%;
+  margin: 0 auto;
 }
 .dropzone-text{
-  font-size: 2vw;
+  font-size: 1vw;
   width: 50vw;
+  color: #444;
   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  left: 75%;
+  top: 50%;
+  transform: translate(-50%,-50%);
   }
 .enter-city{
   z-index: 100000;
+}
+
+.invisible {
+  display:none;
+}
+.Field{
+  z-index: -100;
 }

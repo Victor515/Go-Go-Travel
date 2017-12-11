@@ -21,13 +21,11 @@ class CardUploadImg extends Component {
     }
 
     onImageDrop(files) {
-      console.log("yeah");
       this.uploadedFile = files[0];
       this.handleImageUpload();
     }
 
     handleImageUpload() {
-      console.log("handle Upload");
       let upload = request.post(CLOUDINARY_UPLOAD_URL)
                           .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                           .field('file', this.uploadedFile);
@@ -64,10 +62,8 @@ class CardUploadImg extends Component {
             :
             <div>
 
-                <input {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl} autoFocus/>
-
-              <p>{this.uploadedFile.name}</p>
-              <Image src={this.state.uploadedFileCloudinaryUrl} />
+                <input className = "invisible" {...this.props.input} value = {this.state.uploadedFileCloudinaryUrl} autoFocus/>
+                <Image centered src={this.state.uploadedFileCloudinaryUrl} size='medium'/>
             </div>}
             </div>
         </div>
