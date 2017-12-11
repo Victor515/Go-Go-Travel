@@ -55,10 +55,8 @@ class ExploreCard extends Component {
                 {this.props.cardinfo.username}
               </Card.Meta>
               <Card.Description>
-                <Icon name='dollar' />{this.props.cardinfo.money}&nbsp;USD
-              </Card.Description>
-              <Card.Description>
-                <Icon name='calendar' />{this.props.cardinfo.day}&nbsp;Days
+                <Icon name='dollar' color='yellow' circular />{this.props.cardinfo.money}&nbsp;USD&nbsp;&nbsp;
+                <Icon name='calendar' color='blue' circular />{this.props.cardinfo.day}&nbsp;Days
               </Card.Description>
               <Card.Description>
                 { this.props.isListCard && this.props.cardinfo.post_txt }
@@ -83,10 +81,8 @@ class ExploreCard extends Component {
               {this.props.cardinfo.username}
             </Card.Meta>
             <Card.Description>
-              <Icon name='dollar' />{this.props.cardinfo.money}&nbsp;USD
-            </Card.Description>
-            <Card.Description>
-              <Icon name='calendar' />{this.props.cardinfo.day}&nbsp;Days
+              <Icon name='dollar' color='yellow' circular/>{this.props.cardinfo.money}&nbsp;USD &nbsp;&nbsp;
+              <Icon name='calendar' color='blue' circular/>{this.props.cardinfo.day}&nbsp;Days
             </Card.Description>
           </Card.Content>
           <Card.Content extra>

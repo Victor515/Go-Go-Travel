@@ -52,7 +52,7 @@ class CardList extends Component {
                   {card.card_name}
                 </Card.Header>
                 <Card.Meta>
-                  <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='travel' color='blue' circular/> {card.day} days</span>
+                  <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='calendar' color='blue' circular/> {card.day} days</span>
                 </Card.Meta>
                 <Card.Description>
                   {card.post_txt} <br />
