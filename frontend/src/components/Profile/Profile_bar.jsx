@@ -22,6 +22,7 @@ class ProfileBar extends Component {
 
 
     render() {
+      console.log(this.props.user);
             return(
                 <div>
 
@@ -48,7 +49,7 @@ class ProfileBar extends Component {
                       </div>
                       <div class="rela-block profile-name-containers">
                         <div class="rela-block user-name" id="user_name">{this.props.user.email}</div>
-                        <div class="rela-block user-desc" id="user_description">User Description Here</div>
+                        <div class="rela-block user-desc" id="user_description">{this.props.user.description}</div>
                       </div>
                       <div class="rela-block profile-card-stats">
                         <Link to="/profile"><div class="floated profile-stat works" id="num_works"></div></Link>

@@ -17,7 +17,7 @@ class ProfileSettingsForm extends Component {
 
   render() {
     return(
-    // <form onSubmit =  {this.props.handleSubmit}>
+    // <form onSubmit =  {this.props.handleSubmit} className = "reduxform">
     <div className = "profile-form">
     <form onSubmit =  {this.props.handleSubmit}>
     <Divider horizontal>Email</Divider>
@@ -46,8 +46,8 @@ class ProfileSettingsForm extends Component {
           type = 'url'
           name = "headpicture"
         />
-
-        <Button basic color='blue' type = "submit" icon labelPosition='right' floated = 'right'>U p d a t e<Icon name='right arrow' /></Button>
+        <Divider hidden/>
+        <Button basic color='blue' type = "submit" icon labelPosition='right' floated = 'right'>Update<Icon name='right arrow' /></Button>
     </form>
     </div>
   );

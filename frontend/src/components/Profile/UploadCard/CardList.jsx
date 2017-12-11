@@ -39,11 +39,13 @@ class CardList extends Component {
 
   renderCards(){
     console.log("yyyyy");
+    var count = 0;
     console.log(this.props);
     return this.props.cards.map(card => {
+        console.log(count);
+        count++;
         return (
-          <Grid.Column>
-            <Card centered key = {card._id}>
+            <Card floated='right' key = {card._id}>
               <Image size='medium' centered src = {card.picture}/>
               <Card.Content>
                 <Card.Header>
@@ -61,11 +63,13 @@ class CardList extends Component {
               <span>
                 <Icon name='point' />
                 {card.city_name}
-                <Button size='small' basic color='red' floated='right' onClick = {() => this.props.deleteCards(card._id, this.props.history)} icon='delete' content='Delete' />
+                <button style={{color: 'red',backgroundColor: 'Transparent',border: 'none', float:'right'}}  onClick = {() => this.props.deleteCards(card._id, this.props.history)} content='Delete'>
+                  <i class="fa fa-remove"></i>
+                    Delete
+                </button>
               </span>
               </Card.Content>
             </Card>
-          </Grid.Column>
       );
       });
   }
@@ -73,11 +77,7 @@ class CardList extends Component {
     render() {
       return(
         <div className = 'cardlist'>
-        <Grid columns={3}>
-          <Grid.Row>
             {this.renderCards()}
-          </Grid.Row>
-        </Grid>
           <Link to = '/profile/uploadcard'>
           <div class="rela-inline button more-images add-button">New story</div>
           </Link>

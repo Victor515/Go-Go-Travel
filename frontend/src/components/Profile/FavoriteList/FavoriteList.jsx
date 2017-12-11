@@ -38,34 +38,36 @@ class FavoriteList extends Component {
 
   renderCards(){
     return this.state.cards.map(card => {
-        return <Card key = {card._id}>
-        <Image src = {card.picture} />
-          <Card.Content>
-            <Card.Header>
-              {card.city_name}
-            </Card.Header>
-            <Card.Meta>
-              <span className='date'>
-                Joined in 2015
-              </span>
-            </Card.Meta>
-            <Card.Description>
-              Expense: {card.money} <br />
-              Days: {card.day}  <br />
-              Description: {card.post_txt} <br />
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name='user' />
-              22 Friends
-            </a>
-          </Card.Content>
-          <Card.Content extra>
+      console.log(3333);
+      console.log(card);
+        return(
+          <Card floated='right' key = {card._id}>
+            <Image size='medium' centered src = {card.picture}/>
+            <Card.Content>
+              <Card.Header>
+                {card.card_name}
+              </Card.Header>
+              <Card.Meta>
+                <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='travel' color='blue' circular/> {card.day} days</span>
+              </Card.Meta>
+              <Card.Description>
+                {card.post_txt} <br />
+              </Card.Description>
+            </Card.Content>
 
-            <Button onClick = {() => {this.cancelFavorite(card._id, this.props.history)}} content='Unlike' />
-          </Card.Content>
-        </Card>;
+            <Card.Content extra>
+            <span>
+              <Icon name='point' />
+              {card.city_name}
+              <button style={{color: 'red',backgroundColor: 'Transparent',border: 'none', float:'right'}}  onClick = {() =>  {this.cancelFavorite(card._id, this.props.history)}} content='Unlike'>
+                <i class="fa fa-remove"></i>
+                  Unlike
+              </button>
+            </span>
+            </Card.Content>
+          </Card>
+
+        );
       });
   }
 
