@@ -88173,12 +88173,12 @@ var Home = function (_Component) {
                 _react2.default.createElement(
                   _semanticUiReact.Header,
                   { as: 'h3', style: { fontSize: '1.8em' } },
-                  '"enter title 1..."'
+                  'Welcome'
                 ),
                 _react2.default.createElement(
                   'p',
                   { style: { fontSize: '1.2em' } },
-                  'That is what they all say about us'
+                  'Greetings! Welcome to Go Go Travel! This is the right place to share your travel stories with others.'
                 )
               ),
               _react2.default.createElement(
@@ -88187,12 +88187,24 @@ var Home = function (_Component) {
                 _react2.default.createElement(
                   _semanticUiReact.Header,
                   { as: 'h3', style: { fontSize: '1.8em' } },
-                  '"enter title 2..."'
+                  'To get started...'
                 ),
                 _react2.default.createElement(
                   'p',
                   { style: { fontSize: '1.2em' } },
-                  'Chief Fun Officer Acme Toys'
+                  'You can start by first ',
+                  _react2.default.createElement(
+                    'a',
+                    { href: '/explore' },
+                    'exploring'
+                  ),
+                  ' other\'s posts. Or, if you can\'t wait, ',
+                  _react2.default.createElement(
+                    'a',
+                    { href: '/register' },
+                    'here'
+                  ),
+                  ' is the right place to start sharing your own stories.'
                 )
               )
             )
@@ -89341,7 +89353,8 @@ var Register = function (_Component) {
                 email: ''
             },
             isLoggedIn: false,
-            message: ''
+            message: '',
+            redirect: false
         };
 
         _this.onSubmit = _this.onSubmit.bind(_this);
@@ -89372,7 +89385,8 @@ var Register = function (_Component) {
                 if (xhr.status === 200) {
                     console.log('The form is valid');
                     _this2.setState({
-                        message: 'Registered!'
+                        message: 'Registered!',
+                        redirect: true
                     });
                 } else {
                     _this2.setState({
@@ -89403,6 +89417,12 @@ var Register = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+            if (this.state.redirect) {
+                return _react2.default.createElement(_reactRouterDom.Redirect, { to: {
+                        pathname: '/login',
+                        state: { isLoggedIn: false }
+                    } });
+            }
             return _react2.default.createElement(
                 'div',
                 null,
@@ -89518,7 +89538,7 @@ exports = module.exports = __webpack_require__(28)(undefined);
 
 
 // module
-exports.push([module.i, "body > div,\nbody > div > div,\nbody > div > div > div,\nbody > div > div > div > div.Register {\n  height: 100%; }\n\n.Register__container {\n  height: 100%; }\n  .Register__container .Register__content {\n    max-width: 50%; }\n", ""]);
+exports.push([module.i, "body > div,\nbody > div > div,\nbody > div > div > div,\nbody > div > div > div > div.Register {\n  height: 100%; }\n\n.Register__container {\n  height: 100%; }\n  .Register__container .Register__content {\n    position: absolute;\n    top: 25vmin;\n    max-width: 50%; }\n", ""]);
 
 // exports
 
@@ -89615,7 +89635,7 @@ var Login = function (_Component) {
                     });
                 } else {
                     _this2.setState({
-                        message: 'Unable to log in'
+                        message: 'Unable to log in: Username/Password may be not correct'
                     });
                 }
             });
@@ -89725,21 +89745,6 @@ var Login = function (_Component) {
                                             _semanticUiReact.Button,
                                             { color: 'black', fluid: true, size: 'large', onClick: this.onSubmit },
                                             'Sign In'
-                                        ),
-                                        _react2.default.createElement(
-                                            _semanticUiReact.Divider,
-                                            { horizontal: true },
-                                            'or'
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { 'class': 'fb-login-button', onlogin: 'checkLoginState();', 'data-max-rows': '1', 'data-size': 'large', 'data-button-type': 'continue_with', 'data-show-faces': 'false', 'data-auto-logout-link': 'false', 'data-use-continue-as': 'true' },
-                                            'login'
-                                        ),
-                                        _react2.default.createElement(
-                                            _semanticUiReact.Button,
-                                            { color: 'facebook', fluid: true, size: 'large' },
-                                            'Continue With Facebook'
                                         ),
                                         _react2.default.createElement('br', null),
                                         _react2.default.createElement(
@@ -89855,7 +89860,7 @@ exports = module.exports = __webpack_require__(28)(undefined);
 
 
 // module
-exports.push([module.i, "body > div,\nbody > div > div,\nbody > div > div > div,\nbody > div > div > div > div.Login {\n  height: 100%; }\n\n.Login__container {\n  position: absolute;\n  top: 7vmin;\n  height: 100%; }\n  .Login__container .Login__content {\n    max-width: 50%; }\n", ""]);
+exports.push([module.i, "body > div,\nbody > div > div,\nbody > div > div > div,\nbody > div > div > div > div.Login {\n  height: 100%; }\n\n.Login__container {\n  position: absolute;\n  top: 7vmin;\n  height: 100%;\n  width: 100%; }\n  .Login__container .Login__content {\n    max-width: 50%; }\n", ""]);
 
 // exports
 

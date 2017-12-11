@@ -51,7 +51,7 @@ class Login extends Component {
                 })
             } else {
                 this.setState({
-                    message: 'Unable to log in'
+                    message: 'Unable to log in: Username/Password may be not correct'
                 })
             }
         });
@@ -144,16 +144,6 @@ class Login extends Component {
                             onChange={this.onChangePassword}
                             />
                           <Button color = 'black' fluid size='large' onClick = {this.onSubmit}>Sign In</Button>
-                          <Divider horizontal>or</Divider>
-
-
-                          <div class="fb-login-button" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true">
-                          login
-                          </div>
-
-
-
-                          <Button color = 'facebook' fluid size='large'>Continue With Facebook</Button>
                           <br/>
                           <p className = 'Login__message'>{this.state.message}</p>
                           </Segment>

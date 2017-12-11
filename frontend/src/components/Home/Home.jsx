@@ -52,13 +52,13 @@ class Home extends Component {
               <Grid celled='internally' columns='equal' stackable>
                 <Grid.Row textAlign='center'>
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    <Header as='h3' style={{ fontSize: '1.8em' }}>"enter title 1..."</Header>
-                    <p style={{ fontSize: '1.2em' }}>That is what they all say about us</p>
+                    <Header as='h3' style={{ fontSize: '1.8em' }}>Welcome</Header>
+                    <p style={{ fontSize: '1.2em' }}>Greetings! Welcome to Go Go Travel! This is the right place to share your travel stories with others.</p>
                   </Grid.Column>
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    <Header as='h3' style={{ fontSize: '1.8em' }}>"enter title 2..."</Header>
+                    <Header as='h3' style={{ fontSize: '1.8em' }}>To get started...</Header>
                     <p style={{ fontSize: '1.2em' }}>
-                      Chief Fun Officer Acme Toys
+                      You can start by first <a href = "/explore">exploring</a> other&#39;s posts. Or, if you can&#39;t wait, <a href = "/register">here</a> is the right place to start sharing your own stories.
                     </p>
                   </Grid.Column>
                 </Grid.Row>
