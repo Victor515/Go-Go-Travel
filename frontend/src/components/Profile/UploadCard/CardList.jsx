@@ -58,11 +58,11 @@ class CardList extends Component {
               </Card.Content>
 
               <Card.Content extra>
-                <a>
-                  <Icon name='point' />
-                  {card.city_name}
-                </a>
-                <Button size='mini' basic color='red' floated='right' onClick = {() => this.props.deleteCards(card._id, this.props.history)} icon='delete' content='Delete' />
+              <span>
+                <Icon name='point' />
+                {card.city_name}
+                <Button size='small' basic color='red' floated='right' onClick = {() => this.props.deleteCards(card._id, this.props.history)} icon='delete' content='Delete' />
+              </span>
               </Card.Content>
             </Card>
           </Grid.Column>
@@ -73,14 +73,13 @@ class CardList extends Component {
     render() {
       return(
         <div className = 'cardlist'>
-        <Grid columns={3} divided>
+        <Grid columns={3}>
           <Grid.Row>
             {this.renderCards()}
           </Grid.Row>
         </Grid>
           <Link to = '/profile/uploadcard'>
           <div class="rela-inline button more-images add-button">New story</div>
-
           </Link>
         </div>
       );

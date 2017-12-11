@@ -43,6 +43,7 @@ class ProfileBar extends Component {
                   <div class="rela-block containers">
                     <div class="rela-block profile-card">
                       <div class="profile-pic" id="profile_pic">
+                        <img alt="" src= {this.props.user.headpicture || "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"} />
                       </div>
                       <div class="rela-block profile-name-containers">
                         <div class="rela-block user-name" id="user_name">{this.props.user.email}</div>
