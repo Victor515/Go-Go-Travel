@@ -98,7 +98,22 @@ class CardForm extends Component {
     }
   }
 
+  function validate(values) {
+    const errors = {};
 
-export default reduxForm ({
-  form: 'cardForm'
-})(CardForm);
+
+    _.each(formFields, ({ name }) => {
+      if (!values[name]) {
+        errors[name] = 'You must provide a value';
+      }
+    });
+
+    return errors;
+  }
+
+
+  export default reduxForm ({
+    validate,
+    form: 'cardForm',
+    destroyOnUnmount: false
+  })(CardForm);
