@@ -23,34 +23,37 @@ class ProfileBar extends Component {
                 <div>
 
 
-
-
-                    <div className="col-lg-14 col-sm-14">
-
-                      <div className="card hovercard">
-
-                      <div class="card-background">
-                        <img class="card-bkimg" alt="" src= {this.props.user.headpicture || "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"} />
-
+                <div class="overlay">
+                  <div class="abs-center overlay-card">
+                    <div class="close">X</div>
+                    <div class="floated overlay-image">
+                      <div class="abs-center post-image"></div>
                     </div>
-                        <div className="useravatar">
-                          <img alt="" src= {this.props.user.headpicture || "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"} />
-                        </div>
-                        <div className="card-info">
-                          {this.props.user.email}<br />
-                          <Button as={Link} to='/profile/settings'>Settings</Button>
-                        </div>
+                    <div class="floated overlay-desc">
+                      <div class="rela-block desc-title"></div>
+                      <div class="rela-block desc-author"></div>
+                      <div class="rela-block desc-desc"></div>
+                    </div>
+                  </div>
+                </div>
 
-
+                  <div class="rela-block containers">
+                    <div class="rela-block profile-card">
+                      <div class="profile-pic" id="profile_pic">
                       </div>
+                      <div class="rela-block profile-name-containers">
+                        <div class="rela-block user-name" id="user_name">{this.props.user.email}</div>
+                        <div class="rela-block user-desc" id="user_description">User Description Here</div>
+                      </div>
+                      <div class="rela-block profile-card-stats">
+                        <Link to="/profile"><div class="floated profile-stat works" id="num_works"></div></Link>
+                        <Link to="/profile/settings"><div class="floated profile-stat followers" id="num_followers"></div></Link>
+                        <Link to="/profile/settings"><div class="floated profile-stat following" id="num_following"></div></Link>
+                      </div>
+                    </div>
 
-                      <Menu centered pointing size='massive' secondary>
-                                <Menu.Item name='Posts' as={Link} to='/profile' />
-                                <Menu.Item name='Favorites' />
+                  </div>
 
-                              </Menu>
-
-                        </div>
                   </div>
             )
         }

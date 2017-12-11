@@ -31,6 +31,7 @@ class Home extends Component {
 
 
             <div className = "slide">
+
             <Slide
                 images={images}
                 duration="2000"

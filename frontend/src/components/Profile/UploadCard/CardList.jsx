@@ -41,7 +41,7 @@ class CardList extends Component {
     console.log("yyyyy");
     console.log(this.props);
     return this.props.cards.map(card => {
-        return <Card key = {card._id}>
+        return (<Grid.Column> <Card key = {card._id}>
         <Image width = '300em' height = '200em' src = {card.picture} />
           <Card.Content>
             <Card.Header>
@@ -89,7 +89,7 @@ class CardList extends Component {
 
             <Button onClick = {() => this.props.deleteCards(card._id, this.props.history)} content='Delete' />
           </Card.Content>
-        </Card>;
+        </Card></Grid.Column>);
       });
   }
 
@@ -97,12 +97,18 @@ class CardList extends Component {
       return(
         <div className = 'cardlist'>
         <Card.Group>
-          {this.renderCards()}
+        <Grid>
+            <Grid.Row columns={3}>
+            {this.renderCards()}
+
+            </Grid.Row>
+          </Grid>
 
         </Card.Group>
 
           <Link to = '/profile/uploadcard'>
-          <Button className = 'post-button' floated = 'right' circular icon='plus' color = 'teal' size = 'huge' />
+          <div class="rela-inline button more-images add-button">New story</div>
+
           </Link>
         </div>
       );
