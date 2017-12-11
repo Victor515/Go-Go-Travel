@@ -98,7 +98,7 @@ class Home extends Component {
 
                         <Grid.Column width={7}>
                           <Header inverted as='h4' content='About' />
-                          <p>This is a group project of a course The Art of Web Programming in UIUC. This app aims to provide a platform which can record users travel stories for wherever they go, and it can also help with travel destination recommendation based on user profile and flight price.</p>
+                          <p>This is the group project of a course named The Art of Web Programming in UIUC. This app provides a platform where users can share travel stories for wherever they go, and explore recommendation for next destinations from others.</p>
                         </Grid.Column>
                       </Grid.Row>
                     </Grid>

@@ -88301,7 +88301,7 @@ var Home = function (_Component) {
                   _react2.default.createElement(
                     'p',
                     null,
-                    'This is a group project of a course The Art of Web Programming in UIUC. This app aims to provide a platform which can record users travel stories for wherever they go, and it can also help with travel destination recommendation based on user profile and flight price.'
+                    'This is the group project of a course named The Art of Web Programming in UIUC. This app provides a platform where users can share travel stories for wherever they go, and explore recommendation for next destinations from others.'
                   )
                 )
               )
@@ -108039,22 +108039,57 @@ var Explore = function (_Component) {
     };
     _this.quotes = {
       "Chicago": ["Eventually, I think Chicago will be the most beautiful great city left in the world.", "Frank Lloyd Wright"],
+
       "Los Angles": ["All life is inherently dangerous. But beyond that, Los Angeles is just a wonderful place to be.", "John Gregory Dunne"],
+
       "Paris": ["But Paris was a very old city and we were young and nothing was simple there, not even poverty, nor sudden money, nor the moonlight, nor right and wrong nor the breathing of someone who lay beside you in the moonlight.", " Ernest Hemingway"],
+
       "New York": ["One belongs to New York instantly, one belongs to it as much in five minutes as in five years.", "Tom Wolfe"],
+
       "Barcelona": ["Barcelona is a very old city in which you can feel the weight of history; it is haunted by history. You cannot walk around it without perceiving it.", "Carlos Ruiz Zafón"],
+
       "Tokyo": ["You'll be going back to Tokyo before much longer, And you'll return to real life. You need to live life to the fullest. No matter how shallow and dull things might get, this life is worth living. I guarantee it.", "Haruki Murakami"],
+
       "Beijing": ["Nobody is right and nobody is wrong. Only one thing is right, and that is the Truth, but nobody knows what it is. It is a thing that changes all the time, and then comes back to the same thing", "Lin Yutang, Moment in Peking"],
+
       "Rome": ["I found Rome a city of bricks and left it a city of marble.", "Augustus"],
+
       "London": ["When a man is tired of London, he is tired of life; for there is in London all that life can afford.", "Samuel Johnson"],
+
       "San Francisco": ["That's one of the things I like about San Francisco. It's not like anywhere else in the world.", "Tracy Chapman"],
+
       "Champaign": ["Champaign is notable for sharing the campus of the University of Illinois at Urbana–Champaign with its sister city of Urbana.", "Wikipedia"],
-      "Istanbul": ["If one had but a single glance to give the world, one should gaze on Istanbul.", "Alphonse de Lamartine"],
+
+      "Istanbul": ["If one had but a single glance to give the world, one should gaze on Istanbul.", "Alphonse de Lamar"],
+      "Mexico City": ["I went to Mexico City to visit, and I fell in love with the city. I went to my house to pick up my stuff. It was the craziest, most impulsive move I've ever done. I just felt like I had to stay there", "Julieta Venegas"],
+
+      "Shanghai": ["The rise or fall of Shanghai means the birth or death of the whole nation", "Chiang Kai-shek"],
+
+      "Seoul": ["She’d never forgotten their last night in Seoul, or above it in fact, surveying the city lights from atop Namsan Mountain", "Giacomo Lee, Funereal"],
+
+      "Miami": ["Miami Beach is where neon goes to die.", "Lenny Bruce"],
+
+      "Madrid": ["I love Madrid. I am happy to be here. I have been here three years and hope to be here longer. But I am proud of where I come from and never forget the people I grew up with.", "Zinedine Zidane"],
+
+      "Toronto": ["When I think of myself, I think of Toronto. My music would never sound the way it does if it weren't for Toronto.", "Drake"],
+
+      "Singapore": ["If Singapore is a nanny state, then I am proud to have fostered one.", "Lee Kuan Yew"],
+
+      "Orlando": ["Love, the poet said, is woman's whole existence.", "Virginia Woolf,Orlando"],
+
       "Jerusalem": ["The view of Jerusalem is the history of the world; it is more, it is the history of earth and of heaven.", "Benjamin Disraeli"],
+
       "Vienna": ["Vienna is the gate to Eastern Europe.", "Niki Lauda"],
+
       "Sydney": ["If Paris is a city of lights, Sydney is the city of fireworks.", "Baz Luhrmann"],
-      "Other": ["The gladdest moment in human life, me thinks, is a departure into unknown lands.", "Sir Richard Burton"]
+
+      "Other": ["The gladdest moment in human life, me thinks, is a departure into unknown lands.", "Sir Richard Burton"],
+
+      "Boston": ["And it was from Boston that one in every six American families began their journey into the land of the free.", "Thomas Menino"],
+
+      "Milan": ["Milan is a true metropolis: strong and fearless but welcoming, too. Little by little, I came to realize that I could become someone here.", "Giorgio Armani"]
     };
+
     _this.minm = 0;
     _this.maxm = 999999999;
     _this.mind = 0;
@@ -108091,7 +108126,7 @@ var Explore = function (_Component) {
           //lifecycle trigger
           content: res.data.data,
           new_content: res.data.data,
-          rand: res.data.data[Math.ceil(Math.random() * res.data.data.length)]
+          rand: res.data.data[Math.floor(Math.random() * res.data.data.length)]
         });
       }).catch(function (error) {
         console.log(error);
@@ -108140,7 +108175,7 @@ var Explore = function (_Component) {
         model: false,
         new_content: temp_content,
         showingInfoWindow: false,
-        rand: temp_content[Math.ceil(Math.random() * temp_content.length)]
+        rand: temp_content[Math.floor(Math.random() * temp_content.length)]
       });
     }
   }, {
