@@ -58,50 +58,7 @@ class Profile extends Component {
                     </div>
                   </BrowserRouter>
 
-                  <Divider hidden/>
-                  <Divider hidden/>
-                  <Segment
-                        inverted
-                        vertical
-                      >
-                        <Container textAlign='center'>
-                          <Grid style={{ margin: '0em 0em 0em', padding: '0em 0em' }} divided inverted stackable>
-                            <Grid.Row>
-                              <Grid.Column width={4}>
-                                <Header inverted as='h4' content='Member' />
-                                <List link inverted>
-                                  <List.Item as='a'>Keye Zhang</List.Item>
-                                  <List.Item as='a'>Cheng Ding</List.Item>
-                                  <List.Item as='a'>Yubo Ouyang</List.Item>
-                                  <List.Item as='a'>Qishan Zhu</List.Item>
-                                  <List.Item as='a'>Yan Xu</List.Item>
 
-                                </List>
-                              </Grid.Column>
-                              <Grid.Column width={4}>
-                                <Header inverted as='h4' content='Contact us' />
-                                <List link inverted>
-                                  <List.Item as='a' href="mailto:keyez2@illinois.edu">keyez2@illinois.edu</List.Item>
-                                  <List.Item as='a' href="mailto:chengd2@illinois.edu">chengd2@illinois.edu</List.Item>
-                                  <List.Item as='a' href="mailto:yuboo2@illinois.edu">yuboo2@illinois.edu</List.Item>
-                                  <List.Item as='a' href="mailto:qishanz2@illinois.edu">qishanz2@illinois.edu</List.Item>
-                                  <List.Item as='a' href="mailto:yanxu3@illinois.edu">yanxu3@illinois.edu</List.Item>
-
-                                </List>
-                              </Grid.Column>
-
-                              <Grid.Column width={7}>
-                                <Header inverted as='h4' content='About' />
-                                <p>This is a group project of a course The Art of Web Programming in UIUC. This app aims to provide a platform which can record users travel stories for wherever they go, and it can also help with travel destination recommendation based on user profile and flight price.</p>
-                              </Grid.Column>
-                            </Grid.Row>
-                          </Grid>
-
-                          <Divider inverted fitted section />
-                          <p style={{ margin: '0em 0em 0em', padding: '0em 0em' }} align="center">©2017 Go Go Travel</p>
-
-                        </Container>
-                      </Segment>
                 </div>
             );
         } else {
