@@ -29,21 +29,22 @@ class CardForm extends Component {
   }
 
   renderField(){
-    return _.map(formFields, ({label, name}) => {
+    return _.map(formFields, ({label, name, description}) => {
         return (
+          <div>
+          <Divider horizontal>{description}</Divider>
           <Field
             key = {name}
-            label = {label}
             component = {CardFormField}
             type = "text"
             name = {name}
           />
+          </div>
         );
       });
   }
 
   handleSubmit(e){
-    console.log("2222");
     console.log(e);
   }
 
@@ -56,7 +57,7 @@ class CardForm extends Component {
         <div>
         <div className = "card-form">
           <form onSubmit = {this.props.handleSubmit(this.props.onCardSubmit)}>
-            <p>City of Interest</p>
+            <Divider horizontal>City</Divider>
             <Field
               key = "address"
               label = "address"
@@ -66,7 +67,7 @@ class CardForm extends Component {
             />
 
             {this.renderField()}
-
+            <Divider horizontal>Upload Photo</Divider>
             <Field
               key = "img_url"
               label = "Photo"
@@ -75,13 +76,23 @@ class CardForm extends Component {
               name = "picture"
             />
 
-            <Link to = '/profile'>
-            <Button basic color='red'> <Icon name='remove' /> Cancel</Button>
-            </Link>
-            <Button basic icon color='blue' type = "submit">Next <Icon name='right chevron' /></Button>
+            <Divider hidden />
+
+            <div className = "bottonZone">
+              <Link to = '/profile'>
+              <Button basic color='red' icon labelPosition='left'>
+                <Icon name='remove' />
+                Remove
+              </Button>
+              </Link>
+              <Button basic color='blue' type = "submit" icon labelPosition='right' floated = 'right'>
+                N e x t
+                <Icon name='right arrow' />
+              </Button>
+            </div>
+
           </form>
           </div>
-
         </div>
       )
     }

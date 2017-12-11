@@ -15,57 +15,50 @@ import styles from './styles.scss'
 
 
 const CardReview= ({ onCancel, formValues, submitCard, history }) => {
-  const reviewFields = _.map(formFields, ({ name, label }) => {
+    const addressList = address.split(",");
+    const city_name = addressList[0];
+
       console.log(formValues);
-      return (
-        <div key={name}>
-          <label>{label}</label>
-          <Card>
-            <Card.Content>
-              <Card.Header>
-              </Card.Header>
-              <Card.Meta>
-                <span className='date'>
-                  Joined in 2015
-                </span>
-              </Card.Meta>
-              <Card.Description>
-              <div>
-                {formValues[name]}
-              </div>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <a>
-                <Icon name='user' />
-                22 Friends
-              </a>
-            </Card.Content>
-            </Card>
-
-
-
-        </div>
-      );
-  });
-
       return(
         <div>
 
-          {reviewFields}
+        <Card>
+        <Image width = '300em' height = '200em' src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511813715112&di=4b05fec199301a34de4109cadc3d4c8a&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F55e736d12f2eb938ba5c17e1df628535e5dd6feb.jpg" />
+          <Card.Content>
+            <Card.Header>
+              {formValues.card_name}
+            </Card.Header>
+            <Card.Meta>
+              <span className='date'>
+                {city_name}
+              </span>
+            </Card.Meta>
+            <Card.Description>
+              Expense: {formValues.money} <br />
+              Days: {formValues.day}  <br />
+              Description: {formValues.post_txt} <br />
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name='user' />
+              22 Friends
+            </a>
+          </Card.Content>
+        </Card>
 
-          <Button onClick={onCancel}>
-            Back
-          </Button>
+        <Button onClick={onCancel}>
+          Back
+        </Button>
 
 
-          <Button
-            onClick={() => submitCard(formValues, history)}
-          >
-        Post
-      </Button>
-
+        <Button
+          onClick={() => submitCard(formValues, history)}
+        >
+          Post
+        </Button>
         </div>
+
       )
 
 

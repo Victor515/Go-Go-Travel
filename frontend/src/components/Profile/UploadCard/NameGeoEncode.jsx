@@ -86,7 +86,7 @@ class NameGeoEncode extends Component {
           <PlacesAutocomplete inputProps = {inputProps} onSelect={this.handleSelect.bind(this)}/>
           :
           <div className = "enter-city">
-              <Input {...this.props.input} value = {this.res2}/>
+              <Input {...this.props.input} value = {this.res2} fluid/>
           </div>}
         </div>
       )
