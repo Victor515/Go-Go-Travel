@@ -13,13 +13,17 @@ var userSchema = new Schema({
     },
     followings : [ObjectId],
     followers : [ObjectId],
+    favoritecards: {
+      type: [ObjectId],
+      default: []
+    },
     description: {
       type: String,
       default: ''
     },
     headpicture: {
       type: String,
-      default: ''
+      default: "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"
     }
 });
 

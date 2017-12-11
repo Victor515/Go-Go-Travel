@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_CARDS, FETCH_FOLLOWINGS, FETCH_FOLLOWERS, DELETE_CARDS  } from './actionTypes'
+import { FETCH_USER, FETCH_CARDS, FETCH_FOLLOWINGS, FETCH_FOLLOWERS, DELETE_CARDS, CHECK_IF_FAV  } from './actionTypes'
 
 // const fetchUser = () => {
 //   axios.get('/login')
@@ -89,9 +89,65 @@ export const updateProfile = (value, history) => async dispatch => {
 };
 
 
-export const followUser = (value, history) => async dispatch => {
-    console.log("follow a user");
-    const res = await axios.post('/api/followuser', value);
-    
-    dispatch({ type: FOLLOW_USER, payload: res.data });
-};
+// export const followUser = (value, history) => async dispatch => {
+//     console.log("follow a user");
+//     const res = await axios.post('/api/followuser', value);
+//
+//     dispatch({ type: FOLLOW_USER, payload: res.data });
+// };
+
+// export const fetchFavoriteCards = () => async dispatch => {
+//   const res = await axios.get('/api/favoritecards');
+//
+//   dispatch({ type: FETCH_CARDS, payload: res.data });
+// };
+
+// export const checkIfFavorite = (value) => async dispatch => {
+//   console.log("check if like a card");
+//   const craftedValues = {favoritecardId: value};
+//   const res = await axios.post('/api/checkiffavorite', craftedValues);
+//
+//   dispatch({ type: CHECK_IF_FAV, payload: res.data });
+// };
+//
+//
+// export const flipIfFavorite = (value, iffavorite) => async dispatch => {
+//   console.log("flip favorite status");
+//   const craftedValues = {favoritecardId: value};
+//   let res;
+//   if(iffavorite){
+//     res = await axios.post('/api/cancelcardfavorite', craftedValues);
+//   }
+//   else{
+//     res = await axios.post('/api/addcardfavorite', craftedValues);
+//   }
+//
+//   dispatch({ type: CHECK_IF_FAV, payload: res.data });
+// };
+//
+//
+// //only for cancel, actually is a branch of the flipIfFavorite fucnitons, above, the purpose is to handle a new parameter: history
+// export const cancelFavorite = (value, history) => async dispatch => {
+//   console.log("cancel favorite status");
+//   const craftedValues = {favoritecardId: value};
+//
+//   const res = await axios.post('/api/cancelcardfavorite', craftedValues);
+//   history.push('./profile/favorite');
+//   dispatch({ type: CHECK_IF_FAV, payload: res.data });
+// };
+
+
+// export const addFavoriteCards = (value) => async dispatch => {
+//
+//     const res = await axios.post('/api/addfavorite', value);
+//
+//     dispatch({ type: FETCH_USER, payload: res.data });
+// };
+//
+// export const cancelFavoriteCards = (value, history) => async dispatch => {
+//     console.log("unlike a card");
+//
+//     const res = await axios.post('/api/cancelfavorite', craftedValues);
+//
+//     dispatch({ type: FETCH_USER, payload: res.data });
+// };

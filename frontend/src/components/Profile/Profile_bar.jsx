@@ -5,6 +5,7 @@ import axios from 'axios'
 import Navbar from '../Navbar/Navbar.jsx'
 import * as actions from '../../actions'
 import CardList from './UploadCard/CardList.jsx'
+import FavoriteList from './FavoriteList/FavoriteList.jsx'
 
 
 import { connect } from 'react-redux'
@@ -51,7 +52,7 @@ class ProfileBar extends Component {
                       </div>
                       <div class="rela-block profile-card-stats">
                         <Link to="/profile"><div class="floated profile-stat works" id="num_works"></div></Link>
-                        <Link to="/profile/settings"><div class="floated profile-stat followers" id="num_followers"></div></Link>
+                        <Link to="/profile/favorite"><div class="floated profile-stat followers" id="num_followers"></div></Link>
                         <Link to="/profile/settings"><div class="floated profile-stat following" id="num_following"></div></Link>
                       </div>
                     </div>

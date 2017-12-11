@@ -34,7 +34,7 @@ module.exports = function(router, passport) {
     router.get('/logout', function(req, res) {
         req.logOut();
         res.redirect('/');
-        res.status(200).json({ message: "logged out "});
+        //res.status(200).json({ message: "logged out "});
     });
 
     router.get('/cards', isLoggedIn, (req, res) => {
@@ -62,27 +62,42 @@ module.exports = function(router, passport) {
       console.log(req.body);
       const {card_name, city_name, Latitude, Longitude, day, money, picture, post_txt } = req.body;
 
-      const card = new Card({
-        card_name,
-        city_name,
-        Latitude,
-        Longitude,
-        day,
-        money,
-        picture,
-        post_txt,
-        userId: req.user.id
+      User.findById(req.user.id).then((user) => {
+
+        const username = user.email;
+        const user_head_photo = user.headpicture;
+
+        const card = new Card({
+          username,
+          user_head_photo,
+          card_name,
+          city_name,
+          Latitude,
+          Longitude,
+          day,
+          money,
+          picture,
+          post_txt,
+          userId: req.user.id
+        });
+
+        card.save()
+          .then ( () =>{
+            req.user.save()
+              .then( (user) => {
+                res.send(user);
+              }
+              )
+          }
+        )
+
+
+
+
+
       });
 
-      card.save()
-        .then ( () =>{
-          req.user.save()
-            .then( (user) => {
-              res.send(user);
-            }
-            )
-        }
-      )
+
   });
 
 
@@ -124,49 +139,151 @@ module.exports = function(router, passport) {
     const { description, email, headpicture } = req.body;
 
     User.findByIdAndUpdate(req.user.id, {$set:req.body})
-    .then((user) =>{
+    .then((user) => {
       res.send(user);
     });
   });
 
 
-  router.post('followuser', (req, res) => {
-    const { followeeId } = req.body;
+  // router.post('followuser', (req, res) => {
+  //   const { followeeId } = req.body;
+  //
+  //   //two way binding, the first direction
+  //   User.findOne({"_id": followeeId })
+  //   .then((user) => {
+  //     user.followers.push(req.user.id);
+  //     user.save().then(() => {
+  //
+  //       //two way binding, another direction
+  //       User.findOne({"_id": req.user.id}).then((user) => {
+  //         user.followings.push(followeeId);
+  //         user.save().then((user) => {
+  //           res.send(user);
+  //         });
+  //       });
+  //
+  //
+  //     })
+  //   });
+  // });
 
-    //two way binding, the first direction
-    User.findOne({"_id": followeeId })
-    .then((user) => {
-      user.followers.push(req.user.id);
-      user.save().then(() => {
+
+  // router.post('unfollowuser', (req, res) => {
+  //   const { unfolloweeId } = req.body;
+  //
+  //   User.findByIdAndUpdate(unfolloweeId, { $pullAll: { followers: req.user.id } } )
+  //   .then((user) => {
+  //     //do nothing with that returned user
+  //     //the another direction
+  //     User.findByIdAndUpdate(req.user.id, { $pullAll: { followings: unfolloweeId  } } )
+  //     .then((user) => {
+  //       res.send(user);
+  //     });
+  //
+  //   });
+  //
+  // });
+
+
+  router.get('/favoritecards', isLoggedIn, (req, res) => {
+    User.findById(req.user.id).then((user) => {
+      Card.find({_id: {"$in": user.favoritecards} })
+      .then((cards) => {
+        res.send(cards);
+      });
+    });
+  });
+
+
+  router.post('/checkiffavorite', (req, res) => {
+    const favoritecardId = Object.keys(req.body)[0];
+
+    User.findById(req.user.id).then((user) => {
+
+      const favIds = user.favoritecards;
+      const favIdsTostr = favIds.map(elem => {
+        return (elem.toString());
+      })
+      const isfav =  favIdsTostr.includes(favoritecardId);
+      res.send(isfav);
+    });
+  });
+
+
+  router.post('/cancelcardfavorite', (req, res) => {
+    const favoritecardId = Object.keys(req.body)[0];
+    Card.findOne({"_id": favoritecardId })
+    .then((card) => {
+      card.likes_number -= 1;
+      card.save().then(() => {
+
+        //two way binding, another direction
+        User.findByIdAndUpdate(req.user.id, {$pullAll: {favoritecards: [favoritecardId] }})
+        .then((user) => {
+          res.send(false);
+        });
+      });
+    });
+  });
+
+
+  router.post('/addcardfavorite', (req, res) => {
+    const favoritecardId = Object.keys(req.body)[0];
+    Card.findOne({"_id": favoritecardId })
+    .then((card) => {
+      card.likes_number += 1;
+      card.save().then(() => {
 
         //two way binding, another direction
         User.findOne({"_id": req.user.id}).then((user) => {
-          user.followings.push(followeeId);
+          user.favoritecards.push(favoritecardId);
           user.save().then((user) => {
-            res.send(user);
+            res.send(true);
           });
         });
-
-
       })
     });
   });
 
 
-  router.post('unfollowuser', (req, res) => {
-    const { unfolloweeId } = req.body;
 
-    User.findByIdAndUpdate(unfolloweeId, { $pullAll: { followers: req.user.id } } )
-    .then((user) => {
-      //do nothing with that returned user
-      //the another direction
-      User.findByIdAndUpdate(req.user.id, { $pullAll: { followings: unfolloweeId  } } )
-      .then((user) => {
-        res.send(user);
-      });
+  router.post('/addfavorite', (req, res) => {
+    const { favoriteId } = req.body;
 
+    //two way binding, the first direction
+    Card.findOne({"_id": followeeId })
+    .then((card) => {
+      card.likes_number += 1;
+      card.save().then(() => {
+
+        //two way binding, another direction
+        User.findOne({"_id": req.user.id}).then((user) => {
+          user.favoritecards.push(favoriteId);
+          user.save().then((user) => {
+            res.send(user);
+          });
+        });
+      })
     });
+  });
 
+
+  router.post('cancelfavorite', (req, res) => {
+    const { cancelfavoriteId } = req.body;
+    console.log(req.body);
+
+    Card.findOne({"_id": cancelfavoriteId })
+    .then((card) => {
+      card.likes_number -= 1;
+      card.save().then(() => {
+
+        //two way binding, another direction
+        User.findByIdAndUpdate(req.user.id, {$pullAll: {favoritecards: cancelfavoriteId }})
+        .then((user) => {
+          res.send(user);
+        });
+      });
+    });
   });
 
 

@@ -8,19 +8,27 @@ html, body {
   padding: 0;
 }
 
-
 .mar {
   position: absolute;
-  bottom: 5%;
+  top: 20%;
   left: 73%;
   overflow: auto;
 }
 
-.des {
-  position: relative;
-  height: 30%;
+.mar1 {
+  position: absolute;
+  top: 20%;
+  left: 73%;
   overflow: auto;
+  animation-name: move;
+  animation-duration: 1s;
 }
+
+@keyframes move {
+  from {left: 93%;}
+    to {left: 73%;}
+}
+
 
 .more {
   position: absolute;
@@ -30,21 +38,19 @@ html, body {
 
 .model {
   position: absolute;
-  left: 10%;
-  width: 80%;
-  height: 90%;
-  padding-left: 4%;
-  top: 5%;
+  width: 100%;
+  height: 100%;
   z-index: 100;
+  padding-left: 5%;
   overflow: scroll;
 }
 
 .bac {
   position: absolute;
-  top: 15%;
+  top: 20%;
   left: 3%;
-  height: 80%;
-  width: 67%;
+  height: 75%;
+  width: 60%;
   background: rgba(255,255,255,0.7);
   z-index: 90;
 }
@@ -53,22 +59,42 @@ html, body {
     display: none;
 }
 
+.close {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  z-index: 200;
+}
+
 .close:hover {
   cursor: pointer;
 }
 
-// <Item className = "info">
-//     <Item.Image size='medium' src={this.state.marker_con.picture} />
-//     <Item.Content>
-//       <Item.Header>{this.state.marker_con.card_name}</Item.Header>
-//       <Item.Header>{this.state.marker_con.username}</Item.Header>
-//     <Item.Meta>
-//       <span>Spend:&nbsp;${this.state.marker_con.money}&nbsp;</span>
-//       <span>Time:&nbsp;{this.state.marker_con.day}&nbsp;Days</span>
-//       <a className = "more" onClick = {this.getmore}>Get More</a>
-//     </Item.Meta>
-//     <Item.Description>
-//       {this.state.marker_con.post_txt}
-//     </Item.Description>
-//     </Item.Content>
-// </Item>
+
+.art {
+  position: absolute;
+  left: 67%;
+  top: 25%;
+  width: 30%;
+  height: 75%;
+}
+
+
+.city {
+  font-family: 'Cookie', cursive;
+  font-size: 10vw;
+  line-height: 7vw;
+  transform: rotate(-0deg);
+  padding-bottom: 2vw;
+}
+
+.quote {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2vw;
+}
+
+.say {
+  font-family: 'Satisfy', cursive;
+  font-size: 1.2vw;
+  float: right;
+}

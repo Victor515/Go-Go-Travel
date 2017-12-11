@@ -14,6 +14,7 @@ import ProfileFollowing from './Following.jsx'
 import ProfileFollower from './Follower.jsx'
 import ProfileSettings from './Profile_Settings.jsx'
 import scriptLoader from 'react-async-script-loader'
+import FavoriteList from './FavoriteList/FavoriteList.jsx'
 
 
 import styles from './styles.scss'
@@ -51,8 +52,7 @@ class Profile extends Component {
                     <div className = "profile">
                       <Profilebar/>
                       <Route exact path="/profile" component={CardList}/>
-                      <Route exact path="/profile/following" component={ProfileFollowing}/>
-                      <Route exact path="/profile/follower" component={ProfileFollower}/>
+                      <Route exact path="/profile/favorite" component={FavoriteList}/>
                       <Route exact path="/profile/settings" component={ProfileSettings}/>
                       <Route exact path="/profile/uploadcard" component={CardNew}/>
                     </div>

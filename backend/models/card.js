@@ -15,7 +15,10 @@ var cardSchema = new Schema({
   money: Number,
   day: Number,
   picture: String,
-  likes_number: Number
+  likes_number: {
+    type: Number,
+    default: 0
+  }
 
 });
 
