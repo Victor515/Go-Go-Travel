@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Grid, Image, Icon, Header, Popup, Modal,Segment,List,Divider, Container} from 'semantic-ui-react'
+import { Button, Card, Grid, Image, Icon, Header, Popup, Modal} from 'semantic-ui-react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {fetchUser, fetchCards} from '../../actions';
@@ -57,8 +57,6 @@ class Profile extends Component {
                       <Route exact path="/profile/uploadcard" component={CardNew}/>
                     </div>
                   </BrowserRouter>
-
-
                 </div>
             );
         } else {
