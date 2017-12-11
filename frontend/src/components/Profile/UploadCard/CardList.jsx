@@ -42,7 +42,7 @@ class CardList extends Component {
     console.log(this.props);
     return this.props.cards.map(card => {
         return <Card key = {card._id}>
-        <Image src = {card.picture} />
+        <Image width = '300em' height = '200em' src = {card.picture} />
           <Card.Content>
             <Card.Header>
               {card.city_name}
@@ -96,7 +96,10 @@ class CardList extends Component {
     render() {
       return(
         <div className = 'cardlist'>
+        <Card.Group>
           {this.renderCards()}
+
+        </Card.Group>
 
           <Link to = '/profile/uploadcard'>
           <Button className = 'post-button' floated = 'right' circular icon='plus' color = 'teal' size = 'huge' />

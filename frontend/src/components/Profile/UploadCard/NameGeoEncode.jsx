@@ -82,12 +82,10 @@ class NameGeoEncode extends Component {
       }
       return (
         <div>
-
-
         {this.state.lat === '' ?
           <PlacesAutocomplete inputProps = {inputProps} onSelect={this.handleSelect.bind(this)}/>
           :
-          <div>
+          <div className = "enter-city">
               <Input {...this.props.input} value = {this.res2}/>
           </div>}
         </div>

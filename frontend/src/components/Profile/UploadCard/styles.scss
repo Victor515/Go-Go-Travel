@@ -140,3 +140,21 @@
   top: 10px;
   z-index: 10000;
 }
+.card-form{
+  margin: 10vw;
+}
+.dropzone{
+  position: relative;
+
+}
+.dropzone-text{
+  font-size: 2vw;
+  width: 50vw;
+  position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+.enter-city{
+  z-index: 100000;
+}

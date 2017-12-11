@@ -47,7 +47,7 @@ class Profile extends Component {
             return(
               <div>
                   <BrowserRouter>
-                    <div>
+                    <div className = "profile">
                       <Profilebar/>
                       <Route exact path="/profile" component={CardList}/>
                       <Route exact path="/profile/following" component={ProfileFollowing}/>

@@ -51,12 +51,15 @@ class CardUploadImg extends Component {
     render(){
       return (
         <div>
+        <div className = "dropzone">
           {this.state.uploadedFileCloudinaryUrl === '' ?
+
             <Dropzone
+              style={{"width" : "120%", "height" : "120%"}}
               multiple={false}
               accept="image/*"
               onDrop={this.onImageDrop.bind(this)}>
-              <p>Drop an image or click to select a file to upload.</p>
+              <div className = "dropzone-text"><p>Drop an image or click to select a file to upload.</p></div>
             </Dropzone>
             :
             <div>
@@ -66,6 +69,7 @@ class CardUploadImg extends Component {
               <p>{this.uploadedFile.name}</p>
               <Image src={this.state.uploadedFileCloudinaryUrl} />
             </div>}
+            </div>
         </div>
       )
     }

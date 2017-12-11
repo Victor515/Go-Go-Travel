@@ -54,8 +54,9 @@ class CardForm extends Component {
     render() {
       return(
         <div>
-
+        <div className = "card-form">
           <form onSubmit = {this.props.handleSubmit(this.props.onCardSubmit)}>
+            <p>City of Interest</p>
             <Field
               key = "address"
               label = "address"
@@ -75,13 +76,11 @@ class CardForm extends Component {
             />
 
             <Link to = '/profile'>
-              <Button>Cancel</Button>
+            <Button basic color='red'> <Icon name='remove' /> Cancel</Button>
             </Link>
-
-            <button type = "submit">Next</button>
-
+            <Button basic icon color='blue' type = "submit">Next <Icon name='right chevron' /></Button>
           </form>
-
+          </div>
 
         </div>
       )

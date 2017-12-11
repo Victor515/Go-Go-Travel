@@ -2,27 +2,42 @@ import React, { Component } from 'react'
 import { Button, Card, Menu, activeItem, Container, Image, Header, Segment, Grid, List, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar.jsx'
+import { Zoom , Slide} from 'react-slideshow-image'
+
 
 import styles from './styles.scss'
-
+const images = [
+  'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg',
+  'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg',
+  'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg',
+  'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg',
+  'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg'
+];
 
 class Home extends Component {
     render() {
+
         return(
 
 
 
             <div>
 
-            <Container text textAlign='center' style={{ marginTop: '4em', marginBottom: '4em'}}>
+            <Container text textAlign='center' style={{ marginTop: '-2em', marginBottom: '4em'}}>
               <div className="font">
                 <Header as='h1' style={{ fontSize: '2em' }}>EXPLORE WONDERLAND</Header>
               </div>
             </Container>
 
-            <div className="backgroundImg">
-              <Image src='https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg' />
-            </div>
+
+            <div className = "slide">
+            <Slide
+                images={images}
+                duration="2000"
+                transitionDuration="1000"
+              />
+              </div>
+
             <Segment raised style={{ padding: '0em' }} vertical>
               <Grid celled='internally' columns='equal' stackable>
                 <Grid.Row textAlign='center'>

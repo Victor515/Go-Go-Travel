@@ -18,7 +18,7 @@ class ProfileSettingsForm extends Component {
   render() {
     return(
     // <form onSubmit =  {this.props.handleSubmit}>
-
+    <div className = "profile-form">
     <form onSubmit =  {this.props.handleSubmit}>
 
       Email:
@@ -48,8 +48,9 @@ class ProfileSettingsForm extends Component {
           type = 'url'
           name = "headpicture"
         />
-      <button type = "submit">Update</button>
+        <Button primary icon type = "submit">Update <Icon name='right chevron' /></Button>
     </form>
+    </div>
   );
   }
 }
