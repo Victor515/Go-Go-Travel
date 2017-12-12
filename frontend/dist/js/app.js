@@ -88123,7 +88123,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var images = ['https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg', 'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg', 'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg', 'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg', 'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg'];
+var images = ['https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg', 'https://farm5.staticflickr.com/4639/25128722468_cb63a1b78f_o_d.jpg', 'https://farm5.staticflickr.com/4572/38962892662_86049315b1_o_d.jpg'];
 
 var Home = function (_Component) {
   _inherits(Home, _Component);
@@ -89505,7 +89505,7 @@ exports.push([module.i, "body > div,\nbody > div > div,\nbody > div > div > div,
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -89537,196 +89537,196 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Login = function (_Component) {
-  _inherits(Login, _Component);
+    _inherits(Login, _Component);
 
-  function Login(props) {
-    _classCallCheck(this, Login);
+    function Login(props) {
+        _classCallCheck(this, Login);
 
-    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-    _this.state = {
-      user: {
-        password: '',
-        email: ''
-      },
-      redirect: false,
-      message: ''
-    };
+        _this.state = {
+            user: {
+                password: '',
+                email: ''
+            },
+            redirect: false,
+            message: ''
+        };
 
-    _this.onSubmit = _this.onSubmit.bind(_this);
-    _this.onChangeEmail = _this.onChangeEmail.bind(_this);
-    _this.onChangePassword = _this.onChangePassword.bind(_this);
-    _this.statusChangeCallback = _this.statusChangeCallback.bind(_this);
-    _this.checkLoginState = _this.checkLoginState.bind(_this);
+        _this.onSubmit = _this.onSubmit.bind(_this);
+        _this.onChangeEmail = _this.onChangeEmail.bind(_this);
+        _this.onChangePassword = _this.onChangePassword.bind(_this);
+        _this.statusChangeCallback = _this.statusChangeCallback.bind(_this);
+        _this.checkLoginState = _this.checkLoginState.bind(_this);
 
-    return _this;
-  }
+        return _this;
+    }
 
-  _createClass(Login, [{
-    key: 'onSubmit',
-    value: function onSubmit(e) {
-      var _this2 = this;
+    _createClass(Login, [{
+        key: 'onSubmit',
+        value: function onSubmit(e) {
+            var _this2 = this;
 
-      e.preventDefault();
+            e.preventDefault();
 
-      var email = encodeURIComponent(this.state.user.email);
-      var password = encodeURIComponent(this.state.user.password);
-      console.log(password);
-      // const redirect = encodeURIComponent(this.state.user.redirect);
-      // const formData = `email=${email}&password=${password}&redirect=${redirect}`;
-      var formData = 'email=' + email + '&password=' + password;
+            var email = encodeURIComponent(this.state.user.email);
+            var password = encodeURIComponent(this.state.user.password);
+            console.log(password);
+            // const redirect = encodeURIComponent(this.state.user.redirect);
+            // const formData = `email=${email}&password=${password}&redirect=${redirect}`;
+            var formData = 'email=' + email + '&password=' + password;
 
-      // create an AJAX request (This should probably done with Axios instead)
-      var xhr = new XMLHttpRequest();
-      xhr.open('post', '/api/login');
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhr.responseType = 'json';
-      xhr.addEventListener('load', function () {
-        if (xhr.status === 200) {
-          _this2.setState({
-            message: 'Successfully logged in!',
-            redirect: true
-          });
-        } else {
-          _this2.setState({
-            message: 'Unable to log in: Username/Password may be not correct'
-          });
+            // create an AJAX request (This should probably done with Axios instead)
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', '/api/login');
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.responseType = 'json';
+            xhr.addEventListener('load', function () {
+                if (xhr.status === 200) {
+                    _this2.setState({
+                        message: 'Successfully logged in!',
+                        redirect: true
+                    });
+                } else {
+                    _this2.setState({
+                        message: 'Unable to log in: Username/Password may be not correct'
+                    });
+                }
+            });
+            xhr.send(formData);
         }
-      });
-      xhr.send(formData);
-    }
-  }, {
-    key: 'onChangeEmail',
-    value: function onChangeEmail(e) {
-      var user = this.state.user;
-      user.email = e.target.value;
-      this.setState({
-        user: user
-      });
-    }
-  }, {
-    key: 'onChangePassword',
-    value: function onChangePassword(e) {
-      var user = this.state.user;
-      user.password = e.target.value;
-      this.setState({
-        user: user
-      });
-    }
+    }, {
+        key: 'onChangeEmail',
+        value: function onChangeEmail(e) {
+            var user = this.state.user;
+            user.email = e.target.value;
+            this.setState({
+                user: user
+            });
+        }
+    }, {
+        key: 'onChangePassword',
+        value: function onChangePassword(e) {
+            var user = this.state.user;
+            user.password = e.target.value;
+            this.setState({
+                user: user
+            });
+        }
 
-    // This is called with the results from from FB.getLoginStatus().
+        // This is called with the results from from FB.getLoginStatus().
 
-  }, {
-    key: 'statusChangeCallback',
-    value: function statusChangeCallback(response) {
-      console.log('statusChangeCallback');
-      console.log(response);
-      // The response object is returned with a status field that lets the
-      // app know the current login status of the person.
-      // Full docs on the response object can be found in the documentation
-      // for FB.getLoginStatus().
-      if (response.status === 'connected') {
-        // Logged into your app and Facebook.
-        this.props.state.isLoggedIn = true;
-        testAPI();
-      } else {
-        // The person is not logged into your app or we are unable to tell.
-        this.props.state.isLoggedIn = true;
-      }
-    }
+    }, {
+        key: 'statusChangeCallback',
+        value: function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                this.props.state.isLoggedIn = true;
+                testAPI();
+            } else {
+                // The person is not logged into your app or we are unable to tell.
+                this.props.state.isLoggedIn = true;
+            }
+        }
 
-    // This function is called when someone finishes with the Login
-    // Button.  See the onlogin handler attached to it in the sample
-    // code below.
+        // This function is called when someone finishes with the Login
+        // Button.  See the onlogin handler attached to it in the sample
+        // code below.
 
-  }, {
-    key: 'checkLoginState',
-    value: function checkLoginState() {
-      FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      if (this.state.redirect) {
-        return _react2.default.createElement(_reactRouter.Redirect, { to: {
-            pathname: '/profile',
-            state: { isLoggedIn: true }
-          } });
-      } else {
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_Navbar2.default, { isLoggedIn: false }),
-          _react2.default.createElement(
-            'div',
-            { className: 'Login' },
-            _react2.default.createElement(
-              _semanticUiReact.Grid,
-              { className: 'Login__container', textAlign: 'center', verticalAlign: 'middle' },
-              _react2.default.createElement(
-                _semanticUiReact.Grid.Column,
-                { className: 'Login__content' },
-                _react2.default.createElement(
-                  _semanticUiReact.Header,
-                  { as: 'h2', textAlign: 'center', className: 'header', color: 'black' },
-                  _react2.default.createElement(_semanticUiReact.Icon, { name: 'sign in' }),
-                  'Login in to your account'
-                ),
-                _react2.default.createElement(
-                  _semanticUiReact.Form,
-                  { size: 'large' },
-                  _react2.default.createElement(
-                    _semanticUiReact.Segment,
-                    { stacked: true },
-                    _react2.default.createElement(_semanticUiReact.Form.Input, {
-                      fluid: true,
-                      icon: 'user',
-                      iconPosition: 'left',
-                      placeholder: 'E-mail address',
-                      onChange: this.onChangeEmail
-                    }),
-                    _react2.default.createElement(_semanticUiReact.Form.Input, {
-                      fluid: true,
-                      icon: 'lock',
-                      iconPosition: 'left',
-                      placeholder: 'Password(6 or more characters)',
-                      type: 'password',
-                      onChange: this.onChangePassword
-                    }),
+    }, {
+        key: 'checkLoginState',
+        value: function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            if (this.state.redirect) {
+                return _react2.default.createElement(_reactRouter.Redirect, { to: {
+                        pathname: '/profile',
+                        state: { isLoggedIn: true }
+                    } });
+            } else {
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_Navbar2.default, { isLoggedIn: false }),
                     _react2.default.createElement(
-                      _semanticUiReact.Button,
-                      { color: 'black', fluid: true, size: 'large', onClick: this.onSubmit },
-                      'Sign In'
-                    ),
-                    _react2.default.createElement('br', null),
-                    _react2.default.createElement(
-                      'p',
-                      { className: 'Login__message' },
-                      this.state.message
+                        'div',
+                        { className: 'Login' },
+                        _react2.default.createElement(
+                            _semanticUiReact.Grid,
+                            { className: 'Login__container', textAlign: 'center', verticalAlign: 'middle' },
+                            _react2.default.createElement(
+                                _semanticUiReact.Grid.Column,
+                                { className: 'Login__content' },
+                                _react2.default.createElement(
+                                    _semanticUiReact.Header,
+                                    { as: 'h2', textAlign: 'center', className: 'header', color: 'black' },
+                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'sign in' }),
+                                    'Login in to your account'
+                                ),
+                                _react2.default.createElement(
+                                    _semanticUiReact.Form,
+                                    { size: 'large' },
+                                    _react2.default.createElement(
+                                        _semanticUiReact.Segment,
+                                        { stacked: true },
+                                        _react2.default.createElement(_semanticUiReact.Form.Input, {
+                                            fluid: true,
+                                            icon: 'user',
+                                            iconPosition: 'left',
+                                            placeholder: 'E-mail address',
+                                            onChange: this.onChangeEmail
+                                        }),
+                                        _react2.default.createElement(_semanticUiReact.Form.Input, {
+                                            fluid: true,
+                                            icon: 'lock',
+                                            iconPosition: 'left',
+                                            placeholder: 'Password(6 or more characters)',
+                                            type: 'password',
+                                            onChange: this.onChangePassword
+                                        }),
+                                        _react2.default.createElement(
+                                            _semanticUiReact.Button,
+                                            { color: 'black', fluid: true, size: 'large', onClick: this.onSubmit },
+                                            'Sign In'
+                                        ),
+                                        _react2.default.createElement('br', null),
+                                        _react2.default.createElement(
+                                            'p',
+                                            { className: 'Login__message' },
+                                            this.state.message
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    _semanticUiReact.Message,
+                                    null,
+                                    'Not a member? ',
+                                    _react2.default.createElement(
+                                        _reactRouterDom.Link,
+                                        { to: '/register' },
+                                        'Join now'
+                                    )
+                                )
+                            )
+                        )
                     )
-                  )
-                ),
-                _react2.default.createElement(
-                  _semanticUiReact.Message,
-                  null,
-                  'Not a member? ',
-                  _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/register' },
-                    'Join now'
-                  )
-                )
-              )
-            )
-          )
-        );
-      }
-    }
-  }]);
+                );
+            }
+        }
+    }]);
 
-  return Login;
+    return Login;
 }(_react.Component);
 
 exports.default = Login;
