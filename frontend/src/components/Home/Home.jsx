@@ -8,8 +8,9 @@ import { Zoom , Slide} from 'react-slideshow-image'
 import styles from './styles.scss'
 const images = [
   'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg',
-  'https://farm5.staticflickr.com/4558/24135628827_f5a86684aa_o_d.jpg',
-  'https://farm5.staticflickr.com/4572/38962892662_86049315b1_o_d.jpg'
+  'https://farm5.staticflickr.com/4738/38999507751_d496bdc6e3_o_d.jpg',
+  'https://farm5.staticflickr.com/4575/25129168198_daa1cd97ca_o_d.jpg'
+
 ];
 
 
