@@ -89487,7 +89487,7 @@ exports.push([module.i, "body > div,\nbody > div > div,\nbody > div > div > div,
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -89519,196 +89519,196 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Login = function (_Component) {
-    _inherits(Login, _Component);
+  _inherits(Login, _Component);
 
-    function Login(props) {
-        _classCallCheck(this, Login);
+  function Login(props) {
+    _classCallCheck(this, Login);
 
-        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-        _this.state = {
-            user: {
-                password: '',
-                email: ''
-            },
-            redirect: false,
-            message: ''
-        };
+    _this.state = {
+      user: {
+        password: '',
+        email: ''
+      },
+      redirect: false,
+      message: ''
+    };
 
-        _this.onSubmit = _this.onSubmit.bind(_this);
-        _this.onChangeEmail = _this.onChangeEmail.bind(_this);
-        _this.onChangePassword = _this.onChangePassword.bind(_this);
-        _this.statusChangeCallback = _this.statusChangeCallback.bind(_this);
-        _this.checkLoginState = _this.checkLoginState.bind(_this);
+    _this.onSubmit = _this.onSubmit.bind(_this);
+    _this.onChangeEmail = _this.onChangeEmail.bind(_this);
+    _this.onChangePassword = _this.onChangePassword.bind(_this);
+    _this.statusChangeCallback = _this.statusChangeCallback.bind(_this);
+    _this.checkLoginState = _this.checkLoginState.bind(_this);
 
-        return _this;
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: 'onSubmit',
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+
+      var email = encodeURIComponent(this.state.user.email);
+      var password = encodeURIComponent(this.state.user.password);
+      console.log(password);
+      // const redirect = encodeURIComponent(this.state.user.redirect);
+      // const formData = `email=${email}&password=${password}&redirect=${redirect}`;
+      var formData = 'email=' + email + '&password=' + password;
+
+      // create an AJAX request (This should probably done with Axios instead)
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', '/api/login');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', function () {
+        if (xhr.status === 200) {
+          _this2.setState({
+            message: 'Successfully logged in!',
+            redirect: true
+          });
+        } else {
+          _this2.setState({
+            message: 'Unable to log in: Username/Password may be not correct'
+          });
+        }
+      });
+      xhr.send(formData);
+    }
+  }, {
+    key: 'onChangeEmail',
+    value: function onChangeEmail(e) {
+      var user = this.state.user;
+      user.email = e.target.value;
+      this.setState({
+        user: user
+      });
+    }
+  }, {
+    key: 'onChangePassword',
+    value: function onChangePassword(e) {
+      var user = this.state.user;
+      user.password = e.target.value;
+      this.setState({
+        user: user
+      });
     }
 
-    _createClass(Login, [{
-        key: 'onSubmit',
-        value: function onSubmit(e) {
-            var _this2 = this;
+    // This is called with the results from from FB.getLoginStatus().
 
-            e.preventDefault();
+  }, {
+    key: 'statusChangeCallback',
+    value: function statusChangeCallback(response) {
+      console.log('statusChangeCallback');
+      console.log(response);
+      // The response object is returned with a status field that lets the
+      // app know the current login status of the person.
+      // Full docs on the response object can be found in the documentation
+      // for FB.getLoginStatus().
+      if (response.status === 'connected') {
+        // Logged into your app and Facebook.
+        this.props.state.isLoggedIn = true;
+        testAPI();
+      } else {
+        // The person is not logged into your app or we are unable to tell.
+        this.props.state.isLoggedIn = true;
+      }
+    }
 
-            var email = encodeURIComponent(this.state.user.email);
-            var password = encodeURIComponent(this.state.user.password);
-            console.log(password);
-            // const redirect = encodeURIComponent(this.state.user.redirect);
-            // const formData = `email=${email}&password=${password}&redirect=${redirect}`;
-            var formData = 'email=' + email + '&password=' + password;
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
 
-            // create an AJAX request (This should probably done with Axios instead)
-            var xhr = new XMLHttpRequest();
-            xhr.open('post', '/api/login');
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.responseType = 'json';
-            xhr.addEventListener('load', function () {
-                if (xhr.status === 200) {
-                    _this2.setState({
-                        message: 'Successfully logged in!',
-                        redirect: true
-                    });
-                } else {
-                    _this2.setState({
-                        message: 'Unable to log in: Username/Password may be not correct'
-                    });
-                }
-            });
-            xhr.send(formData);
-        }
-    }, {
-        key: 'onChangeEmail',
-        value: function onChangeEmail(e) {
-            var user = this.state.user;
-            user.email = e.target.value;
-            this.setState({
-                user: user
-            });
-        }
-    }, {
-        key: 'onChangePassword',
-        value: function onChangePassword(e) {
-            var user = this.state.user;
-            user.password = e.target.value;
-            this.setState({
-                user: user
-            });
-        }
-
-        // This is called with the results from from FB.getLoginStatus().
-
-    }, {
-        key: 'statusChangeCallback',
-        value: function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            // The response object is returned with a status field that lets the
-            // app know the current login status of the person.
-            // Full docs on the response object can be found in the documentation
-            // for FB.getLoginStatus().
-            if (response.status === 'connected') {
-                // Logged into your app and Facebook.
-                this.props.state.isLoggedIn = true;
-                testAPI();
-            } else {
-                // The person is not logged into your app or we are unable to tell.
-                this.props.state.isLoggedIn = true;
-            }
-        }
-
-        // This function is called when someone finishes with the Login
-        // Button.  See the onlogin handler attached to it in the sample
-        // code below.
-
-    }, {
-        key: 'checkLoginState',
-        value: function checkLoginState() {
-            FB.getLoginStatus(function (response) {
-                statusChangeCallback(response);
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            if (this.state.redirect) {
-                return _react2.default.createElement(_reactRouter.Redirect, { to: {
-                        pathname: '/profile',
-                        state: { isLoggedIn: true }
-                    } });
-            } else {
-                return _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(_Navbar2.default, { isLoggedIn: false }),
+  }, {
+    key: 'checkLoginState',
+    value: function checkLoginState() {
+      FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (this.state.redirect) {
+        return _react2.default.createElement(_reactRouter.Redirect, { to: {
+            pathname: '/profile',
+            state: { isLoggedIn: true }
+          } });
+      } else {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_Navbar2.default, { isLoggedIn: false }),
+          _react2.default.createElement(
+            'div',
+            { className: 'Login' },
+            _react2.default.createElement(
+              _semanticUiReact.Grid,
+              { className: 'Login__container', textAlign: 'center', verticalAlign: 'middle' },
+              _react2.default.createElement(
+                _semanticUiReact.Grid.Column,
+                { className: 'Login__content' },
+                _react2.default.createElement(
+                  _semanticUiReact.Header,
+                  { as: 'h2', textAlign: 'center', className: 'header', color: 'black' },
+                  _react2.default.createElement(_semanticUiReact.Icon, { name: 'sign in' }),
+                  'Login in to your account'
+                ),
+                _react2.default.createElement(
+                  _semanticUiReact.Form,
+                  { size: 'large' },
+                  _react2.default.createElement(
+                    _semanticUiReact.Segment,
+                    { stacked: true },
+                    _react2.default.createElement(_semanticUiReact.Form.Input, {
+                      fluid: true,
+                      icon: 'user',
+                      iconPosition: 'left',
+                      placeholder: 'E-mail address',
+                      onChange: this.onChangeEmail
+                    }),
+                    _react2.default.createElement(_semanticUiReact.Form.Input, {
+                      fluid: true,
+                      icon: 'lock',
+                      iconPosition: 'left',
+                      placeholder: 'Password(6 or more characters)',
+                      type: 'password',
+                      onChange: this.onChangePassword
+                    }),
                     _react2.default.createElement(
-                        'div',
-                        { className: 'Login' },
-                        _react2.default.createElement(
-                            _semanticUiReact.Grid,
-                            { className: 'Login__container', textAlign: 'center', verticalAlign: 'middle' },
-                            _react2.default.createElement(
-                                _semanticUiReact.Grid.Column,
-                                { className: 'Login__content' },
-                                _react2.default.createElement(
-                                    _semanticUiReact.Header,
-                                    { as: 'h2', textAlign: 'center', className: 'header', color: 'black' },
-                                    _react2.default.createElement(_semanticUiReact.Icon, { name: 'sign in' }),
-                                    'Login in to your account'
-                                ),
-                                _react2.default.createElement(
-                                    _semanticUiReact.Form,
-                                    { size: 'large' },
-                                    _react2.default.createElement(
-                                        _semanticUiReact.Segment,
-                                        { stacked: true },
-                                        _react2.default.createElement(_semanticUiReact.Form.Input, {
-                                            fluid: true,
-                                            icon: 'user',
-                                            iconPosition: 'left',
-                                            placeholder: 'E-mail address',
-                                            onChange: this.onChangeEmail
-                                        }),
-                                        _react2.default.createElement(_semanticUiReact.Form.Input, {
-                                            fluid: true,
-                                            icon: 'lock',
-                                            iconPosition: 'left',
-                                            placeholder: 'Password(6 or more characters)',
-                                            type: 'password',
-                                            onChange: this.onChangePassword
-                                        }),
-                                        _react2.default.createElement(
-                                            _semanticUiReact.Button,
-                                            { color: 'black', fluid: true, size: 'large', onClick: this.onSubmit },
-                                            'Sign In'
-                                        ),
-                                        _react2.default.createElement('br', null),
-                                        _react2.default.createElement(
-                                            'p',
-                                            { className: 'Login__message' },
-                                            this.state.message
-                                        )
-                                    )
-                                ),
-                                _react2.default.createElement(
-                                    _semanticUiReact.Message,
-                                    null,
-                                    'Not a member? ',
-                                    _react2.default.createElement(
-                                        _reactRouterDom.Link,
-                                        { to: '/register' },
-                                        'Join now'
-                                    )
-                                )
-                            )
-                        )
+                      _semanticUiReact.Button,
+                      { color: 'black', fluid: true, size: 'large', onClick: this.onSubmit },
+                      'Sign In'
+                    ),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'p',
+                      { className: 'Login__message' },
+                      this.state.message
                     )
-                );
-            }
-        }
-    }]);
+                  )
+                ),
+                _react2.default.createElement(
+                  _semanticUiReact.Message,
+                  null,
+                  'Not a member? ',
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/register' },
+                    'Join now'
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+    }
+  }]);
 
-    return Login;
+  return Login;
 }(_react.Component);
 
 exports.default = Login;
@@ -90113,24 +90113,7 @@ var Profile = function (_Component) {
                     )
                 );
             } else {
-                return _react2.default.createElement(
-                    'div',
-                    { className: 'Dashboard' },
-                    _react2.default.createElement(
-                        _semanticUiReact.Card,
-                        null,
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            '"You must log in before you can see this page".'
-                        ),
-                        _react2.default.createElement(
-                            _reactRouterDom.Link,
-                            { to: '/' },
-                            'Back'
-                        )
-                    )
-                );
+                return _react2.default.createElement('div', { className: 'Dashboard' });
             }
         }
     }]);
@@ -98315,7 +98298,7 @@ exports = module.exports = __webpack_require__(28)(undefined);
 
 
 // module
-exports.push([module.i, ".Home {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n/* USER PROFILE PAGE */\n.card {\n  width: 100%;\n  margin-top: 50px;\n  padding: 30px;\n  background-color: rgba(214, 224, 226, 0.2);\n  -moz-border-top-left-radius: 5px;\n  border-top-left-radius: 5px;\n  -moz-border-top-right-radius: 5px;\n  border-top-right-radius: 5px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.card.hovercard {\n  margin-top: 50px;\n  height: 200px;\n  position: relative;\n  padding-top: 0;\n  overflow: hidden;\n  text-align: center;\n  background-color: #fff;\n  background-color: white; }\n\n.card.hovercard .card-background {\n  height: 130px; }\n\n.card-background img {\n  -webkit-filter: blur(25px);\n  -moz-filter: blur(25px);\n  -o-filter: blur(25px);\n  -ms-filter: blur(25px);\n  filter: blur(25px);\n  margin-left: -100px;\n  margin-top: -200px;\n  min-width: 130%; }\n\n.card.hovercard .useravatar {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .useravatar img {\n  width: 150px;\n  height: 150px;\n  max-width: 150px;\n  max-height: 150px;\n  border-radius: 50%;\n  border: 5px solid rgba(255, 255, 255, 0.5); }\n\n.card.hovercard .card-info {\n  position: absolute;\n  bottom: 14px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .card-info .card-title {\n  padding: 0 5px;\n  margin-top: 250px;\n  font-size: 20px;\n  line-height: 1;\n  color: #262626;\n  background-color: rgba(255, 255, 255, 0.1);\n  border-radius: 4px; }\n\n.card.hovercard .card-info {\n  overflow: hidden;\n  font-size: 12px;\n  line-height: 20px;\n  color: #737373;\n  text-overflow: ellipsis; }\n\n.card.hovercard .bottom {\n  padding: 0 20px;\n  margin-bottom: 17px; }\n\n.btn-pref .btn {\n  -webkit-border-radius: 0 !important; }\n\n.list-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  list-style: none;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-justify-content: space-between; }\n\n.list-item img:hover {\n  opacity: 0.7; }\n\n.Gallery-Grid {\n  text-align: center;\n  border-style: dashed; }\n\n.follower-grid {\n  text-align: center; }\n\n.modal-img {\n  width: 1800px; }\n\n.cardlist {\n  width: 80%;\n  margin: auto; }\n\n.modal {\n  top: 10px;\n  z-index: 10000; }\n\n.add-button {\n  margin-top: 8vw; }\n\n/* upload card */\n.card-form {\n  position: absolute;\n  right: 18vw;\n  left: 18vw; }\n\n.bottonZone {\n  width: 100%;\n  margin: 0 auto; }\n\n.dropzone {\n  position: relative;\n  width: 100%;\n  margin: 0 auto; }\n\n.dropzone-text {\n  font-size: 1vw;\n  width: 50vw;\n  color: #444;\n  position: absolute;\n  left: 73%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.enter-city {\n  z-index: 100000; }\n\n.upper {\n  z-index: 5; }\n\n.invisibleInput {\n  display: hidden; }\n\n.Field {\n  z-index: -100; }\n\n.reviewContainer {\n  width: 50%;\n  margin: 0 auto; }\n", ""]);
+exports.push([module.i, ".Home {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n/* USER PROFILE PAGE */\n.card {\n  width: 100%;\n  margin-top: 50px;\n  padding: 30px;\n  background-color: rgba(214, 224, 226, 0.2);\n  -moz-border-top-left-radius: 5px;\n  border-top-left-radius: 5px;\n  -moz-border-top-right-radius: 5px;\n  border-top-right-radius: 5px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.card.hovercard {\n  margin-top: 50px;\n  height: 200px;\n  position: relative;\n  padding-top: 0;\n  overflow: hidden;\n  text-align: center;\n  background-color: #fff;\n  background-color: white; }\n\n.card.hovercard .card-background {\n  height: 130px; }\n\n.card-background img {\n  -webkit-filter: blur(25px);\n  -moz-filter: blur(25px);\n  -o-filter: blur(25px);\n  -ms-filter: blur(25px);\n  filter: blur(25px);\n  margin-left: -100px;\n  margin-top: -200px;\n  min-width: 130%; }\n\n.card.hovercard .useravatar {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .useravatar img {\n  width: 150px;\n  height: 150px;\n  max-width: 150px;\n  max-height: 150px;\n  border-radius: 50%;\n  border: 5px solid rgba(255, 255, 255, 0.5); }\n\n.card.hovercard .card-info {\n  position: absolute;\n  bottom: 14px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .card-info .card-title {\n  padding: 0 5px;\n  margin-top: 250px;\n  font-size: 20px;\n  line-height: 1;\n  color: #262626;\n  background-color: rgba(255, 255, 255, 0.1);\n  border-radius: 4px; }\n\n.card.hovercard .card-info {\n  overflow: hidden;\n  font-size: 12px;\n  line-height: 20px;\n  color: #737373;\n  text-overflow: ellipsis; }\n\n.card.hovercard .bottom {\n  padding: 0 20px;\n  margin-bottom: 17px; }\n\n.btn-pref .btn {\n  -webkit-border-radius: 0 !important; }\n\n.list-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  list-style: none;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-justify-content: space-between; }\n\n.list-item img:hover {\n  opacity: 0.7; }\n\n.Gallery-Grid {\n  text-align: center;\n  border-style: dashed; }\n\n.follower-grid {\n  text-align: center; }\n\n.modal-img {\n  width: 1800px; }\n\n.cardlist {\n  width: 68%;\n  margin: auto; }\n\n.modal {\n  top: 10px;\n  z-index: 10000; }\n\n.add-button {\n  margin-top: 8vw; }\n\n/* upload card */\n.card-form {\n  position: absolute;\n  right: 18vw;\n  left: 18vw; }\n\n.bottonZone {\n  width: 100%;\n  margin: 0 auto; }\n\n.dropzone {\n  position: relative;\n  width: 100%;\n  margin: 0 auto; }\n\n.dropzone-text {\n  font-size: 1vw;\n  width: 50vw;\n  color: #444;\n  position: absolute;\n  left: 73%;\n  top: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.enter-city {\n  z-index: 100000; }\n\n.upper {\n  z-index: 5; }\n\n.invisibleInput {\n  display: hidden; }\n\n.Field {\n  z-index: -100; }\n\n.reviewContainer {\n  width: 50%;\n  margin: 0 auto; }\n", ""]);
 
 // exports
 
@@ -98374,7 +98357,7 @@ exports = module.exports = __webpack_require__(28)(undefined);
 
 
 // module
-exports.push([module.i, ".Home {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n/* USER PROFILE PAGE */\n.card {\n  width: 100%;\n  margin-top: 50px;\n  padding: 30px;\n  background-color: rgba(214, 224, 226, 0.2);\n  -moz-border-top-left-radius: 5px;\n  border-top-left-radius: 5px;\n  -moz-border-top-right-radius: 5px;\n  border-top-right-radius: 5px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.card.hovercard {\n  margin-top: 50px;\n  height: 200px;\n  position: relative;\n  padding-top: 0;\n  overflow: hidden;\n  text-align: center;\n  background-color: #fff;\n  background-color: white; }\n\n.card.hovercard .card-background {\n  height: 130px; }\n\n.card-background img {\n  -webkit-filter: blur(25px);\n  -moz-filter: blur(25px);\n  -o-filter: blur(25px);\n  -ms-filter: blur(25px);\n  filter: blur(25px);\n  margin-left: -100px;\n  margin-top: -200px;\n  min-width: 130%; }\n\n.card.hovercard .useravatar {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .useravatar img {\n  width: 150px;\n  height: 150px;\n  max-width: 150px;\n  max-height: 150px;\n  border-radius: 50%;\n  border: 5px solid rgba(255, 255, 255, 0.5); }\n\n.card.hovercard .card-info {\n  position: absolute;\n  bottom: 14px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .card-info .card-title {\n  padding: 0 5px;\n  margin-top: 250px;\n  font-size: 20px;\n  line-height: 1;\n  color: #262626;\n  background-color: rgba(255, 255, 255, 0.1);\n  border-radius: 4px; }\n\n.card.hovercard .card-info {\n  overflow: hidden;\n  font-size: 12px;\n  line-height: 20px;\n  color: #737373;\n  text-overflow: ellipsis; }\n\n.card.hovercard .bottom {\n  padding: 0 20px;\n  margin-bottom: 17px; }\n\n.btn-pref .btn {\n  -webkit-border-radius: 0 !important; }\n\n.list-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  list-style: none;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-justify-content: space-between; }\n\n.list-item img:hover {\n  opacity: 0.7; }\n\n.Gallery-Grid {\n  text-align: center;\n  border-style: dashed; }\n\n.follower-grid {\n  text-align: center; }\n\n.modal-img {\n  width: 1800px; }\n\n.profile-form {\n  position: absolute;\n  right: 18vw;\n  left: 18vw; }\n\n.rela-block {\n  display: block;\n  position: relative;\n  margin: auto; }\n\n.rela-inline {\n  display: inline-block;\n  position: relative;\n  margin: auto; }\n\n.floated {\n  display: inline-block;\n  position: relative;\n  margin: false;\n  float: left; }\n\n.floated.right {\n  float: right; }\n\n.abs-center {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: 50%;\n  left: 50%;\n  right: false;\n  bottom: false;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  text-align: center;\n  width: 88%; }\n\n.vert-center {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%); }\n\n.horz-center {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: false;\n  left: 50%;\n  right: false;\n  bottom: false;\n  -webkit-transform: translateX(-50%);\n  transform: translateX(-50%); }\n\n.blurred {\n  -webkit-filter: blur(2px);\n  filter: blur(2px); }\n\n.overlay {\n  z-index: -1;\n  display: false;\n  position: fixed;\n  margin: false;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center;\n  opacity: 0; }\n\n.overlay.active {\n  z-index: 100;\n  opacity: 1; }\n\n.overlay.active .overlay-image {\n  opacity: 1; }\n\n.overlay-card {\n  height: 75vh;\n  min-height: 400px;\n  width: calc(92% - 40px);\n  max-width: 1086px;\n  padding-left: 30px;\n  background-color: #f4f4f4;\n  border-radius: 2px;\n  overflow: hidden; }\n\n.overlay-image {\n  height: 100%;\n  width: 480px;\n  opacity: 0;\n  -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), opacity 0.2s 0.3s ease;\n  transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), opacity 0.2s 0.3s ease; }\n\n.overlay-desc {\n  font-family: \"Roboto\";\n  font-size: 16px;\n  letter-spacing: 0px;\n  font-weight: 400;\n  line-height: 20px;\n  height: calc(100% - 40px);\n  margin: 20px;\n  border-left: 1px solid #ccc;\n  width: calc(100% - 520px);\n  padding: 20px 20px 20px 40px;\n  overflow-x: hidden;\n  overflow-y: auto; }\n\n.overlay-desc::-webkit-scrollbar {\n  width: 6px; }\n\n.overlay-desc::-webkit-scrollbar-thumb {\n  background-color: #999; }\n\n.post-image {\n  height: 100%;\n  max-height: 400px;\n  width: 480px;\n  border: 20px solid #fff;\n  -webkit-box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.25);\n          box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.25);\n  background-size: cover !important;\n  cursor: pointer; }\n\n.desc-title {\n  font-family: \"Montserrat\";\n  font-size: 24px;\n  letter-spacing: 2px;\n  font-weight: 400;\n  line-height: 28px;\n  margin-bottom: 5px; }\n\n.desc-author {\n  font-family: \"Montserrat\";\n  font-size: 18px;\n  letter-spacing: 2px;\n  font-weight: 400;\n  line-height: 24px;\n  color: #999;\n  margin-bottom: 10px; }\n\n.close {\n  z-index: 100;\n  display: false;\n  position: absolute;\n  margin: false;\n  top: 10px;\n  right: 15px;\n  font-family: \"Montserrat\";\n  font-size: 24px;\n  letter-spacing: 0px;\n  font-weight: 400;\n  line-height: 30px;\n  cursor: pointer;\n  color: #444;\n  padding: 5px; }\n\n.containers {\n  z-index: 1;\n  width: 92%;\n  max-width: 1126px;\n  padding-top: 100px;\n  margin: 0 auto; }\n\n.profile-card {\n  width: calc(100% - 40px);\n  padding-top: 100px;\n  margin: 70px auto 30px;\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.26);\n          box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.26); }\n\n.profile-pic img {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: -90px;\n  left: 50%;\n  right: false;\n  bottom: false;\n  -webkit-transform: translateX(-50%);\n  transform: translateX(-50%);\n  height: 180px;\n  width: 180px;\n  border: 10px solid #fff;\n  border-radius: 100%;\n  background: url(\"https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg\") center no-repeat;\n  background-size: cover; }\n\n.profile-name-containers {\n  margin: 0 auto 10px;\n  padding: 10px;\n  text-align: center; }\n\n.user-name {\n  font-family: \"Montserrat\";\n  font-size: 24px;\n  letter-spacing: 3px;\n  font-weight: 400;\n  line-height: 30px;\n  margin-bottom: 12px; }\n\n.user-desc {\n  letter-spacing: 1px;\n  color: #999; }\n\n.profile-card-stats {\n  height: 75px;\n  padding: 10px 0px;\n  text-align: center;\n  overflow: hidden; }\n\n.profile-stat {\n  height: 100%;\n  width: 33.3333%; }\n\n.profile-stat:after {\n  color: #999; }\n\n.works::after {\n  content: \"post\";\n  font-size: 1.5vw; }\n\n.followers::after {\n  content: \"favorite\";\n  font-size: 1.5vw; }\n\n.following::after {\n  content: \"setting\";\n  font-size: 1.5vw; }\n\n.button {\n  font-family: 'Montserrat';\n  font-size: 14px;\n  letter-spacing: 4px;\n  font-weight: 900;\n  line-height: 20px;\n  min-width: 200px;\n  padding: 20px 40px;\n  color: #444;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n  border: 1px solid #bbb;\n  margin: 0 20px; }\n\n.button:hover {\n  color: #2ebaae;\n  border: 1px solid #2ebaae; }\n\n.button.inactive {\n  color: #bbb;\n  cursor: default; }\n\n.button.inactive:hover {\n  color: #bbb;\n  border: 1px solid #bbb; }\n\n@media screen and (max-width: 1300px) {\n  .containers {\n    max-width: 843px; }\n  .overlay-card {\n    max-width: 803px;\n    padding: 0; }\n  .overlay-image {\n    height: 68%;\n    width: 100%; }\n  .overlay-desc {\n    width: 100%;\n    height: 32%;\n    margin: 0;\n    padding: 20px 40px; } }\n\n@media screen and (max-width: 1000px) {\n  .containers {\n    max-width: 562px; }\n  .overlay-card {\n    max-width: 522px;\n    min-width: 310px; }\n  .overlay-image {\n    width: 100%;\n    height: 55%;\n    max-height: 1000px;\n    margin: 0; }\n  .post-image {\n    width: 396px;\n    height: 330px;\n    border: 0px solid #fff;\n    -webkit-box-shadow: 0 0 0 transparent;\n            box-shadow: 0 0 0 transparent;\n    background-size: contain !important; }\n  .overlay-desc {\n    width: 100%;\n    height: 45%;\n    padding: 20px; }\n  .nav-links {\n    width: 0px; }\n  .menu-background {\n    left: 8%; }\n  .menu-card {\n    left: 2px;\n    height: 360px; }\n  .menu-content .sub-nav-links {\n    height: 164px;\n    border-bottom: 1px solid #ccc; } }\n\n@media screen and (max-width: 630px) {\n  .image {\n    width: calc(100% - 40px);\n    height: 0px;\n    padding-bottom: 60%; }\n  .menu-content .sign-links {\n    height: 64px;\n    border-top: 1px solid #ccc; }\n  .menu-card {\n    height: 425px; }\n  .sign-div {\n    width: 0px; }\n  .nav-search.active {\n    -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1);\n    transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1); } }\n\n@media screen and (max-width: 550px) {\n  .overlay-card {\n    height: 500px; }\n  .post-image {\n    width: 80%;\n    max-width: 288px;\n    height: 240px; }\n  .overlay-desc {\n    padding: 14px; }\n  .profile-card-stats {\n    height: 0;\n    padding: 0px; }\n  .profile-pic {\n    height: 140px;\n    width: 140px;\n    top: -70px; }\n  .profile-card {\n    padding-top: 70px;\n    margin: 50px auto 30px; } }\n\n.reduxform {\n  position: relative; }\n", ""]);
+exports.push([module.i, ".Home {\n  color: skyblue;\n  text-align: center;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n/* USER PROFILE PAGE */\n.card {\n  width: 100%;\n  margin-top: 50px;\n  padding: 30px;\n  background-color: rgba(214, 224, 226, 0.2);\n  -moz-border-top-left-radius: 5px;\n  border-top-left-radius: 5px;\n  -moz-border-top-right-radius: 5px;\n  border-top-right-radius: 5px;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n.card.hovercard {\n  margin-top: 50px;\n  height: 200px;\n  position: relative;\n  padding-top: 0;\n  overflow: hidden;\n  text-align: center;\n  background-color: #fff;\n  background-color: white; }\n\n.card.hovercard .card-background {\n  height: 130px; }\n\n.card-background img {\n  -webkit-filter: blur(25px);\n  -moz-filter: blur(25px);\n  -o-filter: blur(25px);\n  -ms-filter: blur(25px);\n  filter: blur(25px);\n  margin-left: -100px;\n  margin-top: -200px;\n  min-width: 130%; }\n\n.card.hovercard .useravatar {\n  position: absolute;\n  top: 15px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .useravatar img {\n  width: 150px;\n  height: 150px;\n  max-width: 150px;\n  max-height: 150px;\n  border-radius: 50%;\n  border: 5px solid rgba(255, 255, 255, 0.5); }\n\n.card.hovercard .card-info {\n  position: absolute;\n  bottom: 14px;\n  left: 0;\n  right: 0; }\n\n.card.hovercard .card-info .card-title {\n  padding: 0 5px;\n  margin-top: 250px;\n  font-size: 20px;\n  line-height: 1;\n  color: #262626;\n  background-color: rgba(255, 255, 255, 0.1);\n  border-radius: 4px; }\n\n.card.hovercard .card-info {\n  overflow: hidden;\n  font-size: 12px;\n  line-height: 20px;\n  color: #737373;\n  text-overflow: ellipsis; }\n\n.card.hovercard .bottom {\n  padding: 0 20px;\n  margin-bottom: 17px; }\n\n.btn-pref .btn {\n  -webkit-border-radius: 0 !important; }\n\n.list-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  list-style: none;\n  -webkit-box-pack: space-evenly;\n      -ms-flex-pack: space-evenly;\n          justify-content: space-evenly;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-justify-content: space-between; }\n\n.list-item img:hover {\n  opacity: 0.7; }\n\n.Gallery-Grid {\n  text-align: center;\n  border-style: dashed; }\n\n.follower-grid {\n  text-align: center; }\n\n.modal-img {\n  width: 1800px; }\n\n.profile-form {\n  position: absolute;\n  right: 18vw;\n  left: 18vw; }\n\n.rela-block {\n  display: block;\n  position: relative;\n  margin: auto; }\n\n.rela-inline {\n  display: inline-block;\n  position: relative;\n  margin: auto; }\n\n.floated {\n  display: inline-block;\n  position: relative;\n  margin: false;\n  float: left; }\n\n.floated.right {\n  float: right; }\n\n.abs-center {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: 50%;\n  left: 50%;\n  right: false;\n  bottom: false;\n  -webkit-transform: translate(-50%, -50%);\n  transform: translate(-50%, -50%);\n  text-align: center;\n  width: 95%; }\n\n.vert-center {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%); }\n\n.horz-center {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: false;\n  left: 50%;\n  right: false;\n  bottom: false;\n  -webkit-transform: translateX(-50%);\n  transform: translateX(-50%); }\n\n.blurred {\n  -webkit-filter: blur(2px);\n  filter: blur(2px); }\n\n.overlay {\n  z-index: -1;\n  display: false;\n  position: fixed;\n  margin: false;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.7);\n  text-align: center;\n  opacity: 0; }\n\n.overlay.active {\n  z-index: 100;\n  opacity: 1; }\n\n.overlay.active .overlay-image {\n  opacity: 1; }\n\n.overlay-card {\n  height: 75vh;\n  min-height: 400px;\n  width: calc(99% - 40px);\n  max-width: 1086px;\n  padding-left: 0px;\n  background-color: #f4f4f4;\n  border-radius: 2px;\n  overflow: hidden; }\n\n.overlay-image {\n  height: 100%;\n  width: 480px;\n  opacity: 0;\n  -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), opacity 0.2s 0.3s ease;\n  transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), opacity 0.2s 0.3s ease; }\n\n.overlay-desc {\n  font-family: \"Roboto\";\n  font-size: 16px;\n  letter-spacing: 0px;\n  font-weight: 400;\n  line-height: 20px;\n  height: calc(100% - 40px);\n  margin: 20px;\n  border-left: 1px solid #ccc;\n  width: calc(100% - 520px);\n  padding: 20px 20px 20px 40px;\n  overflow-x: hidden;\n  overflow-y: auto; }\n\n.overlay-desc::-webkit-scrollbar {\n  width: 6px; }\n\n.overlay-desc::-webkit-scrollbar-thumb {\n  background-color: #999; }\n\n.post-image {\n  height: 100%;\n  max-height: 400px;\n  width: 480px;\n  border: 20px solid #fff;\n  -webkit-box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.25);\n          box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.25);\n  background-size: cover !important;\n  cursor: pointer; }\n\n.desc-title {\n  font-family: \"Montserrat\";\n  font-size: 24px;\n  letter-spacing: 2px;\n  font-weight: 400;\n  line-height: 28px;\n  margin-bottom: 5px; }\n\n.desc-author {\n  font-family: \"Montserrat\";\n  font-size: 18px;\n  letter-spacing: 2px;\n  font-weight: 400;\n  line-height: 24px;\n  color: #999;\n  margin-bottom: 10px; }\n\n.close {\n  z-index: 100;\n  display: false;\n  position: absolute;\n  margin: false;\n  top: 10px;\n  right: 15px;\n  font-family: \"Montserrat\";\n  font-size: 24px;\n  letter-spacing: 0px;\n  font-weight: 400;\n  line-height: 30px;\n  cursor: pointer;\n  color: #444;\n  padding: 5px; }\n\n.containers {\n  z-index: 1;\n  width: 98%;\n  max-width: 1326px;\n  padding-top: 180px;\n  margin: 0 auto; }\n\n.profile-card {\n  width: calc(100% - 20px);\n  padding-top: 100px;\n  margin: 20px auto 30px;\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.26);\n          box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.26); }\n\n.profile-pic img {\n  display: false;\n  position: absolute;\n  margin: false;\n  top: -90px;\n  left: 50%;\n  right: false;\n  bottom: false;\n  -webkit-transform: translateX(-50%);\n  transform: translateX(-50%);\n  height: 180px;\n  width: 180px;\n  border: 10px solid #fff;\n  border-radius: 100%;\n  background: url(\"https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg\") center no-repeat;\n  background-size: cover; }\n\n.profile-name-containers {\n  margin: 0 auto 5px;\n  padding: 10px;\n  text-align: center; }\n\n.user-name {\n  font-family: \"Montserrat\";\n  font-size: 24px;\n  letter-spacing: 3px;\n  font-weight: 400;\n  line-height: 30px;\n  margin-bottom: 12px; }\n\n.user-desc {\n  letter-spacing: 1px;\n  color: #999; }\n\n.profile-card-stats {\n  height: 75px;\n  padding: 10px 0px;\n  text-align: center;\n  overflow: hidden; }\n\n.profile-stat {\n  height: 100%;\n  width: 33.3333%; }\n\n.profile-stat:after {\n  color: #999; }\n\n.works::after {\n  content: \"post\";\n  font-size: 1.5vw; }\n\n.followers::after {\n  content: \"favorite\";\n  font-size: 1.5vw; }\n\n.following::after {\n  content: \"setting\";\n  font-size: 1.5vw; }\n\n.button {\n  font-family: 'Montserrat';\n  font-size: 14px;\n  letter-spacing: 4px;\n  font-weight: 900;\n  line-height: 20px;\n  min-width: 200px;\n  padding: 20px 40px;\n  color: #444;\n  text-align: center;\n  text-transform: uppercase;\n  cursor: pointer;\n  border: 1px solid #bbb;\n  margin: 0 20px; }\n\n.button:hover {\n  color: #2ebaae;\n  border: 1px solid #2ebaae; }\n\n.button.inactive {\n  color: #bbb;\n  cursor: default; }\n\n.button.inactive:hover {\n  color: #bbb;\n  border: 1px solid #bbb; }\n\n@media screen and (max-width: 1300px) {\n  .containers {\n    max-width: 900px; }\n  .overlay-card {\n    max-width: 803px;\n    padding: 0; }\n  .overlay-image {\n    height: 68%;\n    width: 100%; }\n  .overlay-desc {\n    width: 100%;\n    height: 32%;\n    margin: 0;\n    padding: 20px 40px; } }\n\n@media screen and (max-width: 1000px) {\n  .containers {\n    max-width: 1000px; }\n  .overlay-card {\n    max-width: 522px;\n    min-width: 310px; }\n  .overlay-image {\n    width: 100%;\n    height: 55%;\n    max-height: 1000px;\n    margin: 0; }\n  .post-image {\n    width: 396px;\n    height: 330px;\n    border: 0px solid #fff;\n    -webkit-box-shadow: 0 0 0 transparent;\n            box-shadow: 0 0 0 transparent;\n    background-size: contain !important; }\n  .overlay-desc {\n    width: 100%;\n    height: 45%;\n    padding: 20px; }\n  .nav-links {\n    width: 0px; }\n  .menu-background {\n    left: 8%; }\n  .menu-card {\n    left: 2px;\n    height: 360px; }\n  .menu-content .sub-nav-links {\n    height: 164px;\n    border-bottom: 1px solid #ccc; } }\n\n@media screen and (max-width: 630px) {\n  .image {\n    width: calc(100% - 40px);\n    height: 0px;\n    padding-bottom: 60%; }\n  .menu-content .sign-links {\n    height: 64px;\n    border-top: 1px solid #ccc; }\n  .menu-card {\n    height: 425px; }\n  .sign-div {\n    width: 0px; }\n  .nav-search.active {\n    -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1);\n    transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1); } }\n\n@media screen and (max-width: 550px) {\n  .overlay-card {\n    height: 500px; }\n  .post-image {\n    width: 80%;\n    max-width: 288px;\n    height: 240px; }\n  .overlay-desc {\n    padding: 14px; }\n  .profile-card-stats {\n    height: 0;\n    padding: 0px; }\n  .profile-pic {\n    height: 140px;\n    width: 140px;\n    top: -70px; }\n  .profile-card {\n    padding-top: 70px;\n    margin: 50px auto 30px; } }\n\n.reduxform {\n  position: relative; }\n", ""]);
 
 // exports
 
@@ -108346,7 +108329,7 @@ var Explore = function (_Component) {
       };
       var choice = {
         position: 'absolute',
-        bottom: '3%',
+        bottom: '-1%',
         left: '88%',
         zIndex: '100'
       };
@@ -108437,7 +108420,7 @@ var Explore = function (_Component) {
                     _semanticUiReact.Card.Group,
                     { itemsPerRow: 1 },
                     this.state.model_content.map(function (pos) {
-                      return _react2.default.createElement(_ExploreCard2.default, { cardinfo: pos, getmore: _this3.getmore, onClickChange: _this3.onClickChange, isListCard: true });
+                      return _react2.default.createElement(_ExploreCard2.default, { cardinfo: pos, getmore: _this3.getmore, onClickChange: _this3.onClickChange, cardType: "1" });
                     })
                   )
                 )
@@ -108538,11 +108521,11 @@ var Explore = function (_Component) {
                   visible: this.state.showingInfoWindow },
                 _react2.default.createElement(
                   'div',
-                  null,
+                  { className: 'i' },
                   _react2.default.createElement(
                     'h1',
                     null,
-                    'Here~~~!'
+                    this.state.marker_con.city_name
                   )
                 )
               ),
@@ -108552,7 +108535,7 @@ var Explore = function (_Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'zhidi' },
-                  _react2.default.createElement(_ExploreCard2.default, { cardinfo: this.state.marker_con, getmore: this.getmore, isListCard: false })
+                  _react2.default.createElement(_ExploreCard2.default, { cardinfo: this.state.marker_con, getmore: this.getmore, cardType: "2" })
                 )
               )
             )
@@ -108644,7 +108627,7 @@ var Explore = function (_Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'zhidi' },
-                  _react2.default.createElement(_ExploreCard2.default, { cardinfo: this.state.rand, getmore: this.getmore, isListCard: true })
+                  _react2.default.createElement(_ExploreCard2.default, { cardinfo: this.state.rand, getmore: this.getmore, cardType: "3" })
                 )
               )
             )
@@ -108709,7 +108692,7 @@ var ExploreCard = function (_Component) {
     var _this = _possibleConstructorReturn(this, (ExploreCard.__proto__ || Object.getPrototypeOf(ExploreCard)).call(this, props));
 
     _this.state = {
-      isfav: false
+      isfavorite: false
     };
     _this.flipIfFavorite = _this.flipIfFavorite.bind(_this);
     return _this;
@@ -108721,36 +108704,35 @@ var ExploreCard = function (_Component) {
       var _this2 = this;
 
       _axios2.default.post('/api/checkiffavorite', this.props.cardinfo._id).then(function (res) {
-        _this2.setState({ isfav: res.data });
+        _this2.setState({ isfavorite: res.data });
       });
     }
   }, {
     key: 'flipIfFavorite',
-    value: function flipIfFavorite(value) {
+    value: function flipIfFavorite() {
       var _this3 = this;
 
-      if (this.state.isfav) {
-        _axios2.default.post('/api/cancelcardfavorite', value).then(function (res) {
-          _this3.setState({ isfav: res.data });
+      console.log(this.state.isfavorite);
+      if (this.state.isfavorite) {
+        _axios2.default.post('/api/cancelcardfavorite', this.props.cardinfo._id).then(function (res) {
+          _this3.setState({ isfavorite: res.data });
         });
       } else {
-        _axios2.default.post('/api/addcardfavorite', value).then(function (res) {
-          _this3.setState({ isfav: res.data });
+        _axios2.default.post('/api/addcardfavorite', this.props.cardinfo._id).then(function (res) {
+          _this3.setState({ isfavorite: res.data });
         });
       }
-
-      this.props.onClickChange();
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
-
-      console.log(this.props);
+      console.log(this.props.cardinfo._id);
+      console.log(this.state);
       if (this.props.cardinfo == undefined) {
         return _react2.default.createElement('div', null);
       }
-      if (!this.props.isListCard) {
+
+      if (this.props.cardType == "1") {
         return _react2.default.createElement(
           _semanticUiReact.Card,
           { color: 'teal', key: this.props.cardinfo.card_name },
@@ -108777,28 +108759,25 @@ var ExploreCard = function (_Component) {
               '\xA0USD\xA0\xA0',
               _react2.default.createElement(_semanticUiReact.Icon, { name: 'calendar', color: 'blue', circular: true }),
               this.props.cardinfo.day,
-              '\xA0Days'
+              '\xA0Days\xA0\xA0',
+              _react2.default.createElement(_semanticUiReact.Icon, { name: 'heart', color: 'red', circular: true }),
+              this.props.cardinfo.likes_number,
+              '\xA0Likes',
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Description,
               null,
-              this.props.isListCard && this.props.cardinfo.post_txt
+              this.props.cardinfo.post_txt
             )
           ),
           _react2.default.createElement(
             _semanticUiReact.Card.Content,
             { extra: true },
-            _react2.default.createElement(_semanticUiReact.Button, { toggle: true, active: this.state.isfav, icon: 'heart', onClick: function onClick() {
-                return _this4.flipIfFavorite(_this4.props.cardinfo._id);
-              } }),
-            _react2.default.createElement(
-              'a',
-              { className: 'more', onClick: this.props.getmore },
-              'Get More'
-            )
+            _react2.default.createElement(_semanticUiReact.Button, { toggle: true, active: this.state.isfavorite, icon: 'heart', onClick: this.flipIfFavorite })
           )
         );
-      } else {
+      } else if (this.props.cardType == "2") {
         return _react2.default.createElement(
           _semanticUiReact.Card,
           { color: 'teal', key: this.props.cardinfo.card_name },
@@ -108825,15 +108804,63 @@ var ExploreCard = function (_Component) {
               '\xA0USD \xA0\xA0',
               _react2.default.createElement(_semanticUiReact.Icon, { name: 'calendar', color: 'blue', circular: true }),
               this.props.cardinfo.day,
-              '\xA0Days'
+              '\xA0Days',
+              _react2.default.createElement('br', null)
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Card.Description,
+              null,
+              this.props.cardinfo.post_txt
             )
           ),
           _react2.default.createElement(
             _semanticUiReact.Card.Content,
             { extra: true },
-            _react2.default.createElement(_semanticUiReact.Button, { toggle: true, active: this.state.isfav, icon: 'heart', onClick: function onClick() {
-                return _this4.flipIfFavorite(_this4.props.cardinfo._id);
-              } })
+            this.props.cardinfo.likes_number,
+            ' Likes',
+            _react2.default.createElement(
+              'a',
+              { className: 'more', onClick: this.props.getmore },
+              'Get More'
+            ),
+            _react2.default.createElement('br', null)
+          )
+        );
+      } else if (this.props.cardType == "3") {
+        return _react2.default.createElement(
+          _semanticUiReact.Card,
+          { color: 'teal', key: this.props.cardinfo.card_name },
+          _react2.default.createElement(_semanticUiReact.Image, { src: this.props.cardinfo.picture }),
+          _react2.default.createElement(
+            _semanticUiReact.Card.Content,
+            null,
+            _react2.default.createElement(_semanticUiReact.Image, { floated: 'right', size: 'small', src: this.props.cardinfo.user_head_photo, circular: true, avatar: true }),
+            _react2.default.createElement(
+              _semanticUiReact.Card.Header,
+              null,
+              this.props.cardinfo.card_name
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Card.Meta,
+              null,
+              this.props.cardinfo.username
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Card.Description,
+              null,
+              _react2.default.createElement(_semanticUiReact.Icon, { name: 'dollar', color: 'yellow', circular: true }),
+              this.props.cardinfo.money,
+              '\xA0USD \xA0\xA0',
+              _react2.default.createElement(_semanticUiReact.Icon, { name: 'calendar', color: 'blue', circular: true }),
+              this.props.cardinfo.day,
+              '\xA0Days',
+              _react2.default.createElement('br', null)
+            ),
+            _react2.default.createElement(
+              _semanticUiReact.Card.Description,
+              null,
+              this.props.cardinfo.post_txt
+            )
           )
         );
       }
@@ -108854,7 +108881,7 @@ exports = module.exports = __webpack_require__(28)(undefined);
 
 
 // module
-exports.push([module.i, "#map {\n  height: 80%; }\n\n/* Optional: Makes the sample page fill the window. */\nhtml, body {\n  height: 100%;\n  margin: 0;\n  padding: 0; }\n\n.mar {\n  position: absolute;\n  top: 20%;\n  left: 73%;\n  overflow: auto; }\n\n.mar1 {\n  position: absolute;\n  top: 20%;\n  left: 73%;\n  overflow: auto;\n  -webkit-animation-name: move;\n          animation-name: move;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s; }\n\n@-webkit-keyframes move {\n  from {\n    left: 93%; }\n  to {\n    left: 73%; } }\n\n@keyframes move {\n  from {\n    left: 93%; }\n  to {\n    left: 73%; } }\n\n.more {\n  position: absolute;\n  font-style: italic;\n  right: 2%; }\n\n.model {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  padding-left: 5%;\n  overflow: scroll; }\n\n.bac {\n  position: absolute;\n  top: 20%;\n  left: 3%;\n  height: 75%;\n  width: 60%;\n  background: rgba(255, 255, 255, 0.7);\n  z-index: 90; }\n\n::-webkit-scrollbar {\n  display: none; }\n\n.close {\n  position: absolute;\n  top: 5%;\n  right: 2%;\n  z-index: 200; }\n\n.close:hover {\n  cursor: pointer; }\n\n.art {\n  position: absolute;\n  left: 67%;\n  top: 25%;\n  width: 30%;\n  height: 75%; }\n\n.city {\n  font-family: 'Cookie', cursive;\n  font-size: 10vw;\n  line-height: 7vw;\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg);\n  padding-bottom: 2vw; }\n\n.quote {\n  font-family: 'Cinzel', serif;\n  font-size: 1.2vw; }\n\n.say {\n  font-family: 'Satisfy', cursive;\n  font-size: 1.2vw;\n  float: right; }\n", ""]);
+exports.push([module.i, "#map {\n  height: 80%; }\n\n/* Optional: Makes the sample page fill the window. */\nhtml, body {\n  height: 100%;\n  margin: 0;\n  padding: 0; }\n\n.i {\n  font-family: 'Cookie', cursive;\n  font-size: 10px; }\n\n.mar {\n  position: absolute;\n  top: 20%;\n  left: 73%;\n  overflow: auto; }\n\n.mar1 {\n  position: absolute;\n  top: 20%;\n  left: 73%;\n  overflow: auto;\n  -webkit-animation-name: move;\n          animation-name: move;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s; }\n\n@-webkit-keyframes move {\n  from {\n    left: 93%; }\n  to {\n    left: 73%; } }\n\n@keyframes move {\n  from {\n    left: 93%; }\n  to {\n    left: 73%; } }\n\n.more {\n  position: absolute;\n  font-style: italic;\n  right: 2%; }\n\n.model {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 100;\n  padding-left: 5%;\n  overflow: scroll; }\n\n.bac {\n  position: absolute;\n  top: 20%;\n  left: 3%;\n  height: 75%;\n  width: 60%;\n  background: rgba(255, 255, 255, 0.7);\n  z-index: 90; }\n\n::-webkit-scrollbar {\n  display: none; }\n\n.close {\n  position: absolute;\n  top: 5%;\n  right: 2%;\n  z-index: 200; }\n\n.close:hover {\n  cursor: pointer; }\n\n.art {\n  position: absolute;\n  left: 67%;\n  top: 25%;\n  width: 30%;\n  height: 75%; }\n\n.city {\n  font-family: 'Cookie', cursive;\n  font-size: 10vw;\n  line-height: 7vw;\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg);\n  padding-bottom: 2vw; }\n\n.quote {\n  font-family: 'Cinzel', serif;\n  font-size: 1.2vw; }\n\n.say {\n  font-family: 'Satisfy', cursive;\n  font-size: 1.2vw;\n  float: right; }\n", ""]);
 
 // exports
 

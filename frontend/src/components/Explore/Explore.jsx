@@ -347,7 +347,7 @@ class Explore extends Component {
       };
       const choice = {
         position: 'absolute',
-        bottom: '3%',
+        bottom: '-1%',
         left: '88%',
         zIndex: '100'
       }
@@ -407,7 +407,7 @@ class Explore extends Component {
                   .map((pos) =>
                   {
                     return (
-                      <ExploreCard cardinfo = {pos} getmore = {this.getmore}  onClickChange = {this.onClickChange}  isListCard = {true} />);
+                      <ExploreCard cardinfo = {pos} getmore = {this.getmore}  onClickChange = {this.onClickChange}  cardType = {"1"}/>);
                   }
                 )}
                       </Card.Group>
@@ -491,14 +491,14 @@ class Explore extends Component {
                     <InfoWindow
                       marker={this.state.activeMarker}
                       visible={this.state.showingInfoWindow}>
-                        <div>
-                          <h1>Here~~~!</h1>
+                        <div className = "i">
+                          <h1>{this.state.marker_con.city_name}</h1>
                         </div>
                     </InfoWindow>
 
                     <div className = "mar">
                       <div className = "zhidi">
-                        <ExploreCard cardinfo = {this.state.marker_con} getmore = {this.getmore} isListCard = {false}/>
+                        <ExploreCard cardinfo = {this.state.marker_con} getmore = {this.getmore} cardType = {"2"}/>
                       </div>
                     </div>
               </Map>
@@ -569,7 +569,7 @@ class Explore extends Component {
 
                       <div className = "mar1">
                         <div className = "zhidi">
-                          <ExploreCard cardinfo = {this.state.rand} getmore = {this.getmore} isListCard = {true}/>
+                          <ExploreCard cardinfo = {this.state.rand} getmore = {this.getmore} cardType = {"3"}/>
                         </div>
                       </div>
                 </Map>

@@ -10,39 +10,41 @@ class ExploreCard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isfav: false
+      isfavorite: false
     }
     this.flipIfFavorite = this.flipIfFavorite.bind(this);
   }
 
   componentDidMount(){
     axios.post('/api/checkiffavorite', this.props.cardinfo._id).then((res) => {
-      this.setState({isfav: res.data});
+      this.setState({isfavorite: res.data});
     });
   }
 
-  flipIfFavorite(value){
-    if(this.state.isfav){
-      axios.post('/api/cancelcardfavorite', value).then((res) => {
-          this.setState({isfav: res.data});
+  flipIfFavorite(){
+    console.log(this.state.isfavorite);
+    if(this.state.isfavorite){
+      axios.post('/api/cancelcardfavorite', this.props.cardinfo._id).then((res) => {
+          this.setState({isfavorite: res.data});
       });
     }
     else{
-      axios.post('/api/addcardfavorite', value).then((res) => {
-          this.setState({isfav: res.data});
+      axios.post('/api/addcardfavorite', this.props.cardinfo._id).then((res) => {
+          this.setState({isfavorite: res.data});
       });
     }
 
-    this.props.onClickChange();
   }
 
 
   render(){
-    console.log(this.props);
+    console.log(this.props.cardinfo._id);
+    console.log(this.state);
     if(this.props.cardinfo == undefined){
       return (<div></div>);
     }
-    if(!this.props.isListCard){
+
+    if(this.props.cardType == "1"){
         return(
           <Card color='teal' key = {this.props.cardinfo.card_name}>
             <Image src={this.props.cardinfo.picture} />
@@ -56,19 +58,20 @@ class ExploreCard extends Component {
               </Card.Meta>
               <Card.Description>
                 <Icon name='dollar' color='yellow' circular />{this.props.cardinfo.money}&nbsp;USD&nbsp;&nbsp;
-                <Icon name='calendar' color='blue' circular />{this.props.cardinfo.day}&nbsp;Days
+                <Icon name='calendar' color='blue' circular />{this.props.cardinfo.day}&nbsp;Days&nbsp;&nbsp;
+                  <Icon name='heart'  color='red' circular />{this.props.cardinfo.likes_number}&nbsp;Likes
+                  <br />
               </Card.Description>
               <Card.Description>
-                { this.props.isListCard && this.props.cardinfo.post_txt }
+                { this.props.cardinfo.post_txt }
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Button toggle active={this.state.isfav} icon='heart' onClick = {() => this.flipIfFavorite(this.props.cardinfo._id)}/>
-                <a className = "more" onClick = {this.props.getmore}>Get More</a>
+                <Button toggle active={this.state.isfavorite} icon='heart' onClick = { this.flipIfFavorite}/>
             </Card.Content>
           </Card>
       );
-  } else {
+  } else if(this.props.cardType == "2"){
       return(
         <Card color='teal' key = {this.props.cardinfo.card_name}>
           <Image src={this.props.cardinfo.picture} />
@@ -83,10 +86,39 @@ class ExploreCard extends Component {
             <Card.Description>
               <Icon name='dollar' color='yellow' circular/>{this.props.cardinfo.money}&nbsp;USD &nbsp;&nbsp;
               <Icon name='calendar' color='blue' circular/>{this.props.cardinfo.day}&nbsp;Days
+                <br />
+            </Card.Description>
+            <Card.Description>
+              { this.props.cardinfo.post_txt }
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-              <Button toggle active={this.state.isfav} icon='heart' onClick = {() => this.flipIfFavorite(this.props.cardinfo._id)}/>
+            {this.props.cardinfo.likes_number} Likes
+              <a className = "more" onClick = {this.props.getmore}>Get More</a>
+              <br/>
+          </Card.Content>
+        </Card>
+    );
+  } else if(this.props.cardType == "3"){
+      return(
+        <Card color='teal' key = {this.props.cardinfo.card_name}>
+          <Image src={this.props.cardinfo.picture} />
+          <Card.Content>
+            <Image floated='right' size='small' src={this.props.cardinfo.user_head_photo} circular avatar/>
+            <Card.Header>
+              {this.props.cardinfo.card_name}
+            </Card.Header>
+            <Card.Meta>
+              {this.props.cardinfo.username}
+            </Card.Meta>
+            <Card.Description>
+              <Icon name='dollar' color='yellow' circular/>{this.props.cardinfo.money}&nbsp;USD &nbsp;&nbsp;
+              <Icon name='calendar' color='blue' circular/>{this.props.cardinfo.day}&nbsp;Days
+                <br />
+            </Card.Description>
+            <Card.Description>
+              { this.props.cardinfo.post_txt }
+            </Card.Description>
           </Card.Content>
         </Card>
     );
