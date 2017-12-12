@@ -49,10 +49,10 @@ class CardList extends Component {
               <Image size='medium' centered src = {card.picture}/>
               <Card.Content>
                 <Card.Header>
-                  {card.card_name}
+                  {card.card_name}<br/><br/>
                 </Card.Header>
                 <Card.Meta>
-                  <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='calendar' color='blue' circular/> {card.day} days</span>
+                  <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='calendar' color='blue' circular/> {card.day} days</span><br/><br/>
                 </Card.Meta>
                 <Card.Description>
                   {card.post_txt} <br />

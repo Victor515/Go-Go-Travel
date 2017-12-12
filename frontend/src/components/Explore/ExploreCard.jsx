@@ -23,6 +23,7 @@ class ExploreCard extends Component {
 
   flipIfFavorite(){
     console.log(this.state.isfavorite);
+    this.props.onClickChange();
     if(this.state.isfavorite){
       axios.post('/api/cancelcardfavorite', this.props.cardinfo._id).then((res) => {
           this.setState({isfavorite: res.data});
@@ -49,17 +50,17 @@ class ExploreCard extends Component {
           <Card color='teal' key = {this.props.cardinfo.card_name}>
             <Image src={this.props.cardinfo.picture} />
             <Card.Content>
-              <Image floated='right' size='small' src={this.props.cardinfo.user_head_photo} circular avatar/>
+              <Image floated='right' size='massive' src={this.props.cardinfo.user_head_photo} circular avatar/>
               <Card.Header>
-                {this.props.cardinfo.card_name}
+                {this.props.cardinfo.card_name}<br/><br/>
               </Card.Header>
               <Card.Meta>
-                {this.props.cardinfo.username}
+                {this.props.cardinfo.username}<br/><br/>
               </Card.Meta>
               <Card.Description>
                 <Icon name='dollar' color='yellow' circular />{this.props.cardinfo.money}&nbsp;USD&nbsp;&nbsp;
                 <Icon name='calendar' color='blue' circular />{this.props.cardinfo.day}&nbsp;Days&nbsp;&nbsp;
-                  <Icon name='heart'  color='red' circular />{this.props.cardinfo.likes_number}&nbsp;Likes
+                  <Icon name='heart'  color='red' circular />{this.props.cardinfo.likes_number}&nbsp;Likes<br/><br/>
                   <br />
               </Card.Description>
               <Card.Description>

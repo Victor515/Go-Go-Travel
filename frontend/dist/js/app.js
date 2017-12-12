@@ -44239,7 +44239,9 @@ var CardList = function (_Component) {
             _react2.default.createElement(
               _semanticUiReact.Card.Header,
               null,
-              card.card_name
+              card.card_name,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Meta,
@@ -44254,7 +44256,9 @@ var CardList = function (_Component) {
                 ' ',
                 card.day,
                 ' days'
-              )
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Description,
@@ -45850,7 +45854,10 @@ var FavoriteList = function (_Component) {
             _react2.default.createElement(
               _semanticUiReact.Card.Header,
               null,
-              card.card_name
+              card.card_name,
+              ' ',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Meta,
@@ -45865,7 +45872,18 @@ var FavoriteList = function (_Component) {
                 ' ',
                 card.day,
                 ' days'
-              )
+              ),
+              ' ',
+              _react2.default.createElement(
+                'span',
+                null,
+                ' ',
+                _react2.default.createElement(_semanticUiReact.Icon, { name: 'heart', color: 'red', circular: true }),
+                card.likes_number,
+                ' Likes '
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Description,
@@ -108713,6 +108731,7 @@ var ExploreCard = function (_Component) {
       var _this3 = this;
 
       console.log(this.state.isfavorite);
+      this.props.onClickChange();
       if (this.state.isfavorite) {
         _axios2.default.post('/api/cancelcardfavorite', this.props.cardinfo._id).then(function (res) {
           _this3.setState({ isfavorite: res.data });
@@ -108740,16 +108759,20 @@ var ExploreCard = function (_Component) {
           _react2.default.createElement(
             _semanticUiReact.Card.Content,
             null,
-            _react2.default.createElement(_semanticUiReact.Image, { floated: 'right', size: 'small', src: this.props.cardinfo.user_head_photo, circular: true, avatar: true }),
+            _react2.default.createElement(_semanticUiReact.Image, { floated: 'right', size: 'massive', src: this.props.cardinfo.user_head_photo, circular: true, avatar: true }),
             _react2.default.createElement(
               _semanticUiReact.Card.Header,
               null,
-              this.props.cardinfo.card_name
+              this.props.cardinfo.card_name,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Meta,
               null,
-              this.props.cardinfo.username
+              this.props.cardinfo.username,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
               _semanticUiReact.Card.Description,
@@ -108763,6 +108786,8 @@ var ExploreCard = function (_Component) {
               _react2.default.createElement(_semanticUiReact.Icon, { name: 'heart', color: 'red', circular: true }),
               this.props.cardinfo.likes_number,
               '\xA0Likes',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
               _react2.default.createElement('br', null)
             ),
             _react2.default.createElement(
