@@ -1,9 +1,30 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
-var userSchema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+
+var userSchema = new Schema({
     email		: String,
-    password	: String
+    password	: String,
+    username: {
+      type: String,
+      default: ''
+    },
+    followings : [ObjectId],
+    followers : [ObjectId],
+    favoritecards: {
+      type: [ObjectId],
+      default: []
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    headpicture: {
+      type: String,
+      default: "https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAkhAAAAJDFiYjhiOGMxLTY2NWEtNGE1OS1hZGY4LTY1MDIzYjFkNDJiZQ.jpg"
+    }
 });
 
 userSchema.methods.generateHash = function(password) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Input, Card, Form, Grid, Header, Image, Message, Segment, Divider, Icon} from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar.jsx'
 
@@ -17,7 +17,8 @@ class Register extends Component {
                 email: ''
             },
             isLoggedIn: false,
-            message: ''
+            message: '',
+            redirect: false
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -43,7 +44,8 @@ class Register extends Component {
             if (xhr.status === 200) {
                 console.log('The form is valid');
                 this.setState({
-                    message: 'Registered!'
+                    message: 'Registered!',
+                    redirect: true
                 })
             } else {
                 this.setState({
@@ -71,7 +73,18 @@ class Register extends Component {
     }
 
     render() {
+      if(this.state.redirect){
+        return (
+          <Redirect to={
+              {
+                pathname: '/login',
+                state: {isLoggedIn: false}
+              }
+            }/>
+        )
+      }
         return(
+
             <div>
               <Navbar isLoggedIn = {false}/>
 

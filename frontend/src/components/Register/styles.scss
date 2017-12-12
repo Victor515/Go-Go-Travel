@@ -8,6 +8,9 @@ body > div > div > div > div.Register {
 .Register__container{
   height: 100%;
   .Register__content{
+
+      position: absolute;
+      top: 25vmin;
     max-width: 50%;
   }
 }

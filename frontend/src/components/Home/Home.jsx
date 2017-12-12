@@ -2,28 +2,41 @@ import React, { Component } from 'react'
 import { Button, Card, Menu, activeItem, Container, Image, Header, Segment, Grid, List, Divider, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar.jsx'
+import { Zoom , Slide} from 'react-slideshow-image'
+
 
 import styles from './styles.scss'
+const images = [
+  'https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg',
+  'https://farm5.staticflickr.com/4639/25128722468_cb63a1b78f_o_d.jpg',
+  'https://farm5.staticflickr.com/4572/38962892662_86049315b1_o_d.jpg'
+];
 
 
 class Home extends Component {
     render() {
+
         return(
 
 
 
             <div>
-              <Navbar isLoggedIn = {false}/>
 
-            <Container text textAlign='center' style={{ marginTop: '4em', marginBottom: '4em'}}>
+            <Container text textAlign='center' style={{ marginTop: '-2em', marginBottom: '4em'}}>
               <div className="font">
                 <Header as='h1' style={{ fontSize: '2em' }}>EXPLORE WONDERLAND</Header>
               </div>
             </Container>
 
-            <div className="backgroundImg">
-              <Image src='https://farm5.staticflickr.com/4516/38657079716_51bc3ae8ef_o_d.jpg' />
-            </div>
+
+
+            <div className = "trick">Trick</div>
+              <Slide
+                  images={images}
+                  duration="2000"
+                  transitionDuration="1000"
+                />
+
             <Segment raised style={{ padding: '0em' }} vertical>
               <Grid celled='internally' columns='equal' stackable>
                 <Grid.Row textAlign='center'>
@@ -37,45 +50,19 @@ class Home extends Component {
               <Grid celled='internally' columns='equal' stackable>
                 <Grid.Row textAlign='center'>
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    <Header as='h3' style={{ fontSize: '1.8em' }}>"enter title 1..."</Header>
-                    <p style={{ fontSize: '1.2em' }}>That is what they all say about us</p>
+                    <Header as='h3' style={{ fontSize: '1.8em' }}>Welcome</Header>
+                    <p style={{ fontSize: '1.2em' }}>Greetings! Welcome to Go Go Travel! This is the right place to share your travel stories with others.</p>
                   </Grid.Column>
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    <Header as='h3' style={{ fontSize: '1.8em' }}>"enter title 2..."</Header>
+                    <Header as='h3' style={{ fontSize: '1.8em' }}>To get started...</Header>
                     <p style={{ fontSize: '1.2em' }}>
-                      Chief Fun Officer Acme Toys
+                      You can start by first <a href = "/explore">exploring</a> other&#39;s posts. Or, if you can&#39;t wait, <a href = "/register">here</a> is the right place to start sharing your own stories.
                     </p>
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
             </Segment>
-            <Container>
 
-            <Grid columns={3} relaxed style={{ paddingBottom: '5em', paddingTop: '5em', marginLeft:'5em', marginRight:'5em' }}>
-              <Grid.Column>
-                <Segment textAlign='center' basic>
-                <Icon color='grey' size='big' name='browser' />
-                  <Header as='h3' style={{ fontSize: '1.8em'}}>TITLE</Header>
-                  <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column>
-                <Segment textAlign='center' basic>
-                <Icon color='grey' size='big' name='tags' />
-                  <Header as='h3' style={{ fontSize: '1.8em'}}>TITLE</Header>
-                  <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                </Segment>
-              </Grid.Column>
-              <Grid.Column>
-                <Segment textAlign='center' basic>
-                <Icon color='grey' size='big' name='tasks' />
-                  <Header as='h3' style={{ fontSize: '1.8em'}}>TITLE</Header>
-                  <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
-                </Segment>
-              </Grid.Column>
-
-            </Grid>
-            </Container>
 
             <Segment
                   inverted
@@ -109,7 +96,7 @@ class Home extends Component {
 
                         <Grid.Column width={7}>
                           <Header inverted as='h4' content='About' />
-                          <p>This is a group project of a course The Art of Web Programming in UIUC. This app aims to provide a platform which can record users travel stories for wherever they go, and it can also help with travel destination recommendation based on user profile and flight price.</p>
+                          <p>This is the group project of a course named The Art of Web Programming in UIUC. This app provides a platform where users can share travel stories for wherever they go, and explore recommendation for next destinations from others.</p>
                         </Grid.Column>
                       </Grid.Row>
                     </Grid>

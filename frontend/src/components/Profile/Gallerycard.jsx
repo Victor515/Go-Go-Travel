@@ -10,7 +10,6 @@ class Gallerycard extends Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.state = {
             username: this.props.username,
             img: this.props.img,
@@ -51,7 +50,7 @@ class Gallerycard extends Component {
                 </Card.Content>
                 <Card.Content extra>
                   <div className='ui two buttons'>
-                    <Button basic color='white'>Update</Button>
+                    <Button basic color='grey'>Update</Button>
                     <Button basic color='blue'>Delete</Button>
                   </div>
                 </Card.Content>

@@ -23,6 +23,9 @@ class Login extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.statusChangeCallback = this.statusChangeCallback.bind(this);
+        this.checkLoginState = this.checkLoginState.bind(this);
+
     }
 
     onSubmit(e) {
@@ -48,7 +51,7 @@ class Login extends Component {
                 })
             } else {
                 this.setState({
-                    message: 'Unable to log in'
+                    message: 'Unable to log in: Username/Password may be not correct'
                 })
             }
         });
@@ -70,6 +73,36 @@ class Login extends Component {
             user
         })
     }
+
+    // This is called with the results from from FB.getLoginStatus().
+  statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      this.props.state.isLoggedIn = true;
+      testAPI();
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      this.props.state.isLoggedIn = true;
+
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+
 
     render() {
       if(this.state.redirect){
@@ -111,8 +144,6 @@ class Login extends Component {
                             onChange={this.onChangePassword}
                             />
                           <Button color = 'black' fluid size='large' onClick = {this.onSubmit}>Sign In</Button>
-                          <Divider horizontal>or</Divider>
-                          <Button color = 'facebook' fluid size='large'>Continue With Facebook</Button>
                           <br/>
                           <p className = 'Login__message'>{this.state.message}</p>
                           </Segment>

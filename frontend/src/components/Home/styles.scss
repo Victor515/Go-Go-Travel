@@ -18,6 +18,7 @@
   background-repeat:no-repeat;
 }
 
+
 .backgroundImg img{
   height: 40vw;
   width: 100%;
@@ -27,8 +28,27 @@
 }
 
 .font{
-  margin-top: 120px;
+  margin-top: 12vw;
    font-family: "Helvetica", Sans-serif;
    letter-spacing: 0.5em;
+}
 
+.trick {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100vw;
+  height: 42.3vw;
+}
+
+.slide {
+  position: absolute;
+  top: 18vw;
+  left: 0vw;
+  width: 100vw;
+
+}
+
+.nav {
+  display: none;
 }
