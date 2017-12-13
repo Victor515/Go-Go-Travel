@@ -58,7 +58,7 @@ class Home extends Component {
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                     <Header as='h3' className = "font" style={{ fontSize: '1.8em' }}>To get started...</Header>
                     <p className = "font" style={{ fontSize: '1.2em' }}>
-                      You can start by first exploring other&#39;s posts. Or, if you can&#39;t wait, here is the right place to start sharing your own stories.
+                      You can start by first <a href = '/explore'>exploring</a> other&#39;s posts. Or, if you can&#39;t wait, <a href = '/register'>here</a> is the right place to start sharing your own stories.
                     </p>
                   </Grid.Column>
                 </Grid.Row>
