@@ -45,31 +45,32 @@ class CardList extends Component {
         console.log(count);
         count++;
         return (
-            <Card floated='right' key = {card._id}>
-              <Image size='medium' centered src = {card.picture}/>
-              <Card.Content>
-                <Card.Header>
-                  {card.card_name}<br/><br/>
-                </Card.Header>
-                <Card.Meta>
-                  <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='calendar' color='blue' circular/> {card.day} days</span><br/><br/>
-                </Card.Meta>
-                <Card.Description>
-                  {card.post_txt} <br />
-                </Card.Description>
-              </Card.Content>
-
-              <Card.Content extra>
-              <span>
-                <Icon name='point' />
-                {card.city_name}
-                <button style={{color: 'red',backgroundColor: 'Transparent',border: 'none', float:'right'}}  onClick = {() => this.props.deleteCards(card._id, this.props.history)} content='Delete'>
-                  <i class="fa fa-remove"></i>
-                    Delete
-                </button>
-              </span>
-              </Card.Content>
-            </Card>
+          <div class="column">
+            <div class="ui fluid card">
+              <div class="image">
+                <img src= {card.picture} />
+              </div>
+              <div class="content">
+                <a class="header">{card.card_name}</a><br/>
+                  <div class="meta">
+                    <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='travel' color='blue' circular/> {card.day} days</span> <span> <Icon name='heart'  color='red' circular />{card.likes_number} likes </span><br/><br/>
+                  </div>
+                <div class="description">
+                  K{card.post_txt}
+                </div>
+              </div>
+              <div class="extra content">
+                <span>
+                  <Icon name='point' />
+                  {card.city_name}
+                  <button style={{color: 'grey',backgroundColor: 'Transparent',border: 'none', float:'right'}}  onClick = {() => this.props.deleteCards(card._id, this.props.history)} content='Delete'>
+                 <i class="fa fa-remove"></i>
+                   Delete
+               </button>
+                </span>
+              </div>
+            </div>
+          </div>
       );
       });
   }
@@ -77,9 +78,14 @@ class CardList extends Component {
     render() {
       return(
         <div className = 'cardlist'>
+          <div className="ui container">
+            <div className="ui three column doubling stackable masonry grid">
             {this.renderCards()}
+            </div>
+          </div>
+          <br/><br/>
           <Link to = '/profile/uploadcard'>
-          <div class="rela-inline button more-images add-button">New story</div>
+          <div className="rela-inline button more-images add-button">Post a New story</div>
           </Link>
         </div>
       );

@@ -27,7 +27,7 @@ class NavBar extends Component {
         return;
       case false:
         return(
-          <Menu fixed='top' size='massive'>
+          <Menu fixed='top' size='massive' >
             <Link to = {'/'}>
               <Menu.Item name="GoGoTravel" active={activeItem === "GoGoTravel"}/>
             </Link>

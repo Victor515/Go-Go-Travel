@@ -38,34 +38,37 @@ class FavoriteList extends Component {
 
   renderCards(){
     return this.state.cards.map(card => {
-      console.log(3333);
-      console.log(card);
         return(
-          <Card floated='right' key = {card._id}>
-            <Image size='medium' centered src = {card.picture}/>
-            <Card.Content>
-              <Card.Header>
-                {card.card_name} <br/><br/>
-              </Card.Header>
-              <Card.Meta>
-                <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='travel' color='blue' circular/> {card.day} days</span> <span> <Icon name='heart'  color='red' circular />{card.likes_number} Likes </span><br/><br/>
-              </Card.Meta>
-              <Card.Description>
-                {card.post_txt} <br />
-              </Card.Description>
-            </Card.Content>
+            <div class="column">
+              <div class="ui fluid card">
+                <div class="image">
+                  <img src= {card.picture} />
+                </div>
+                <div class="content">
+                  <a class="header">{card.card_name}</a>
+                  <div class="meta">
+                    {card.username}
+                  </div>
+                  <div class="meta">
+                    <span><Icon name='dollar' color='yellow' circular/>{card.money}  <Icon name='travel' color='blue' circular/> {card.day} days</span> <span> <Icon name='heart'  color='red' circular />{card.likes_number} likes </span><br/>
+                  </div>
+                  <div class="description">
+                    {card.post_txt}
+                  </div>
+                </div>
+                <div class="extra content">
+                  <span>
+                    <Icon name='point' />
+                    {card.city_name}
+                    <button style={{color: 'grey',backgroundColor: 'Transparent',border: 'none', float:'right'}}  onClick = {() =>  {this.cancelFavorite(card._id, this.props.history)}} content='Unlike'>
+                      <i class="fa fa-remove"></i>
+                        Unlike
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
 
-            <Card.Content extra>
-            <span>
-              <Icon name='point' />
-              {card.city_name}
-              <button style={{color: 'red',backgroundColor: 'Transparent',border: 'none', float:'right'}}  onClick = {() =>  {this.cancelFavorite(card._id, this.props.history)}} content='Unlike'>
-                <i class="fa fa-remove"></i>
-                  Unlike
-              </button>
-            </span>
-            </Card.Content>
-          </Card>
 
         );
       });
@@ -73,9 +76,12 @@ class FavoriteList extends Component {
 
     render() {
       return(
-        <div className = 'cardlist'>
-          {this.renderCards()}
-
+        <div class="cardlist">
+          <div class="ui container">
+            <div class="ui three column doubling stackable masonry grid">
+              {this.renderCards()}
+            </div>
+          </div>
         </div>
       );
     }
