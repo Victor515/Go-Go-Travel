@@ -24,7 +24,7 @@ class Home extends Component {
 
             <Container text textAlign='center' style={{ marginTop: '-2em', marginBottom: '4em'}}>
               <div className="font">
-                <Header as='h1' style={{ fontSize: '2em' }}>EXPLORE WONDERLAND</Header>
+                <Header className = "font" as='h1' style={{ fontSize: '2em' }}>EXPLORE THE WONDERLAND</Header>
               </div>
             </Container>
 
@@ -46,17 +46,18 @@ class Home extends Component {
                 </Grid.Row>
               </Grid>
             </Segment>
-            <Segment raised style={{ padding: '0em' }} vertical>
+
+            <Segment className = "font" raised style={{ padding: '0em' }} vertical>
               <Grid celled='internally' columns='equal' stackable>
                 <Grid.Row textAlign='center'>
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    <Header as='h3' style={{ fontSize: '1.8em' }}>Welcome</Header>
-                    <p style={{ fontSize: '1.2em' }}>Greetings! Welcome to Go Go Travel! This is the right place to share your travel stories with others.</p>
+                    <Header as='h3' className = "font" style={{ fontSize: '1.8em' }}>Welcome</Header>
+                    <p className = "font" style={{ fontSize: '1.2em' }}>Greetings! Welcome to Go Go Travel! This is the right place to share your travel stories with others.</p>
                   </Grid.Column>
                   <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                    <Header as='h3' style={{ fontSize: '1.8em' }}>To get started...</Header>
-                    <p style={{ fontSize: '1.2em' }}>
-                      You can start by first <a href = "/explore">exploring</a> other&#39;s posts. Or, if you can&#39;t wait, <a href = "/register">here</a> is the right place to start sharing your own stories.
+                    <Header as='h3' className = "font" style={{ fontSize: '1.8em' }}>To get started...</Header>
+                    <p className = "font" style={{ fontSize: '1.2em' }}>
+                      You can start by first exploring other&#39;s posts. Or, if you can&#39;t wait, here is the right place to start sharing your own stories.
                     </p>
                   </Grid.Column>
                 </Grid.Row>
@@ -73,7 +74,7 @@ class Home extends Component {
                       <Grid.Row>
                         <Grid.Column width={4}>
                           <Header inverted as='h4' content='Member' />
-                          <List link inverted>
+                          <List link inverted className = "font">
                             <List.Item as='a'>Keye Zhang</List.Item>
                             <List.Item as='a'>Cheng Ding</List.Item>
                             <List.Item as='a'>Yubo Ouyang</List.Item>
@@ -84,7 +85,7 @@ class Home extends Component {
                         </Grid.Column>
                         <Grid.Column width={4}>
                           <Header inverted as='h4' content='Contact us' />
-                          <List link inverted>
+                          <List link inverted className = "font">
                             <List.Item as='a' href="mailto:keyez2@illinois.edu">keyez2@illinois.edu</List.Item>
                             <List.Item as='a' href="mailto:chengd2@illinois.edu">chengd2@illinois.edu</List.Item>
                             <List.Item as='a' href="mailto:yuboo2@illinois.edu">yuboo2@illinois.edu</List.Item>
@@ -94,15 +95,15 @@ class Home extends Component {
                           </List>
                         </Grid.Column>
 
-                        <Grid.Column width={7}>
+                        <Grid.Column width={8}>
                           <Header inverted as='h4' content='About' />
-                          <p>This is the group project of a course named The Art of Web Programming in UIUC. This app provides a platform where users can share travel stories for wherever they go, and explore recommendation for next destinations from others.</p>
+                          <p className = "font">This is the group project of a course named The Art of Web Programming in UIUC. This app provides a platform where users can share travel stories for wherever they go, and explore recommendation for next destinations from others.</p>
                         </Grid.Column>
                       </Grid.Row>
                     </Grid>
 
                     <Divider inverted fitted section />
-                    <p style={{ margin: '0em 0em 0em', padding: '0em 0em' }} align="center">©2017 Go Go Travel</p>
+                    <p className = "font" style={{ margin: '0em 0em 0em', padding: '0em 0em' }} align="center">©2017 Go Go Travel</p>
 
                   </Container>
                 </Segment>
